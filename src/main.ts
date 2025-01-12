@@ -1,5 +1,9 @@
-import './style.css'
-import init from './test-triangle';
+import './style.css';
+import initTriangle from './test-triangle';
+import initSquare from './test-square';
+import initPentagon from './test-pentagon';
+import initDiamond from './test-diamond';
+import initHexagon from './test-hexagon';
 import { assert } from './utils/util';
 
 (async () => {
@@ -23,6 +27,12 @@ import { assert } from './utils/util';
     canvas.height = canvas.clientHeight;
   });
   observer.observe(canvas);
-  const context = canvas.getContext('webgpu') as GPUCanvasContext;  
-  init(context, device);  // Remove me!
+  const context = canvas.getContext('webgpu') as GPUCanvasContext;
+
+  // Uncomment one of the following lines to test a specific shape:
+   initTriangle(context, device); // Test Triangle
+  // initSquare(context, device); // Test Square
+  // initPentagon(context, device); // Test Pentagon
+  // initDiamond(context, device); // Test Diamond
+  // initHexagon(context, device); // Test Hexagon
 })();
