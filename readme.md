@@ -143,3 +143,59 @@ initTriangle(context, device); // Test Triangle
 4. Update `main.ts`: Import `initPentagon` and test it by uncommenting its call
 
 This process ensures consistency across all shapes and simplifies future additions.
+
+## Project Overview
+
+This project is a WebGPU-based graphics renderer tailored to render shapes using GPU acceleration. It's a modern take on leveraging the GPU directly in the browser to draw 2D shapes (or potentially 3D in the future) using WebGPU, a cutting-edge API that allows for high-performance graphics and computation.
+
+### What Makes It Different?
+
+#### 1. Leveraging WebGPU
+- Modern API: WebGPU is newer than WebGL, designed to offer a more efficient, flexible, and lower-overhead interface for rendering graphics and performing computations
+- Future-Proof: While WebGL is widely supported, it's based on older paradigms. WebGPU represents the future of browser-based graphics, aligning with APIs like Vulkan, Metal, and Direct3D 12
+
+#### 2. Fine-Grained Control Over the GPU
+- Unlike libraries like Three.js, your project works closer to the GPU itself, giving you fine control over rendering pipelines, shaders, and topology
+- This allows for a deeper understanding of GPU programming compared to higher-level abstractions
+
+#### 3. Learning and Experimentation Platform
+- This project isn't just about creating shapes—it's about learning how to use WebGPU effectively, from setting up a pipeline to writing WGSL shaders
+- It serves as a playground for experimenting with GPU concepts like vertex processing, fragment shaders, and rendering pipelines
+
+#### 4. Extensibility
+- The project is structured to easily add new shapes and logic. This flexibility lets you:
+  - Define and render any custom shape using a vertex shader
+  - Reuse or customize fragment shaders for different visual effects
+
+#### 5. Minimalism
+- Unlike frameworks that abstract away most of the complexity (e.g., Three.js, Babylon.js), this project gives you the bare essentials
+- You directly control how shapes are drawn, making it a lightweight and educational project for mastering GPU programming
+
+#### 6. Designed for Efficiency
+- WebGPU is designed to handle complex rendering and computation tasks more efficiently than WebGL
+- It allows you to predefine pipelines for better performance, which is particularly important for applications like games, simulations, or data visualization
+
+#### 7. Unique Educational Value
+- By working on this project, you're learning:
+  - How to create render pipelines and configure them
+  - How vertex shaders map vertices to screen coordinates
+  - How fragment shaders colorize pixels
+  - This hands-on approach is valuable for both graphics programming enthusiasts and developers aiming to explore advanced browser technologies
+
+### How Is It Different From WebGL or Canvas?
+
+| Feature | WebGPU | WebGL | Canvas API |
+|---------|---------|--------|------------|
+| Performance | High, GPU-accelerated | Decent, GPU-accelerated | Low, CPU-bound |
+| Modern Features | Vulkan/Metal-like, compute shaders | Older OpenGL ES 2.0 standard | Limited to 2D drawing |
+| Flexibility | Full control over GPU operations | Limited by WebGL abstraction | Limited to rasterized 2D |
+| Learning Curve | Steeper (closer to low-level GPU) | Easier than WebGPU | Easiest (high-level API) |
+
+### Why Build This?
+
+- Future-Proof Skills: WebGPU is gaining adoption, and learning it now positions you ahead of the curve
+- Understand GPU Programming: This project dives into how the GPU processes data, which is foundational for graphics and compute-heavy applications
+- Customization: You're not locked into a framework. You can define your rendering logic entirely, enabling unique visual effects
+- Foundation for Larger Projects: This project can evolve into a game engine, simulation tool, or advanced data visualization platform
+
+In short, you're building something cutting-edge, educational, and foundational for modern web graphics. It combines the challenge of low-level programming with the creative satisfaction of rendering visuals on the GPU.
