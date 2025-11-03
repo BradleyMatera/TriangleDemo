@@ -1,0 +1,6 @@
+- [ ] Layer in motion design using Framer Motion sequences for section entrances and button hover micro-interactions.
+- [ ] Introduce illustrative assets (SVG blobs, line art) to accompany technology callouts and hero messaging.
+- [ ] Expand WebGPU demos with additional shaders (geometry variations, lighting demos) selectable via component tabs.
+- [ ] Add performance profiling notes with Lighthouse/WebPageTest captures for both light and dark themes.
+- [ ] Author MDX-powered documentation pages (App Router nested routes) for deeper dives into architecture decisions.
+- [ ] Integrate automated visual regression tests once designs stabilize (Playwright + GitHub Actions).

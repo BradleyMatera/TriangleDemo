@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background-color: #f5f8ff;
+}
+
+:root.dark {
+  color-scheme: dark;
+  background-color: #05070f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-gradient-to-br from-slate-50 via-white to-slate-200 text-slate-900 antialiased dark:bg-[#05070f] dark:text-slate-100;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+a {
+  @apply text-brand hover:text-brand-accent transition-colors;
+}
+
+.hero-bg {
+  @apply relative isolate overflow-hidden rounded-3xl border border-white/10 bg-white/20 backdrop-blur-xl dark:bg-white/5;
+  box-shadow: 0 40px 120px rgba(44, 84, 255, 0.18);
+}
+
+.grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.floating-orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at center,
+    rgba(108, 140, 255, 0.55),
+    rgba(168, 85, 247, 0.15)
+  );
+  filter: blur(30px);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.floating-orb--secondary {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle at center,
+    rgba(56, 189, 248, 0.55),
+    rgba(125, 211, 252, 0.15)
+  );
+}
+
+.glass-card {
+  @apply rounded-3xl border border-white/20 bg-white/60 p-6 shadow-card transition-all duration-500 hover:-translate-y-1 hover:shadow-glow dark:border-white/5 dark:bg-white/10;
+}
+
+.glow-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 140, 255, 0.7),
+    rgba(168, 85, 247, 0.4)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

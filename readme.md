@@ -1,44 +1,81 @@
-# leaf-js Demo
+# leaf-js — Next.js 16 WebGPU Demo
 
-A WebGPU TypeScript starter demonstrating basic 3D rendering with a simple triangle.
-
-🌐 **Live Demo:** [https://bradleymatera.github.io/leaf-js/](https://bradleymatera.github.io/leaf-js/)
+A complete rebuild of the original static `leaf-js` showcase delivered with **Next.js 16 (App Router), Bun, Tailwind CSS, and NextUI**. The original content, disclaimers, and technology highlights are preserved while introducing a premium UI, reusable component architecture, and WebGPU-powered interactions.
 
 > **Disclaimer**  
-> This repository is a demo implementation. I am **not** the creator or owner of the original libraries or underlying codebase referenced here. The code present in this repository is solely a demonstration, created by following and replicating the intended functionality as defined by the source materials and existing libraries associated with `leaf-js`.
+> This repository remains a demo implementation. The underlying libraries, concepts, and WebGPU techniques belong to their respective creators. Please contact the upstream maintainers of `leaf-js` for official support or feature requests.
 
-## Purpose
+## ✨ What’s new
 
-This repository exists to showcase what the code and associated libraries are designed to do, as described in their documentation and source references. No original development or novel feature implementation has been performed here—this is strictly a demonstration for educational or illustrative purposes.
+- Bold hero layout with layered gradients, motion cues, and responsive typography.
+- Component-driven architecture (NextUI + Tailwind) for consistent spacing, theming, and accessibility.
+- Live WebGPU triangle render integrated as a client component with graceful fallback messaging.
+- Interactive patterns: tabs for architecture, accordion FAQs, cards for technology highlights, and theme toggle.
+- GitHub Pages–ready static export (`docs/` + `.nojekyll`) powered by Bun scripts.
 
-## Development
+## 🧰 Tech stack
+
+- **Runtime & Package Manager:** [Bun](https://bun.sh/)
+- **Framework:** [Next.js 16](https://nextjs.org/) with the App Router (TypeScript-first)
+- **Design System:** [NextUI](https://nextui.org/) + Tailwind CSS + Next Themes
+- **Animation & Icons:** Framer Motion (via NextUI) & Lucide icons
+- **Linting & Types:** ESLint (`next/core-web-vitals`) and strict TypeScript configuration
+
+## 🚀 Getting started
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
-# Run development server
-npm run dev
+# Start local development
+bun run dev
 
-# Build for production
-npm run build
+# Run lint checks
+bun run lint
+
+# Build production output
+bun run build
+
+# Generate GitHub Pages export (docs/)
+bun run build:pages
 ```
 
-## Deployment
+The app uses the Next.js App Router. Most sections render on the server, while WebGPU demos and theme toggles are client components.
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. See [DEPLOY.md](DEPLOY.md) for more information.
+## 📂 Project structure
 
-## Attribution
+```
+app/                     # App Router layouts and pages
+components/              # NextUI/Tailwind building blocks
+  sections/              # Page-level sections (hero, demo, FAQ, etc.)
+  providers/             # Theme providers for NextUI + next-themes
+lib/                     # Shared utilities and WebGPU setup logic
+public/                  # Static assets (.nojekyll for GitHub Pages)
+```
 
-All libraries, frameworks, and major code concepts utilized here are the intellectual property of their respective creators. If you need originality, bug reports, or core functionality, please consult the upstream authors and official project pages.
+## 🧱 Architecture highlights
 
-## Usage
+- **WebGPU integration:** `lib/webgpu/triangle-demo.ts` now wraps two reference implementations—Hello Triangle and Two Cubes—adapted from the official [WebGPU Samples](https://webgpu.github.io/webgpu-samples/) gallery, with React-ready cleanup and responsive sizing.
+- **Design system cohesion:** Shared helpers (`lib/utils.ts`, `components/ui/*`) ensure consistent typography, spacing, and gradient treatments.
+- **Static export:** `next.config.ts` opts into `output: "export"` and handles GitHub Pages base paths. The `build:pages` script exports into `docs/` and copies `.nojekyll`.
+- **Theme support:** `ThemeProvider` combines NextUI and `next-themes` for automatic light/dark modes with smooth transitions.
 
-You can review the code and run the examples to see how the intended features work. No warranties or guarantees regarding performance, stability, or continued support are provided.
+## 🌐 Deployment
 
-## License
+1. Run `bun run build:pages`.
+2. Commit and push the generated `docs/` folder along with `.nojekyll`.
+3. Configure GitHub Pages to serve from the `docs/` directory on the `main` branch.
 
-Please refer to the licenses and copyright information of the original projects and libraries referenced in this demo.
+The script regenerates `docs/` on each build, so ensure the directory is tracked in version control if you publish the site.
+
+## ❓ FAQs
+
+The on-page FAQ component mirrors the original repo’s intent—clarifying that this is a demo, why WebGPU is required, and how to deploy to GitHub Pages.
+
+## 📌 Attribution
+
+All libraries, frameworks, and major code concepts utilized here are the intellectual property of their respective creators. This project is strictly for educational and illustrative purposes.
 
 ---
-If you have questions about how the demo works, feel free to reach out, but for queries about leaf-js or related libraries, please contact the original maintainers.
+
+Questions about how the demo works? Feel free to explore the source and roadmap. For anything related to the official `leaf-js` project, please reach out to the upstream maintainers. Enjoy exploring WebGPU in a modern Next.js experience!

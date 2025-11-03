@@ -1,0 +1,41 @@
+"use client";
+
+import Link from "next/link";
+import { Divider } from "@nextui-org/react";
+
+export function SiteFooter() {
+  return (
+    <footer className="bg-white/80 shadow-inner dark:bg-[#05070f]/90">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 md:px-10 lg:px-12">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <p className="text-lg font-semibold text-slate-900 dark:text-white">
+            leaf-js Demo
+          </p>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <Link
+              href="https://github.com/BradleyMatera/leaf-js"
+              className="hover:text-brand"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </Link>
+            <Link href="#demo" className="hover:text-brand">
+              WebGPU demo
+            </Link>
+            <Link href="#faq" className="hover:text-brand">
+              FAQs
+            </Link>
+          </div>
+        </div>
+        <Divider />
+        <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+          This site is a demonstration of the capabilities of the original
+          leaf-js project. All credit for the underlying libraries and concepts
+          belongs to their respective creators. Please direct bug reports or
+          feature requests to the upstream maintainers.
+        </p>
+      </div>
+    </footer>
+  );
+}
