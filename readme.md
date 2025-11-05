@@ -1,81 +1,71 @@
-# leaf-js — Next.js 16 WebGPU Demo
+# Triangle Shader Lab
 
-A complete rebuild of the original static `leaf-js` showcase delivered with **Next.js 16 (App Router), Bun, Tailwind CSS, and NextUI**. The original content, disclaimers, and technology highlights are preserved while introducing a premium UI, reusable component architecture, and WebGPU-powered interactions.
+Triangle Shader Lab is a focused WebGPU walkthrough that keeps the canonical "hello triangle" sample front and center. The UI is intentionally minimal: it frames the live render, spotlights the two TypeScript files that power it, and documents how the pipeline is stitched together.
 
-> **Disclaimer**  
-> This repository remains a demo implementation. The underlying libraries, concepts, and WebGPU techniques belong to their respective creators. Please contact the upstream maintainers of `leaf-js` for official support or feature requests.
+## 🔻 Core Focus
 
-## ✨ What’s new
+- **Single primitive, full visibility.** The hello triangle stays on screen at all times so every tweak is immediately visible.
+- **Source-first exploration.** The render loop lives in `lib/webgpu/triangle-demo.ts`; shaders and buffers live in `lib/webgpu/samples/hello-triangle/main.ts`.
+- **Hands-on learning.** Each section of the site points back to those files so you can correlate UI copy with the code that actually drives the GPU.
 
-- Bold hero layout with layered gradients, motion cues, and responsive typography.
-- Component-driven architecture (NextUI + Tailwind) for consistent spacing, theming, and accessibility.
-- Live WebGPU triangle render integrated as a client component with graceful fallback messaging.
-- Interactive patterns: tabs for architecture, accordion FAQs, cards for technology highlights, and theme toggle.
-- GitHub Pages–ready static export (`docs/` + `.nojekyll`) powered by Bun scripts.
+## 🔗 Links
 
-## 🧰 Tech stack
+- Live demo: <https://bradleymatera.github.io/TriangleDemo/>
+- Repository: <https://github.com/BradleyMatera/TriangleDemo>
+
+## ⚠️ Independence Statement
+
+This repository is an independent experimental branch derived from an older public fork of leaf-js. It has no connection, endorsement, or affiliation with the original author or maintainers of that upstream project. All files and structures have been rewritten from scratch; nothing here should be assumed to reflect or reuse the functionality, purpose, or design of the original leaf-js codebase. The historical name was automatically inherited when this branch was created before the complete re-engineering effort.
+
+The current code exists purely for educational experimentation with WebGPU—most notably a “Hello Triangle” scene and personal shader/pipeline studies. The codebase has diverged thousands of commits and design decisions away from any prior work, and there is no shared code, collaboration, or intellectual continuity.
+
+This demo is shared publicly for transparency, reproducibility, and academic curiosity. If you are searching for the original leaf-js project, please consult its official repository and maintainers; this project is separate and unrelated.
+
+## 🎯 Intent
+
+- Highlight the exact steps required to move from `navigator.gpu` to a frame on screen.
+- Provide a polished, responsive wrapper so the demo is easy to explore and share.
+- Encourage hands-on experimentation instead of marketing copy or feature lists.
+
+## 🧰 Tooling
 
 - **Runtime & Package Manager:** [Bun](https://bun.sh/)
-- **Framework:** [Next.js 16](https://nextjs.org/) with the App Router (TypeScript-first)
-- **Design System:** [NextUI](https://nextui.org/) + Tailwind CSS + Next Themes
-- **Animation & Icons:** Framer Motion (via NextUI) & Lucide icons
-- **Linting & Types:** ESLint (`next/core-web-vitals`) and strict TypeScript configuration
+- **Framework:** [Next.js 16](https://nextjs.org/) App Router with TypeScript
+- **Design System:** [NextUI](https://nextui.org/) + Tailwind CSS
+- **Icons:** [Lucide](https://lucide.dev/)
 
-## 🚀 Getting started
+## 🗂️ Key Files
+
+- `lib/webgpu/triangle-demo.ts` — negotiates the adapter/device handshake, prepares the canvas, and manages the render loop.
+- `lib/webgpu/samples/hello-triangle/main.ts` — provides the vertex data, pipeline descriptors, and WGSL shaders.
+- `components/sections/webgpu-showcase.tsx` — mounts the canvas and hooks it into the demo lifecycle.
+
+## 🚀 Getting Started
 
 ```bash
-# Install dependencies
 bun install
-
-# Start local development
 bun run dev
+```
 
-# Run lint checks
-bun run lint
+Open the site in a WebGPU-enabled browser (Chrome 113+, Edge 113+, or Safari Technology Preview). If WebGPU is unavailable, the page will let you know.
 
-# Build production output
-bun run build
+## 🛠️ Experimentation Workflow
 
-# Generate GitHub Pages export (docs/)
+1. Edit `samples/hello-triangle/main.ts` to tweak vertex positions or fragment colors.
+2. Adjust `triangle-demo.ts` if you want to introduce uniforms, multiple pipelines, or depth buffers.
+3. Run `bun run build:pages` to produce a static export under `docs/` for hosting.
+
+## 📦 Deployment
+
+```bash
 bun run build:pages
 ```
 
-The app uses the Next.js App Router. Most sections render on the server, while WebGPU demos and theme toggles are client components.
+The command exports the site, writes it to `docs/`, and copies `.nojekyll` so GitHub Pages or any static host can serve the output.
 
-## 📂 Project structure
+## 📚 Further Reading
 
-```
-app/                     # App Router layouts and pages
-components/              # NextUI/Tailwind building blocks
-  sections/              # Page-level sections (hero, demo, FAQ, etc.)
-  providers/             # Theme providers for NextUI + next-themes
-lib/                     # Shared utilities and WebGPU setup logic
-public/                  # Static assets (.nojekyll for GitHub Pages)
-```
+- `triangle-shader-lab-overview.md` — extended walkthrough of how the project is structured and why it exists.
+- [WebGPU Samples](https://webgpu.github.io/webgpu-samples/?sample=helloTriangle) — the upstream reference for the included shader code.
 
-## 🧱 Architecture highlights
-
-- **WebGPU integration:** `lib/webgpu/triangle-demo.ts` now wraps two reference implementations—Hello Triangle and Two Cubes—adapted from the official [WebGPU Samples](https://webgpu.github.io/webgpu-samples/) gallery, with React-ready cleanup and responsive sizing.
-- **Design system cohesion:** Shared helpers (`lib/utils.ts`, `components/ui/*`) ensure consistent typography, spacing, and gradient treatments.
-- **Static export:** `next.config.ts` opts into `output: "export"` and handles GitHub Pages base paths. The `build:pages` script exports into `docs/` and copies `.nojekyll`.
-- **Theme support:** `ThemeProvider` combines NextUI and `next-themes` for automatic light/dark modes with smooth transitions.
-
-## 🌐 Deployment
-
-1. Run `bun run build:pages`.
-2. Commit and push the generated `docs/` folder along with `.nojekyll`.
-3. Configure GitHub Pages to serve from the `docs/` directory on the `main` branch.
-
-The script regenerates `docs/` on each build, so ensure the directory is tracked in version control if you publish the site.
-
-## ❓ FAQs
-
-The on-page FAQ component mirrors the original repo’s intent—clarifying that this is a demo, why WebGPU is required, and how to deploy to GitHub Pages.
-
-## 📌 Attribution
-
-All libraries, frameworks, and major code concepts utilized here are the intellectual property of their respective creators. This project is strictly for educational and illustrative purposes.
-
----
-
-Questions about how the demo works? Feel free to explore the source and roadmap. For anything related to the official `leaf-js` project, please reach out to the upstream maintainers. Enjoy exploring WebGPU in a modern Next.js experience!
+Use Triangle Shader Lab as a reference or a starting point for your own WebGPU experiments. The focus is simple: one triangle, clear code, and room to explore.

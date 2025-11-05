@@ -77,13 +77,13 @@ export function WebGpuShowcase() {
           <div className="space-y-10 min-w-0">
             <SectionHeading
               eyebrow="Live Demo"
-              title="Experience WebGPU rendering in real time"
+              title="Run the hello triangle sample in real time"
               description={
                 <>
-                  leaf-js illustrates what modern WebGPU pipelines are capable
-                  of—low-level control, predictable performance, and expressive
-                  graphics output. Choose a shape to see the renderer update in
-                  place while the GPU pipelines stay active.
+                  Triangle Shader Lab demonstrates the minimal WebGPU pipeline:
+                  requesting the adapter, creating buffers, compiling WGSL, and
+                  presenting frames to the canvas. Everything you see on this page
+                  maps directly to code in <code>lib/webgpu/triangle-demo.ts</code>.
                 </>
               }
             />
@@ -170,9 +170,10 @@ export function WebGpuShowcase() {
                 />
               </div>
               <p className="text-xs text-slate-400">
-                Tip: Use the latest Chromium-based browser with WebGPU support
-                to see the hardware-accelerated render. Switch shapes to observe
-                how the GPU buffers update without resetting the pipeline.
+                Tip: Use a WebGPU-enabled browser (Chrome 113+, Edge 113+, Safari TP)
+                to see the hardware-accelerated render. Modify the shader color in{" "}
+                <code>samples/hello-triangle/main.ts</code> and rebuild to watch the
+                pipeline respond.
               </p>
               {activeShape ? (
                 <p className="text-[11px] text-slate-400">
@@ -197,16 +198,16 @@ export function WebGpuShowcase() {
 
 const demoHighlights = [
   {
-    label: "Performance",
-    title: "Zero-copy commands",
+    label: "Pipeline",
+    title: "Straightforward configuration",
     description:
-      "The render loop submits GPU commands every frame, demonstrating predictable performance with minimal CPU overhead."
+      "Follow how the adapter, device, swap chain, and render pass descriptors are created inside lib/webgpu/triangle-demo.ts."
   },
   {
-    label: "Modern APIs",
-    title: "Future-proof architecture",
+    label: "Iteration",
+    title: "Tweakable shaders",
     description:
-      "WebGPU unlocks compute shaders, advanced primitives, and cross-platform deployments for next-generation experiences."
+      "Update the WGSL color output in samples/hello-triangle/main.ts and rebuild to validate your changes against the live canvas."
   }
 ];
 

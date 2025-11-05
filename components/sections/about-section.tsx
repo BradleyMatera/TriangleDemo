@@ -6,19 +6,24 @@ import { ShieldAlert, ScrollText } from "lucide-react";
 
 const principles = [
   {
-    title: "Educational focus",
+    title: "Independent lineage",
     description:
-      "This rebuild mirrors the original repository content for illustrative purposes. It is not an official leaf-js product."
+      "Originally forked years ago, this branch no longer shares code, intent, or affiliation with the upstream leaf-js project. Treat it as a standalone WebGPU study."
   },
   {
-    title: "Powered by WebGPU",
+    title: "Code-first orientation",
     description:
-      "Demonstrates how modern GPU pipelines fit into a React-based architecture with reusable components."
+      "Every section points back to the minimal WebGPU implementation in lib/webgpu/triangle-demo.ts and its hello triangle sample."
   },
   {
-    title: "Static export ready",
+    title: "Hello triangle focus",
     description:
-      "Configured for GitHub Pages with docs/ output, .nojekyll, and Bun-powered scripts."
+      "We keep one primitive on screen so it is easy to trace how buffers, shaders, and command submission interact."
+  },
+  {
+    title: "Reproducible setup",
+    description:
+      "Bun scripts and static export targets make it simple to run locally, rebuild, and share experiments on WebGPU-capable browsers."
   }
 ];
 
@@ -31,14 +36,13 @@ export function AboutSection() {
       <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-10">
           <SectionHeading
-            eyebrow="Project Purpose"
-            title="A faithful content migration with a modern presentation"
+            eyebrow="What It Is"
+            title="A deliberately small WebGPU lab"
             description={
               <>
-                The previous static HTML site has been reinterpreted as a
-                component-first React experience. All original messaging—
-                disclaimers, technology references, and contributor notes—are
-                preserved and elevated through progressive disclosure patterns.
+                Triangle Shader Lab is a teaching aid. It wraps a polished UI
+                around the canonical hello triangle demo so you can observe the
+                render loop without rummaging through an engine or marketing copy.
               </>
             }
           />
@@ -65,21 +69,21 @@ export function AboutSection() {
           <CardBody className="gap-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-amber-500 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-300">
               <ShieldAlert className="size-4" />
-              Disclaimer
+              Scope
             </div>
             <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-              This repository continues to be strictly a demo implementation. No
-              claim of authorship over the original leaf-js library or
-              underlying codebase is made. For support, bug reports, or
-              production-grade needs, consult the upstream maintainers and
-              official documentation.
+              Expect a clear starting point rather than a broad engine. The UI helps
+              you map WebGPU setup calls, but the work happens in the source. This
+              branch is independent from the original leaf-js lineage—use it freely
+              as a sandbox to tinker with buffers, color outputs, or shader code and
+              watch the triangle respond.
             </p>
             <Chip
               variant="flat"
               startContent={<ScrollText className="size-4 text-brand" />}
               className="w-fit bg-brand/10 text-brand"
             >
-              Attribution preserved from original site
+              Code-oriented walkthrough
             </Chip>
           </CardBody>
         </Card>

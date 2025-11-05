@@ -16,26 +16,26 @@ const spaceGrotesk = SpaceGrotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bradleymatera.github.io/leaf-js/"),
-  title: "leaf-js Demo — WebGPU showcase rebuilt with Next.js 16",
+  metadataBase: new URL("https://bradleymatera.github.io/TriangleDemo/"),
+  title: "Triangle Shader Lab — WebGPU triangle walkthrough",
   description:
-    "A premium refresh of the leaf-js WebGPU demo using Next.js 16, Bun, Tailwind, and NextUI. Explore modern architecture, theming, and a live WebGPU triangle render.",
+    "Triangle Shader Lab distills the canonical WebGPU 'hello triangle' sample into an interactive demo and annotated architecture overview.",
   keywords: [
-    "leaf-js",
     "WebGPU",
+    "hello triangle",
+    "shader lab",
     "Next.js 16",
     "Bun",
     "NextUI",
-    "Tailwind CSS",
     "TypeScript"
   ],
   authors: [{ name: "deondreE" }],
   openGraph: {
-    title: "leaf-js Demo — WebGPU showcase rebuilt with Next.js 16",
+    title: "Triangle Shader Lab — WebGPU triangle walkthrough",
     description:
-      "A bold, modern refresh built with Bun, Next.js 16, NextUI, and Tailwind. Includes the original WebGPU triangle demo and enhanced documentation.",
-    url: "https://bradleymatera.github.io/leaf-js/",
-    siteName: "leaf-js Demo",
+      "A focused WebGPU playground highlighting the hello triangle pipeline, rendered through a polished Next.js 16 experience.",
+    url: "https://bradleymatera.github.io/TriangleDemo/",
+    siteName: "Triangle Shader Lab",
     locale: "en_US",
     type: "website"
   }

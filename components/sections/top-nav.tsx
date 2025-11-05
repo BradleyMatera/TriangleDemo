@@ -17,7 +17,7 @@ export function TopNav() {
           <Layers className="size-4" />
         </span>
         <p className="font-display text-base font-semibold text-slate-900 dark:text-white">
-          leaf-js Demo
+          Triangle Shader Lab
         </p>
       </NavbarBrand>
 
@@ -28,8 +28,8 @@ export function TopNav() {
         <Link href="#demo" className="hover:text-brand">
           Demo
         </Link>
-        <Link href="#architecture" className="hover:text-brand">
-          Architecture
+        <Link href="#pipeline" className="hover:text-brand">
+          Pipeline
         </Link>
         <Link href="#faq" className="hover:text-brand">
           FAQs
@@ -40,14 +40,12 @@ export function TopNav() {
         <ThemeToggle />
         <Button
           as={Link}
-          href="https://github.com/BradleyMatera/leaf-js"
-          target="_blank"
-          rel="noreferrer"
+          href="#source"
           variant="flat"
           radius="full"
           className="bg-brand/15 text-sm font-semibold text-brand hover:bg-brand/25"
         >
-          GitHub
+          Source notes
         </Button>
       </NavbarContent>
     </Navbar>

@@ -11,94 +11,94 @@ import {
 
 const architectureTabs = [
   {
-    key: "stack",
-    title: "Tech Stack",
+    key: "pipeline",
+    title: "Render Pipeline",
     icon: <Blocks className="size-4" />,
     highlights: [
       {
-        title: "Next.js 16 App Router",
+        title: "Adapter and device handshake",
         description:
-          "Leverages server components for content sections while interactive demos run as client components."
+          "initTriangleDemo negotiates the adapter, requests a device, and configures the canvas format before any drawing occurs."
       },
       {
-        title: "Bun tooling",
+        title: "Render pass wiring",
         description:
-          "Package manager and runtime unify dependency management with fast install and script execution."
+          "Each frame creates a command encoder, sets up color attachments, and executes draw calls sourced from the hello triangle module."
       }
     ],
     bottomNote:
-      "Static export configured with docs/ output for seamless GitHub Pages deployments."
+      "Start with initTriangleDemo(...) inside lib/webgpu/triangle-demo.ts."
   },
   {
-    key: "components",
-    title: "Component System",
+    key: "buffers",
+    title: "Buffers & Shaders",
     icon: <Palette className="size-4" />,
     highlights: [
       {
-        title: "NextUI + Tailwind",
+        title: "Vertex data on the GPU",
         description:
-          "Reusable cards, sections, and typography primitives provide consistency and theme awareness."
+          "createHelloTriangleDemo uploads position data and binds it to the pipeline so the triangle lands exactly once on screen."
       },
       {
-        title: "Interactive patterns",
+        title: "WGSL fragment color",
         description:
-          "Tabs, accordions, and animated badges elevate the original content without sacrificing clarity."
+          "A single WGSL fragment shader sets the color. Change the literal and rebuild to validate your grasp of GPU data flow."
       }
     ],
     bottomNote:
-      "Design tokens centralize spacing, color, and depth, making future enhancements predictable."
+      "Tweak samples/hello-triangle/main.ts to experiment with geometry or colors."
   },
   {
-    key: "content",
-    title: "Content Flow",
+    key: "canvas",
+    title: "Canvas Lifecycle",
     icon: <Server className="size-4" />,
     highlights: [
       {
-        title: "Structured sections",
+        title: "Responsive sizing",
         description:
-          "From hero to FAQs, each section maps to original copy while improving readability and hierarchy."
+          "A ResizeObserver recalculates device pixel dimensions so the render stays crisp on every refresh rate and DPI."
       },
       {
-        title: "Call-to-action emphasis",
+        title: "Depth resources on demand",
         description:
-          "Clear entry points encourage users to try the demo or dive into architecture details."
+          "Depth textures are only created when the selected demo needs them, keeping the triangle example lightweight."
       }
     ],
     bottomNote:
-      "Accessibility-first semantics ensure headings, landmarks, and interactive regions work for assistive tech."
+      "The canvas configuration tracks window.devicePixelRatio for sharp edges."
   },
   {
-    key: "deployment",
-    title: "Deployment",
+    key: "experiments",
+    title: "Build & Share",
     icon: <Box className="size-4" />,
     highlights: [
       {
-        title: "docs/ static export",
+        title: "Local iteration",
         description:
-          "A dedicated script builds and exports the app, copying .nojekyll for GitHub Pages compatibility."
+          "bun run dev spins up hot reloading so you can edit WGSL or TypeScript and immediately replay the render."
       },
       {
-        title: "Production-ready configs",
+        title: "Static export",
         description:
-          "Tailwind, NextUI, and ESLint integrate with type-safe paths and environment-aware base paths."
+          "bun run build:pages outputs a docs/ directory ready for static hosting without extra configuration."
       }
     ],
     bottomNote:
-      "Future enhancements can plug into the TODO roadmap without rethinking the deployment lane."
+      "Ship your own variant by adjusting the Bun scripts or dropping in additional demos."
   }
 ];
 
 export function ArchitectureSection() {
   return (
     <section
-      id="architecture"
+      id="pipeline"
       className="mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-12"
     >
       <div className="rounded-3xl border border-white/40 bg-white/80 p-10 shadow-card backdrop-blur-xl dark:border-white/10 dark:bg-white/5 sm:p-14">
         <SectionHeading
-          eyebrow="System Design"
-          title="Bespoke architecture tuned for static export"
-          description="Explore how Bun-powered scripts, Next.js 16 App Router, and NextUI components work together to deliver a premium, theme-aware experience."
+          eyebrow="Pipeline"
+          title="How the pieces cooperate"
+          description="From device negotiation to command submission, the UI exists to expose the WebGPU wiring. Use these notes as a checklist while you read through the source files."
           align="center"
         />
         <div className="mt-12">

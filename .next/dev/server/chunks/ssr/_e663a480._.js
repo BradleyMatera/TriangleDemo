@@ -41,16 +41,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$
 ;
 const stats = [
     {
-        value: "16 ms",
-        label: "Frame budget optimized"
+        value: "319 lines",
+        label: "WebGPU pipeline explored"
+    },
+    {
+        value: "1 primitive",
+        label: "Hello Triangle spotlight"
     },
     {
         value: "60 fps",
-        label: "Target refresh rate"
-    },
-    {
-        value: "3×",
-        label: "Faster than WebGL baselines"
+        label: "Real-time render target"
     }
 ];
 function HeroSection() {
@@ -87,7 +87,7 @@ function HeroSection() {
                                         lineNumber: 29,
                                         columnNumber: 13
                                     }, this),
-                                    "Next-gen WebGPU toolkit"
+                                    "WebGPU study deck"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/sections/hero-section.tsx",
@@ -97,19 +97,19 @@ function HeroSection() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 className: "text-balance font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl",
                                 children: [
-                                    "leaf-js",
+                                    "Triangle Shader Lab",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-transparent bg-gradient-to-r from-brand via-brand-accent to-cyan-400 bg-clip-text",
                                         children: [
                                             " ",
-                                            "reimagined"
+                                            "focused learning"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/sections/hero-section.tsx",
                                         lineNumber: 34,
                                         columnNumber: 13
                                     }, this),
-                                    ": a polished WebGPU experience."
+                                    ": decode the hello triangle pipeline."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/sections/hero-section.tsx",
@@ -118,7 +118,7 @@ function HeroSection() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "max-w-xl text-lg text-slate-600 dark:text-slate-300",
-                                children: "A premium reboot of the original leaf-js static site now powered by Next.js + NextUI. Explore performant 3D rendering concepts, cohesive theming, and responsive layouts tuned for clarity and delight."
+                                children: "This site is a guided look at WebGPU's canonical hello triangle example. It keeps the live render front and center while surfacing the code paths that configure adapters, buffers, shaders, and draw calls."
                             }, void 0, false, {
                                 fileName: "[project]/components/sections/hero-section.tsx",
                                 lineNumber: 40,
@@ -141,7 +141,7 @@ function HeroSection() {
                                             lineNumber: 53,
                                             columnNumber: 27
                                         }, void 0),
-                                        children: "Launch WebGPU demo"
+                                        children: "Open the demo"
                                     }, void 0, false, {
                                         fileName: "[project]/components/sections/hero-section.tsx",
                                         lineNumber: 46,
@@ -149,12 +149,12 @@ function HeroSection() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$button$2f$dist$2f$chunk$2d$G5TSEPD3$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__button_default__as__Button$3e$__["Button"], {
                                         as: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
-                                        href: "#architecture",
+                                        href: "#pipeline",
                                         size: "lg",
                                         radius: "full",
                                         className: "border border-slate-200/70 bg-white px-6 py-5 text-base font-semibold text-slate-800 shadow-sm transition-colors hover:border-brand hover:text-brand dark:border-white/20 dark:bg-white/10 dark:text-slate-50",
                                         variant: "bordered",
-                                        children: "Explore the architecture"
+                                        children: "Inspect the pipeline"
                                     }, void 0, false, {
                                         fileName: "[project]/components/sections/hero-section.tsx",
                                         lineNumber: 57,
@@ -179,7 +179,7 @@ function HeroSection() {
                                             columnNumber: 29
                                         }, void 0),
                                         className: "bg-brand/10 text-brand",
-                                        children: "Powered by Bun + Next.js 16"
+                                        children: "Bun + Next.js 16 shell"
                                     }, void 0, false, {
                                         fileName: "[project]/components/sections/hero-section.tsx",
                                         lineNumber: 70,
@@ -203,7 +203,7 @@ function HeroSection() {
                                                 lineNumber: 79,
                                                 columnNumber: 15
                                             }, this),
-                                            "WebGPU-ready browsers only"
+                                            "Source: lib/webgpu/triangle-demo.ts"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/sections/hero-section.tsx",
@@ -240,7 +240,7 @@ function HeroSection() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "text-2xl font-semibold text-white",
-                                            children: "Purposeful motion across GPU-powered experiences."
+                                            children: "Trace the render loop from init to draw."
                                         }, void 0, false, {
                                             fileName: "[project]/components/sections/hero-section.tsx",
                                             lineNumber: 91,
@@ -248,7 +248,7 @@ function HeroSection() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-sm text-white/70",
-                                            children: "The triangle render remains as a nod to the original demo while the interface introduces layered gradients, glassmorphism, and elevated typography."
+                                            children: "Follow the small-but-complete setup that negotiates a device, configures the canvas, prepares buffers, and drives the frame submission that keeps the triangle alive."
                                         }, void 0, false, {
                                             fileName: "[project]/components/sections/hero-section.tsx",
                                             lineNumber: 94,
@@ -324,6 +324,7 @@ __turbopack_context__.s([
     ()=>ThemeToggle
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$switch$2f$dist$2f$chunk$2d$JK2N2KWJ$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__switch_default__as__Switch$3e$__ = __turbopack_context__.i("[project]/node_modules/@nextui-org/switch/dist/chunk-JK2N2KWJ.mjs [app-ssr] (ecmascript) <export switch_default as Switch>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/moon.js [app-ssr] (ecmascript) <export default as Moon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sun.js [app-ssr] (ecmascript) <export default as Sun>");
@@ -333,12 +334,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$them
 ;
 ;
 ;
+;
 function ThemeToggle() {
     const { resolvedTheme, setTheme } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTheme"])();
+    const [isMounted, setIsMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const frame = requestAnimationFrame(()=>{
+            setIsMounted(true);
+        });
+        return ()=>cancelAnimationFrame(frame);
+    }, []);
     const hasResolvedTheme = typeof resolvedTheme === "string";
     const isDark = resolvedTheme === "dark";
     const label = hasResolvedTheme ? resolvedTheme === "system" ? "System" : isDark ? "Dark" : "Light" : "Theme";
-    if (!hasResolvedTheme) {
+    if (!isMounted || !hasResolvedTheme) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/60 px-3 py-1 text-xs text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-200",
             children: [
@@ -346,14 +355,14 @@ function ThemeToggle() {
                     className: "size-4"
                 }, void 0, false, {
                     fileName: "[project]/components/ui/theme-toggle.tsx",
-                    lineNumber: 22,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, this),
                 "Theme"
             ]
         }, void 0, true, {
             fileName: "[project]/components/ui/theme-toggle.tsx",
-            lineNumber: 21,
+            lineNumber: 32,
             columnNumber: 7
         }, this);
     }
@@ -369,14 +378,14 @@ function ThemeToggle() {
             className: "size-4"
         }, void 0, false, {
             fileName: "[project]/components/ui/theme-toggle.tsx",
-            lineNumber: 37,
+            lineNumber: 48,
             columnNumber: 21
         }, void 0),
         endContent: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
             className: "size-4"
         }, void 0, false, {
             fileName: "[project]/components/ui/theme-toggle.tsx",
-            lineNumber: 38,
+            lineNumber: 49,
             columnNumber: 19
         }, void 0),
         "aria-label": "Toggle theme",
@@ -386,12 +395,12 @@ function ThemeToggle() {
             children: label
         }, void 0, false, {
             fileName: "[project]/components/ui/theme-toggle.tsx",
-            lineNumber: 42,
+            lineNumber: 53,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/ui/theme-toggle.tsx",
-        lineNumber: 29,
+        lineNumber: 40,
         columnNumber: 5
     }, this);
 }
@@ -442,7 +451,7 @@ function TopNav() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "font-display text-base font-semibold text-slate-900 dark:text-white",
-                        children: "leaf-js Demo"
+                        children: "Triangle Shader Lab"
                     }, void 0, false, {
                         fileName: "[project]/components/sections/top-nav.tsx",
                         lineNumber: 19,
@@ -477,9 +486,9 @@ function TopNav() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        href: "#architecture",
+                        href: "#pipeline",
                         className: "hover:text-brand",
-                        children: "Architecture"
+                        children: "Pipeline"
                     }, void 0, false, {
                         fileName: "[project]/components/sections/top-nav.tsx",
                         lineNumber: 31,
@@ -511,13 +520,11 @@ function TopNav() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$button$2f$dist$2f$chunk$2d$G5TSEPD3$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__button_default__as__Button$3e$__["Button"], {
                         as: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
-                        href: "https://github.com/BradleyMatera/leaf-js",
-                        target: "_blank",
-                        rel: "noreferrer",
+                        href: "#source",
                         variant: "flat",
                         radius: "full",
                         className: "bg-brand/15 text-sm font-semibold text-brand hover:bg-brand/25",
-                        children: "GitHub"
+                        children: "Source notes"
                     }, void 0, false, {
                         fileName: "[project]/components/sections/top-nav.tsx",
                         lineNumber: 41,
@@ -605,16 +612,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 const principles = [
     {
-        title: "Educational focus",
-        description: "This rebuild mirrors the original repository content for illustrative purposes. It is not an official leaf-js product."
+        title: "Independent lineage",
+        description: "Originally forked years ago, this branch no longer shares code, intent, or affiliation with the upstream leaf-js project. Treat it as a standalone WebGPU study."
     },
     {
-        title: "Powered by WebGPU",
-        description: "Demonstrates how modern GPU pipelines fit into a React-based architecture with reusable components."
+        title: "Code-first orientation",
+        description: "Every section points back to the minimal WebGPU implementation in lib/webgpu/triangle-demo.ts and its hello triangle sample."
     },
     {
-        title: "Static export ready",
-        description: "Configured for GitHub Pages with docs/ output, .nojekyll, and Bun-powered scripts."
+        title: "Hello triangle focus",
+        description: "We keep one primitive on screen so it is easy to trace how buffers, shaders, and command submission interact."
+    },
+    {
+        title: "Reproducible setup",
+        description: "Bun scripts and static export targets make it simple to run locally, rebuild, and share experiments on WebGPU-capable browsers."
     }
 ];
 function AboutSection() {
@@ -628,14 +639,14 @@ function AboutSection() {
                     className: "space-y-10",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$2d$heading$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SectionHeading"], {
-                            eyebrow: "Project Purpose",
-                            title: "A faithful content migration with a modern presentation",
+                            eyebrow: "What It Is",
+                            title: "A deliberately small WebGPU lab",
                             description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                                children: "The previous static HTML site has been reinterpreted as a component-first React experience. All original messaging— disclaimers, technology references, and contributor notes—are preserved and elevated through progressive disclosure patterns."
+                                children: "Triangle Shader Lab is a teaching aid. It wraps a polished UI around the canonical hello triangle demo so you can observe the render loop without rummaging through an engine or marketing copy."
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "[project]/components/sections/about-section.tsx",
-                            lineNumber: 33,
+                            lineNumber: 38,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -651,7 +662,7 @@ function AboutSection() {
                                                 children: principle.title
                                             }, void 0, false, {
                                                 fileName: "[project]/components/sections/about-section.tsx",
-                                                lineNumber: 53,
+                                                lineNumber: 57,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -659,29 +670,29 @@ function AboutSection() {
                                                 children: principle.description
                                             }, void 0, false, {
                                                 fileName: "[project]/components/sections/about-section.tsx",
-                                                lineNumber: 56,
+                                                lineNumber: 60,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/sections/about-section.tsx",
-                                        lineNumber: 52,
+                                        lineNumber: 56,
                                         columnNumber: 17
                                     }, this)
                                 }, principle.title, false, {
                                     fileName: "[project]/components/sections/about-section.tsx",
-                                    lineNumber: 47,
+                                    lineNumber: 51,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/sections/about-section.tsx",
-                            lineNumber: 45,
+                            lineNumber: 49,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/sections/about-section.tsx",
-                    lineNumber: 32,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$card$2f$dist$2f$chunk$2d$46NETW2U$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__card_default__as__Card$3e$__["Card"], {
@@ -696,22 +707,22 @@ function AboutSection() {
                                         className: "size-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/sections/about-section.tsx",
-                                        lineNumber: 67,
+                                        lineNumber: 71,
                                         columnNumber: 15
                                     }, this),
-                                    "Disclaimer"
+                                    "Scope"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/sections/about-section.tsx",
-                                lineNumber: 66,
+                                lineNumber: 70,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-sm leading-relaxed text-slate-700 dark:text-slate-300",
-                                children: "This repository continues to be strictly a demo implementation. No claim of authorship over the original leaf-js library or underlying codebase is made. For support, bug reports, or production-grade needs, consult the upstream maintainers and official documentation."
+                                children: "Expect a clear starting point rather than a broad engine. The UI helps you map WebGPU setup calls, but the work happens in the source. This branch is independent from the original leaf-js lineage—use it freely as a sandbox to tinker with buffers, color outputs, or shader code and watch the triangle respond."
                             }, void 0, false, {
                                 fileName: "[project]/components/sections/about-section.tsx",
-                                lineNumber: 70,
+                                lineNumber: 74,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$chip$2f$dist$2f$chunk$2d$4WFLSIHH$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__chip_default__as__Chip$3e$__["Chip"], {
@@ -720,36 +731,36 @@ function AboutSection() {
                                     className: "size-4 text-brand"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/about-section.tsx",
-                                    lineNumber: 79,
+                                    lineNumber: 83,
                                     columnNumber: 29
                                 }, void 0),
                                 className: "w-fit bg-brand/10 text-brand",
-                                children: "Attribution preserved from original site"
+                                children: "Code-oriented walkthrough"
                             }, void 0, false, {
                                 fileName: "[project]/components/sections/about-section.tsx",
-                                lineNumber: 77,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/sections/about-section.tsx",
-                        lineNumber: 65,
+                        lineNumber: 69,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/sections/about-section.tsx",
-                    lineNumber: 64,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/sections/about-section.tsx",
-            lineNumber: 31,
+            lineNumber: 36,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/sections/about-section.tsx",
-        lineNumber: 27,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 }
@@ -1145,10 +1156,20 @@ function WebGpuShowcase() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$2d$heading$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SectionHeading"], {
                                     eyebrow: "Live Demo",
-                                    title: "Experience WebGPU rendering in real time",
+                                    title: "Run the hello triangle sample in real time",
                                     description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                                        children: "leaf-js illustrates what modern WebGPU pipelines are capable of—low-level control, predictable performance, and expressive graphics output. Choose a shape to see the renderer update in place while the GPU pipelines stay active."
-                                    }, void 0, false)
+                                        children: [
+                                            "Triangle Shader Lab demonstrates the minimal WebGPU pipeline: requesting the adapter, creating buffers, compiling WGSL, and presenting frames to the canvas. Everything you see on this page maps directly to code in ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                children: "lib/webgpu/triangle-demo.ts"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/sections/webgpu-showcase.tsx",
+                                                lineNumber: 86,
+                                                columnNumber: 44
+                                            }, void 0),
+                                            "."
+                                        ]
+                                    }, void 0, true)
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/webgpu-showcase.tsx",
                                     lineNumber: 78,
@@ -1351,8 +1372,19 @@ function WebGpuShowcase() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-xs text-slate-400",
-                                            children: "Tip: Use the latest Chromium-based browser with WebGPU support to see the hardware-accelerated render. Switch shapes to observe how the GPU buffers update without resetting the pipeline."
-                                        }, void 0, false, {
+                                            children: [
+                                                "Tip: Use a WebGPU-enabled browser (Chrome 113+, Edge 113+, Safari TP) to see the hardware-accelerated render. Modify the shader color in",
+                                                " ",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                                    children: "samples/hello-triangle/main.ts"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/components/sections/webgpu-showcase.tsx",
+                                                    lineNumber: 175,
+                                                    columnNumber: 17
+                                                }, this),
+                                                " and rebuild to watch the pipeline respond."
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/components/sections/webgpu-showcase.tsx",
                                             lineNumber: 172,
                                             columnNumber: 15
@@ -1370,13 +1402,13 @@ function WebGpuShowcase() {
                                                     children: activeShape.source.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/sections/webgpu-showcase.tsx",
-                                                    lineNumber: 180,
+                                                    lineNumber: 181,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/sections/webgpu-showcase.tsx",
-                                            lineNumber: 178,
+                                            lineNumber: 179,
                                             columnNumber: 17
                                         }, this) : null
                                     ]
@@ -1411,14 +1443,14 @@ function WebGpuShowcase() {
 }
 const demoHighlights = [
     {
-        label: "Performance",
-        title: "Zero-copy commands",
-        description: "The render loop submits GPU commands every frame, demonstrating predictable performance with minimal CPU overhead."
+        label: "Pipeline",
+        title: "Straightforward configuration",
+        description: "Follow how the adapter, device, swap chain, and render pass descriptors are created inside lib/webgpu/triangle-demo.ts."
     },
     {
-        label: "Modern APIs",
-        title: "Future-proof architecture",
-        description: "WebGPU unlocks compute shaders, advanced primitives, and cross-platform deployments for next-generation experiences."
+        label: "Iteration",
+        title: "Tweakable shaders",
+        description: "Update the WGSL color output in samples/hello-triangle/main.ts and rebuild to validate your changes against the live canvas."
     }
 ];
 function StatusBadge({ state }) {
@@ -1432,14 +1464,14 @@ function StatusBadge({ state }) {
                     size: "sm"
                 }, void 0, false, {
                     fileName: "[project]/components/sections/webgpu-showcase.tsx",
-                    lineNumber: 221,
+                    lineNumber: 222,
                     columnNumber: 9
                 }, this),
                 "Setting up"
             ]
         }, void 0, true, {
             fileName: "[project]/components/sections/webgpu-showcase.tsx",
-            lineNumber: 220,
+            lineNumber: 221,
             columnNumber: 7
         }, this);
     }
@@ -1451,14 +1483,14 @@ function StatusBadge({ state }) {
                     className: "size-2 rounded-full bg-emerald-300"
                 }, void 0, false, {
                     fileName: "[project]/components/sections/webgpu-showcase.tsx",
-                    lineNumber: 230,
+                    lineNumber: 231,
                     columnNumber: 9
                 }, this),
                 "Running"
             ]
         }, void 0, true, {
             fileName: "[project]/components/sections/webgpu-showcase.tsx",
-            lineNumber: 229,
+            lineNumber: 230,
             columnNumber: 7
         }, this);
     }
@@ -1469,14 +1501,14 @@ function StatusBadge({ state }) {
                 className: "size-2 rounded-full bg-rose-300"
             }, void 0, false, {
                 fileName: "[project]/components/sections/webgpu-showcase.tsx",
-                lineNumber: 242,
+                lineNumber: 243,
                 columnNumber: 7
             }, this),
             state.message
         ]
     }, void 0, true, {
         fileName: "[project]/components/sections/webgpu-showcase.tsx",
-        lineNumber: 237,
+        lineNumber: 238,
         columnNumber: 5
     }, this);
 }
@@ -1556,10 +1588,10 @@ function TechnologyStackSection() {
             className: "grid gap-10 lg:grid-cols-[1fr_1fr]",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$2d$heading$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SectionHeading"], {
-                    eyebrow: "Technologies",
-                    title: "Modern tooling anchored in the original stack",
+                    eyebrow: "Tooling",
+                    title: "Modern shell around the demo code",
                     description: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                        children: "The original list of technologies—WebGPU, TypeScript, Vite—has been realigned with a Next.js ecosystem. These cards highlight the current tools while acknowledging the project's WebGPU roots."
+                        children: "The interface leans on familiar web tooling so the WebGPU sample can stay small. Treat these layers as support beams around the TypeScript that actually talks to the GPU."
                     }, void 0, false)
                 }, void 0, false, {
                     fileName: "[project]/components/sections/technology-stack.tsx",
@@ -1679,8 +1711,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 const architectureTabs = [
     {
-        key: "stack",
-        title: "Tech Stack",
+        key: "pipeline",
+        title: "Render Pipeline",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$blocks$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Blocks$3e$__["Blocks"], {
             className: "size-4"
         }, void 0, false, {
@@ -1690,19 +1722,19 @@ const architectureTabs = [
         }, ("TURBOPACK compile-time value", void 0)),
         highlights: [
             {
-                title: "Next.js 16 App Router",
-                description: "Leverages server components for content sections while interactive demos run as client components."
+                title: "Adapter and device handshake",
+                description: "initTriangleDemo negotiates the adapter, requests a device, and configures the canvas format before any drawing occurs."
             },
             {
-                title: "Bun tooling",
-                description: "Package manager and runtime unify dependency management with fast install and script execution."
+                title: "Render pass wiring",
+                description: "Each frame creates a command encoder, sets up color attachments, and executes draw calls sourced from the hello triangle module."
             }
         ],
-        bottomNote: "Static export configured with docs/ output for seamless GitHub Pages deployments."
+        bottomNote: "Start with initTriangleDemo(...) inside lib/webgpu/triangle-demo.ts."
     },
     {
-        key: "components",
-        title: "Component System",
+        key: "buffers",
+        title: "Buffers & Shaders",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$palette$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Palette$3e$__["Palette"], {
             className: "size-4"
         }, void 0, false, {
@@ -1712,19 +1744,19 @@ const architectureTabs = [
         }, ("TURBOPACK compile-time value", void 0)),
         highlights: [
             {
-                title: "NextUI + Tailwind",
-                description: "Reusable cards, sections, and typography primitives provide consistency and theme awareness."
+                title: "Vertex data on the GPU",
+                description: "createHelloTriangleDemo uploads position data and binds it to the pipeline so the triangle lands exactly once on screen."
             },
             {
-                title: "Interactive patterns",
-                description: "Tabs, accordions, and animated badges elevate the original content without sacrificing clarity."
+                title: "WGSL fragment color",
+                description: "A single WGSL fragment shader sets the color. Change the literal and rebuild to validate your grasp of GPU data flow."
             }
         ],
-        bottomNote: "Design tokens centralize spacing, color, and depth, making future enhancements predictable."
+        bottomNote: "Tweak samples/hello-triangle/main.ts to experiment with geometry or colors."
     },
     {
-        key: "content",
-        title: "Content Flow",
+        key: "canvas",
+        title: "Canvas Lifecycle",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$server$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Server$3e$__["Server"], {
             className: "size-4"
         }, void 0, false, {
@@ -1734,19 +1766,19 @@ const architectureTabs = [
         }, ("TURBOPACK compile-time value", void 0)),
         highlights: [
             {
-                title: "Structured sections",
-                description: "From hero to FAQs, each section maps to original copy while improving readability and hierarchy."
+                title: "Responsive sizing",
+                description: "A ResizeObserver recalculates device pixel dimensions so the render stays crisp on every refresh rate and DPI."
             },
             {
-                title: "Call-to-action emphasis",
-                description: "Clear entry points encourage users to try the demo or dive into architecture details."
+                title: "Depth resources on demand",
+                description: "Depth textures are only created when the selected demo needs them, keeping the triangle example lightweight."
             }
         ],
-        bottomNote: "Accessibility-first semantics ensure headings, landmarks, and interactive regions work for assistive tech."
+        bottomNote: "The canvas configuration tracks window.devicePixelRatio for sharp edges."
     },
     {
-        key: "deployment",
-        title: "Deployment",
+        key: "experiments",
+        title: "Build & Share",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
             className: "size-4"
         }, void 0, false, {
@@ -1756,28 +1788,28 @@ const architectureTabs = [
         }, ("TURBOPACK compile-time value", void 0)),
         highlights: [
             {
-                title: "docs/ static export",
-                description: "A dedicated script builds and exports the app, copying .nojekyll for GitHub Pages compatibility."
+                title: "Local iteration",
+                description: "bun run dev spins up hot reloading so you can edit WGSL or TypeScript and immediately replay the render."
             },
             {
-                title: "Production-ready configs",
-                description: "Tailwind, NextUI, and ESLint integrate with type-safe paths and environment-aware base paths."
+                title: "Static export",
+                description: "bun run build:pages outputs a docs/ directory ready for static hosting without extra configuration."
             }
         ],
-        bottomNote: "Future enhancements can plug into the TODO roadmap without rethinking the deployment lane."
+        bottomNote: "Ship your own variant by adjusting the Bun scripts or dropping in additional demos."
     }
 ];
 function ArchitectureSection() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        id: "architecture",
+        id: "pipeline",
         className: "mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-12",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "rounded-3xl border border-white/40 bg-white/80 p-10 shadow-card backdrop-blur-xl dark:border-white/10 dark:bg-white/5 sm:p-14",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$2d$heading$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SectionHeading"], {
-                    eyebrow: "System Design",
-                    title: "Bespoke architecture tuned for static export",
-                    description: "Explore how Bun-powered scripts, Next.js 16 App Router, and NextUI components work together to deliver a premium, theme-aware experience.",
+                    eyebrow: "Pipeline",
+                    title: "How the pieces cooperate",
+                    description: "From device negotiation to command submission, the UI exists to expose the WebGPU wiring. Use these notes as a checklist while you read through the source files.",
                     align: "center"
                 }, void 0, false, {
                     fileName: "[project]/components/sections/architecture-section.tsx",
@@ -1915,20 +1947,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$
 ;
 const faqs = [
     {
-        question: "Is this the official leaf-js library?",
-        answer: "No. This site is a demo experience designed to showcase what the upstream library enables. For official releases or support, refer to the original maintainers."
+        question: "What is Triangle Shader Lab?",
+        answer: "A focused learning tool that wraps the hello triangle WebGPU sample in a presentational shell. It exists so you can see the code and the canvas at the same time."
     },
     {
-        question: "Why rewrite the static site with Next.js?",
-        answer: "The refactor introduces component reuse, accessible semantics, responsive layouts, and dark/light theming while retaining original content."
+        question: "Is this a general-purpose rendering engine?",
+        answer: "No. The goal is clarity, not breadth. Use it as a reference or a sandbox while studying WebGPU basics, then branch into your own experiments."
     },
     {
-        question: "Does the WebGPU demo require configuration?",
-        answer: "Use a WebGPU-enabled browser (Chrome 113+, Edge 113+, Safari TP). If unsupported, the demo gracefully communicates the requirement."
+        question: "How do I tweak what the triangle does?",
+        answer: "Edit the code in `lib/webgpu/triangle-demo.ts` or the WGSL in `samples/hello-triangle/main.ts`, then run `bun run dev` or `bun run build:pages` to see the outcome."
     },
     {
-        question: "How do I deploy this to GitHub Pages?",
-        answer: "Run `bun run build:pages`. The script builds the site, exports static assets into `docs/`, and copies `.nojekyll` so GitHub Pages serves the content correctly."
+        question: "How should I share the result?",
+        answer: "Run `bun run build:pages`. The script exports static assets into `docs/` and copies `.nojekyll` so any static host (including GitHub Pages) can serve the build."
     }
 ];
 function FAQSection() {
@@ -1943,7 +1975,7 @@ function FAQSection() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$section$2d$heading$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SectionHeading"], {
                         eyebrow: "FAQs",
                         title: "Quick answers before you explore",
-                        description: "Transparency is core to this demo. These clarifications migrate the intent behind the original site while enhancing usability.",
+                        description: "Clarity first: here are the questions that usually come up when developers crack open the hello triangle sample for the first time.",
                         align: "center"
                     }, void 0, false, {
                         fileName: "[project]/components/sections/faq-section.tsx",
@@ -2013,6 +2045,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 ;
 function CallToActionSection() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+        id: "source",
         className: "mx-auto max-w-4xl px-6 pb-28 md:px-10 lg:px-12",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$card$2f$dist$2f$chunk$2d$46NETW2U$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__card_default__as__Card$3e$__["Card"], {
             className: "relative overflow-hidden border border-brand/20 bg-gradient-to-r from-brand/20 via-brand-accent/20 to-cyan-400/20 shadow-glow",
@@ -2032,7 +2065,7 @@ function CallToActionSection() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-2xl font-semibold text-slate-900 dark:text-white",
-                                    children: "Ready to dive deeper into WebGPU?"
+                                    children: "Study the triangle pipeline"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/call-to-action.tsx",
                                     lineNumber: 14,
@@ -2040,8 +2073,27 @@ function CallToActionSection() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "max-w-xl text-sm text-slate-600 dark:text-slate-200",
-                                    children: "Clone the repository, run the Bun-powered dev server, and iterate on the component architecture. The TODO roadmap highlights where to layer on motion, illustrations, and performance profiling."
-                                }, void 0, false, {
+                                    children: [
+                                        "Start with ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                            children: "lib/webgpu/triangle-demo.ts"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/sections/call-to-action.tsx",
+                                            lineNumber: 18,
+                                            columnNumber: 26
+                                        }, this),
+                                        " to see device setup and frame submission. Jump to",
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                            children: "samples/hello-triangle/main.ts"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/sections/call-to-action.tsx",
+                                            lineNumber: 20,
+                                            columnNumber: 15
+                                        }, this),
+                                        " to inspect the WGSL shaders. These two files contain everything the demo needs."
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/components/sections/call-to-action.tsx",
                                     lineNumber: 17,
                                     columnNumber: 13
@@ -2054,7 +2106,7 @@ function CallToActionSection() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$button$2f$dist$2f$chunk$2d$G5TSEPD3$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__button_default__as__Button$3e$__["Button"], {
                             as: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"],
-                            href: "https://github.com/BradleyMatera/leaf-js",
+                            href: "#pipeline",
                             size: "lg",
                             color: "primary",
                             radius: "full",
@@ -2062,14 +2114,14 @@ function CallToActionSection() {
                                 className: "size-5"
                             }, void 0, false, {
                                 fileName: "[project]/components/sections/call-to-action.tsx",
-                                lineNumber: 29,
+                                lineNumber: 30,
                                 columnNumber: 25
                             }, void 0),
                             className: "bg-slate-900 px-6 py-5 text-base font-semibold text-white shadow-lg shadow-slate-900/50 transition-transform hover:-translate-y-0.5",
-                            children: "View repository"
+                            children: "View pipeline notes"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/call-to-action.tsx",
-                            lineNumber: 23,
+                            lineNumber: 24,
                             columnNumber: 11
                         }, this)
                     ]
@@ -2116,7 +2168,7 @@ function SiteFooter() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-lg font-semibold text-slate-900 dark:text-white",
-                            children: "leaf-js Demo"
+                            children: "Triangle Shader Lab"
                         }, void 0, false, {
                             fileName: "[project]/components/sections/site-footer.tsx",
                             lineNumber: 11,
@@ -2126,23 +2178,21 @@ function SiteFooter() {
                             className: "flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "https://github.com/BradleyMatera/leaf-js",
+                                    href: "#demo",
                                     className: "hover:text-brand",
-                                    target: "_blank",
-                                    rel: "noreferrer",
-                                    children: "GitHub"
+                                    children: "WebGPU demo"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/site-footer.tsx",
                                     lineNumber: 15,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "#demo",
+                                    href: "#pipeline",
                                     className: "hover:text-brand",
-                                    children: "WebGPU demo"
+                                    children: "Pipeline notes"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/site-footer.tsx",
-                                    lineNumber: 23,
+                                    lineNumber: 18,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2151,7 +2201,7 @@ function SiteFooter() {
                                     children: "FAQs"
                                 }, void 0, false, {
                                     fileName: "[project]/components/sections/site-footer.tsx",
-                                    lineNumber: 26,
+                                    lineNumber: 21,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -2168,15 +2218,15 @@ function SiteFooter() {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$nextui$2d$org$2f$divider$2f$dist$2f$chunk$2d$44JHHBS2$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__divider_default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                     fileName: "[project]/components/sections/site-footer.tsx",
-                    lineNumber: 31,
+                    lineNumber: 26,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-sm leading-relaxed text-slate-500 dark:text-slate-400",
-                    children: "This site is a demonstration of the capabilities of the original leaf-js project. All credit for the underlying libraries and concepts belongs to their respective creators. Please direct bug reports or feature requests to the upstream maintainers."
+                    children: "Triangle Shader Lab keeps the original hello triangle demo intact while presenting it in a polished shell. Use it as a guide when learning the fundamentals of WebGPU device setup, buffers, and shader execution."
                 }, void 0, false, {
                     fileName: "[project]/components/sections/site-footer.tsx",
-                    lineNumber: 32,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this)
             ]

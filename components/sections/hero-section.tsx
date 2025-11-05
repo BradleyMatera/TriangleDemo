@@ -12,9 +12,9 @@ import { ArrowUpRight, Cpu, Sparkles, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const stats = [
-  { value: "16 ms", label: "Frame budget optimized" },
-  { value: "60 fps", label: "Target refresh rate" },
-  { value: "3×", label: "Faster than WebGL baselines" }
+  { value: "319 lines", label: "WebGPU pipeline explored" },
+  { value: "1 primitive", label: "Hello Triangle spotlight" },
+  { value: "60 fps", label: "Real-time render target" }
 ];
 
 export function HeroSection() {
@@ -27,20 +27,20 @@ export function HeroSection() {
         <div className="space-y-10">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/60 bg-white/80 px-4 py-1 text-[13px] font-medium uppercase tracking-[0.28em] text-slate-700 shadow-card backdrop-blur dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
             <Sparkles className="size-4 text-brand" />
-            Next-gen WebGPU toolkit
+            WebGPU study deck
           </div>
           <h1 className="text-balance font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-            leaf-js
+            Triangle Shader Lab
             <span className="text-transparent bg-gradient-to-r from-brand via-brand-accent to-cyan-400 bg-clip-text">
               {" "}
-              reimagined
+              focused learning
             </span>
-            : a polished WebGPU experience.
+            : decode the hello triangle pipeline.
           </h1>
           <p className="max-w-xl text-lg text-slate-600 dark:text-slate-300">
-            A premium reboot of the original leaf-js static site now powered by
-            Next.js + NextUI. Explore performant 3D rendering concepts, cohesive
-            theming, and responsive layouts tuned for clarity and delight.
+            This site is a guided look at WebGPU&apos;s canonical hello triangle example.
+            It keeps the live render front and center while surfacing the code paths
+            that configure adapters, buffers, shaders, and draw calls.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Button
@@ -52,17 +52,17 @@ export function HeroSection() {
               className="bg-brand px-6 py-5 text-base font-semibold text-white shadow-lg shadow-brand/40 transition-transform duration-300 hover:-translate-y-0.5"
               endContent={<ArrowUpRight className="size-5" />}
             >
-              Launch WebGPU demo
+              Open the demo
             </Button>
             <Button
               as={Link}
-              href="#architecture"
+              href="#pipeline"
               size="lg"
               radius="full"
               className="border border-slate-200/70 bg-white px-6 py-5 text-base font-semibold text-slate-800 shadow-sm transition-colors hover:border-brand hover:text-brand dark:border-white/20 dark:bg-white/10 dark:text-slate-50"
               variant="bordered"
             >
-              Explore the architecture
+              Inspect the pipeline
             </Button>
           </div>
 
@@ -72,12 +72,12 @@ export function HeroSection() {
               startContent={<Zap className="size-4 text-brand" />}
               className="bg-brand/10 text-brand"
             >
-              Powered by Bun + Next.js 16
+              Bun + Next.js 16 shell
             </Chip>
             <Divider orientation="vertical" className="hidden h-6 sm:block" />
             <span className="inline-flex items-center gap-2">
               <Cpu className="size-4 text-brand-subtle" />
-              WebGPU-ready browsers only
+              Source: lib/webgpu/triangle-demo.ts
             </span>
           </div>
         </div>
@@ -89,12 +89,12 @@ export function HeroSection() {
                 Demo Highlights
               </p>
               <h2 className="text-2xl font-semibold text-white">
-                Purposeful motion across GPU-powered experiences.
+                Trace the render loop from init to draw.
               </h2>
               <p className="text-sm text-white/70">
-                The triangle render remains as a nod to the original demo while
-                the interface introduces layered gradients, glassmorphism, and
-                elevated typography.
+                Follow the small-but-complete setup that negotiates a device,
+                configures the canvas, prepares buffers, and drives the frame
+                submission that keeps the triangle alive.
               </p>
             </div>
             <div className="grid gap-3">

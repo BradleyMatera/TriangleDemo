@@ -5,24 +5,24 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 const faqs = [
   {
-    question: "Is this the official leaf-js library?",
+    question: "What is Triangle Shader Lab?",
     answer:
-      "No. This site is a demo experience designed to showcase what the upstream library enables. For official releases or support, refer to the original maintainers."
+      "A focused learning tool that wraps the hello triangle WebGPU sample in a presentational shell. It exists so you can see the code and the canvas at the same time."
   },
   {
-    question: "Why rewrite the static site with Next.js?",
+    question: "Is this a general-purpose rendering engine?",
     answer:
-      "The refactor introduces component reuse, accessible semantics, responsive layouts, and dark/light theming while retaining original content."
+      "No. The goal is clarity, not breadth. Use it as a reference or a sandbox while studying WebGPU basics, then branch into your own experiments."
   },
   {
-    question: "Does the WebGPU demo require configuration?",
+    question: "How do I tweak what the triangle does?",
     answer:
-      "Use a WebGPU-enabled browser (Chrome 113+, Edge 113+, Safari TP). If unsupported, the demo gracefully communicates the requirement."
+      "Edit the code in `lib/webgpu/triangle-demo.ts` or the WGSL in `samples/hello-triangle/main.ts`, then run `bun run dev` or `bun run build:pages` to see the outcome."
   },
   {
-    question: "How do I deploy this to GitHub Pages?",
+    question: "How should I share the result?",
     answer:
-      "Run `bun run build:pages`. The script builds the site, exports static assets into `docs/`, and copies `.nojekyll` so GitHub Pages serves the content correctly."
+      "Run `bun run build:pages`. The script exports static assets into `docs/` and copies `.nojekyll` so any static host (including GitHub Pages) can serve the build."
   }
 ];
 
@@ -37,7 +37,7 @@ export function FAQSection() {
           <SectionHeading
             eyebrow="FAQs"
             title="Quick answers before you explore"
-            description="Transparency is core to this demo. These clarifications migrate the intent behind the original site while enhancing usability."
+            description="Clarity first: here are the questions that usually come up when developers crack open the hello triangle sample for the first time."
             align="center"
           />
           <Accordion

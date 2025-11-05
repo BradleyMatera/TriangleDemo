@@ -39,13 +39,13 @@ export function TechnologyStackSection() {
     >
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
         <SectionHeading
-          eyebrow="Technologies"
-          title="Modern tooling anchored in the original stack"
+          eyebrow="Tooling"
+          title="Modern shell around the demo code"
           description={
             <>
-              The original list of technologies—WebGPU, TypeScript, Vite—has
-              been realigned with a Next.js ecosystem. These cards highlight the
-              current tools while acknowledging the project&apos;s WebGPU roots.
+              The interface leans on familiar web tooling so the WebGPU sample can
+              stay small. Treat these layers as support beams around the TypeScript
+              that actually talks to the GPU.
             </>
           }
         />

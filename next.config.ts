@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
-const repoName = "leaf-js";
+const repoName = process.env.NEXT_PUBLIC_REPO_NAME ?? "TriangleDemo";
 const isProduction = process.env.NODE_ENV === "production";
 const forcedBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
-const basePath = forcedBasePath ?? (isProduction ? `/${repoName}` : "");
+const basePath =
+  forcedBasePath ?? (isProduction && repoName ? `/${repoName}` : "");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
