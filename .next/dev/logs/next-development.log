@@ -1,58 +1,178 @@
-[00:00:00.594] Server  LOG      ✓ Ready in 423ms
-[00:00:05.500] Server  LOG      ○ Compiling / ...
-[00:00:06.197] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.347] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-https://react.dev/link/hydration-mismatch
-
-  ...
-    <RedirectErrorBoundary router={{...}}>
-      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
-        <SegmentViewNode type="page" pagePath="page.tsx">
-          <SegmentTrieNode>
-          <HomePage>
-            <div className="relative">
-              <div>
-              <TopNav>
-                <NextUI.Navbar maxWidth="lg" position="sticky" className="top-4 z-50...">
-                  <nav data-hidden={undefined} data-menu-open={undefined} ref={{current:null}} className="flex h-aut..." ...>
-                    <header data-menu-open={undefined} className="z-40 flex ...">
-                      <NextUI.NavbarBrand>
-                      <NextUI.NavbarContent>
-                      <NextUI.NavbarContent justify="end" className="items-cent...">
-                        <ul ref={{current:null}} className="flex h-ful..." data-justify="end">
-                          <ThemeToggle>
-                            <NextUI.Switch size="sm" color="default" isSelected={false} ...>
-+                             <label
-+                               onPointerEnter={function}
-+                               onPointerLeave={function}
-+                               aria-label="Toggle theme"
-+                               ref={{current:null}}
-+                               className="group relative max-w-fit inline-flex items-center justify-start cursor-poin..."
-+                               data-disabled={undefined}
-+                               data-selected={undefined}
-+                               data-readonly={undefined}
-+                               data-focus={undefined}
-+                               data-focus-visible={undefined}
-+                               data-hover={undefined}
-+                               data-pressed={undefined}
-+                             >
--                             <div
--                               className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white..."
--                             >
-                          ...
-                    ...
-              ...
-        ...
-      ...
-
-[00:00:38.929] Server  LOG      ✓ Compiled in 282ms
-[00:01:19.528] Server  LOG      ✓ Compiled in 205ms
+[00:06:10.675] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:11.109] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/static/development/_buildManifest.js.tmp.00uq7nsln8r'
+[00:06:11.187] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:11.203] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:11.218] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:33.169] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:33.193] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:33.214] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:33.242] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:33.259] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:39.624] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:39.648] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:39.671] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:39.687] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:39.698] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:41.803] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:41.830] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:41.852] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:41.868] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:41.880] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:42.936] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:42.954] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:42.976] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:42.997] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:43.013] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:47.682] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:47.703] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:47.727] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:47.744] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:47.754] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'
+[00:06:55.109] Server  ERROR    ⨯ Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:55.130] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:55.162] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/server/app/page/build-manifest.json'
+[00:06:55.182] Server  ERROR    ⨯ Error: Cannot find module '../chunks/ssr/[turbopack]_runtime.js'
+Require stack:
+- /Users/bradleymatera/Desktop/leaf-js/.next/dev/server/pages/_document.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/require.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/load-components.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/utils.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/options.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/swc/index.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/config.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/next.js
+- /Users/bradleymatera/Desktop/leaf-js/node_modules/next/dist/server/lib/start-server.js
+[00:06:55.195] Server  ERROR   Error: ENOENT: no such file or directory, open '/Users/bradleymatera/Desktop/leaf-js/.next/dev/routes-manifest.json'

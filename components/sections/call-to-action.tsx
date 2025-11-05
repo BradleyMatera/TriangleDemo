@@ -12,13 +12,14 @@ export function CallToActionSection() {
         <CardBody className="relative z-10 flex flex-col gap-6 p-10 sm:flex-row sm:items-center sm:justify-between sm:gap-9 sm:p-12">
           <div className="space-y-3 text-left">
             <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
-              Study the triangle pipeline
+              Study the render pipelines
             </h3>
             <p className="max-w-xl text-sm text-slate-600 dark:text-slate-200">
               Start with <code>lib/webgpu/triangle-demo.ts</code> to see device setup
               and frame submission. Jump to{" "}
+              <code>samples/textured-cube/main.ts</code> or{" "}
               <code>samples/hello-triangle/main.ts</code> to inspect the WGSL shaders.
-              These two files contain everything the demo needs.
+              Those files contain everything the demos need.
             </p>
           </div>
           <Button

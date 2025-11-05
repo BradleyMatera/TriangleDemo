@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "What is Triangle Shader Lab?",
     answer:
-      "A focused learning tool that wraps the hello triangle WebGPU sample in a presentational shell. It exists so you can see the code and the canvas at the same time."
+      "A focused learning tool that wraps the hello triangle and textured cube WebGPU samples in a presentational shell. It exists so you can see the code and the canvas at the same time."
   },
   {
     question: "Is this a general-purpose rendering engine?",
@@ -15,9 +15,9 @@ const faqs = [
       "No. The goal is clarity, not breadth. Use it as a reference or a sandbox while studying WebGPU basics, then branch into your own experiments."
   },
   {
-    question: "How do I tweak what the triangle does?",
+    question: "How do I tweak each demo?",
     answer:
-      "Edit the code in `lib/webgpu/triangle-demo.ts` or the WGSL in `samples/hello-triangle/main.ts`, then run `bun run dev` or `bun run build:pages` to see the outcome."
+      "Edit the code in `lib/webgpu/triangle-demo.ts`, `samples/textured-cube/main.ts`, or `samples/hello-triangle/main.ts`, then run `bun run dev` or `bun run build:pages` to see the outcome."
   },
   {
     question: "How should I share the result?",
@@ -37,7 +37,7 @@ export function FAQSection() {
           <SectionHeading
             eyebrow="FAQs"
             title="Quick answers before you explore"
-            description="Clarity first: here are the questions that usually come up when developers crack open the hello triangle sample for the first time."
+            description="Clarity first: here are the questions that usually come up when developers crack open the hello triangle or textured cube samples for the first time."
             align="center"
           />
           <Accordion

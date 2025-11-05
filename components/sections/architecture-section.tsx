@@ -23,7 +23,7 @@ const architectureTabs = [
       {
         title: "Render pass wiring",
         description:
-          "Each frame creates a command encoder, sets up color attachments, and executes draw calls sourced from the hello triangle module."
+          "Each frame creates a command encoder, sets up color attachments, and executes draw calls sourced from whichever demo is selected—textured cube or hello triangle."
       }
     ],
     bottomNote:
@@ -37,16 +37,16 @@ const architectureTabs = [
       {
         title: "Vertex data on the GPU",
         description:
-          "createHelloTriangleDemo uploads position data and binds it to the pipeline so the triangle lands exactly once on screen."
+          "createTexturedCubeDemo uploads interleaved position/UV data while createHelloTriangleDemo keeps a minimal position buffer—switching tabs hot-swaps the vertex bindings."
       },
       {
         title: "WGSL fragment color",
         description:
-          "A single WGSL fragment shader sets the color. Change the literal and rebuild to validate your grasp of GPU data flow."
+          "The textured cube fragment shader samples a texture, while the triangle shader outputs a solid color—compare both in samples/textured-cube/main.ts and samples/hello-triangle/main.ts."
       }
     ],
     bottomNote:
-      "Tweak samples/hello-triangle/main.ts to experiment with geometry or colors."
+      "Tweak samples/textured-cube/main.ts and samples/hello-triangle/main.ts to experiment with geometry or colors."
   },
   {
     key: "canvas",

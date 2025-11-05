@@ -13,12 +13,12 @@ const principles = [
   {
     title: "Code-first orientation",
     description:
-      "Every section points back to the minimal WebGPU implementation in lib/webgpu/triangle-demo.ts and its hello triangle sample."
+      "Every section points back to the compact WebGPU implementations in lib/webgpu/triangle-demo.ts, samples/textured-cube/main.ts, and samples/hello-triangle/main.ts."
   },
   {
-    title: "Hello triangle focus",
+    title: "Focused demos",
     description:
-      "We keep one primitive on screen so it is easy to trace how buffers, shaders, and command submission interact."
+      "We keep both the textured cube and hello triangle on tap so it is easy to trace how buffers, shaders, and command submission interact."
   },
   {
     title: "Reproducible setup",
@@ -41,8 +41,9 @@ export function AboutSection() {
             description={
               <>
                 Triangle Shader Lab is a teaching aid. It wraps a polished UI
-                around the canonical hello triangle demo so you can observe the
-                render loop without rummaging through an engine or marketing copy.
+                around the canonical hello triangle and textured cube demos so you
+                can observe the render loop without rummaging through an engine or
+                marketing copy.
               </>
             }
           />
@@ -76,7 +77,7 @@ export function AboutSection() {
               you map WebGPU setup calls, but the work happens in the source. This
               branch is independent from the original leaf-js lineage—use it freely
               as a sandbox to tinker with buffers, color outputs, or shader code and
-              watch the triangle respond.
+              watch each demo respond.
             </p>
             <Chip
               variant="flat"

@@ -77,13 +77,15 @@ export function WebGpuShowcase() {
           <div className="space-y-10 min-w-0">
             <SectionHeading
               eyebrow="Live Demo"
-              title="Run the hello triangle sample in real time"
+              title="Run the WebGPU demos in real time"
               description={
                 <>
-                  Triangle Shader Lab demonstrates the minimal WebGPU pipeline:
+                  Triangle Shader Lab demonstrates compact WebGPU pipelines:
                   requesting the adapter, creating buffers, compiling WGSL, and
-                  presenting frames to the canvas. Everything you see on this page
-                  maps directly to code in <code>lib/webgpu/triangle-demo.ts</code>.
+                  presenting frames to the canvas. Toggle between the textured cube
+                  and hello triangle to see how the same render loop adapts. Everything
+                  you see on this page maps directly to code in{" "}
+                  <code>lib/webgpu/triangle-demo.ts</code>.
                 </>
               }
             />
@@ -106,6 +108,9 @@ export function WebGpuShowcase() {
                         </p>
                         <p className="text-xs text-slate-600 dark:text-slate-300">
                           {item.description}
+                        </p>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          Code: <code>{item.localPath}</code>
                         </p>
                         <a
                           href={item.source.url}
@@ -171,9 +176,9 @@ export function WebGpuShowcase() {
               </div>
               <p className="text-xs text-slate-400">
                 Tip: Use a WebGPU-enabled browser (Chrome 113+, Edge 113+, Safari TP)
-                to see the hardware-accelerated render. Modify the shader color in{" "}
-                <code>samples/hello-triangle/main.ts</code> and rebuild to watch the
-                pipeline respond.
+                to see the hardware-accelerated render. Modify the WGSL in{" "}
+                <code>{activeShape?.localPath ?? "samples/textured-cube/main.ts"}</code>{" "}
+                and rebuild to watch the pipeline respond.
               </p>
               {activeShape ? (
                 <p className="text-[11px] text-slate-400">
@@ -201,13 +206,13 @@ const demoHighlights = [
     label: "Pipeline",
     title: "Straightforward configuration",
     description:
-      "Follow how the adapter, device, swap chain, and render pass descriptors are created inside lib/webgpu/triangle-demo.ts."
+      "Follow how the adapter, device, swap chain, and render pass descriptors are created inside lib/webgpu/triangle-demo.ts to support both demos."
   },
   {
     label: "Iteration",
     title: "Tweakable shaders",
     description:
-      "Update the WGSL color output in samples/hello-triangle/main.ts and rebuild to validate your changes against the live canvas."
+      "Update the WGSL pipelines in samples/textured-cube/main.ts or samples/hello-triangle/main.ts and rebuild to validate your changes against the live canvas."
   }
 ];
 

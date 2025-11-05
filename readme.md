@@ -1,11 +1,11 @@
 # Triangle Shader Lab
 
-Triangle Shader Lab is a focused WebGPU walkthrough that keeps the canonical "hello triangle" sample front and center. The UI is intentionally minimal: it frames the live render, spotlights the two TypeScript files that power it, and documents how the pipeline is stitched together.
+Triangle Shader Lab is a focused WebGPU walkthrough that keeps the canonical "hello triangle" sample front and center while adding the textured cube variant for contrast. The UI is intentionally minimal: it frames the live render, spotlights the two TypeScript files that power it, and documents how the pipeline is stitched together.
 
 ## 🔻 Core Focus
 
-- **Single primitive, full visibility.** The hello triangle stays on screen at all times so every tweak is immediately visible.
-- **Source-first exploration.** The render loop lives in `lib/webgpu/triangle-demo.ts`; shaders and buffers live in `lib/webgpu/samples/hello-triangle/main.ts`.
+- **Two demos, one surface.** Toggle between the textured cube and hello triangle to compare pipelines while the canvas stays front and center.
+- **Source-first exploration.** The render loop lives in `lib/webgpu/triangle-demo.ts`; the cube and triangle implementations reside in `lib/webgpu/samples/textured-cube/main.ts` and `lib/webgpu/samples/hello-triangle/main.ts`.
 - **Hands-on learning.** Each section of the site points back to those files so you can correlate UI copy with the code that actually drives the GPU.
 
 ## 🔗 Links
@@ -37,7 +37,8 @@ This demo is shared publicly for transparency, reproducibility, and academic cur
 ## 🗂️ Key Files
 
 - `lib/webgpu/triangle-demo.ts` — negotiates the adapter/device handshake, prepares the canvas, and manages the render loop.
-- `lib/webgpu/samples/hello-triangle/main.ts` — provides the vertex data, pipeline descriptors, and WGSL shaders.
+- `lib/webgpu/samples/textured-cube/main.ts` — provides the vertex data, WGSL shaders, sampler, and uniform logic for the textured cube demo.
+- `lib/webgpu/samples/hello-triangle/main.ts` — minimal pipeline showcasing the bare essentials of WebGPU draw calls.
 - `components/sections/webgpu-showcase.tsx` — mounts the canvas and hooks it into the demo lifecycle.
 
 ## 🚀 Getting Started
@@ -51,7 +52,7 @@ Open the site in a WebGPU-enabled browser (Chrome 113+, Edge 113+, or Safari Tec
 
 ## 🛠️ Experimentation Workflow
 
-1. Edit `samples/hello-triangle/main.ts` to tweak vertex positions or fragment colors.
+1. Switch between demos in the Showcase tab bar, then edit `samples/textured-cube/main.ts` or `samples/hello-triangle/main.ts` to tweak shaders, buffers, or rotation logic.
 2. Adjust `triangle-demo.ts` if you want to introduce uniforms, multiple pipelines, or depth buffers.
 3. Run `bun run build:pages` to produce a static export under `docs/` for hosting.
 
@@ -66,6 +67,7 @@ The command exports the site, writes it to `docs/`, and copies `.nojekyll` so Gi
 ## 📚 Further Reading
 
 - `triangle-shader-lab-overview.md` — extended walkthrough of how the project is structured and why it exists.
-- [WebGPU Samples](https://webgpu.github.io/webgpu-samples/?sample=helloTriangle) — the upstream reference for the included shader code.
+- [WebGPU Samples — Hello Triangle](https://webgpu.github.io/webgpu-samples/?sample=helloTriangle)
+- [WebGPU Samples — Textured Cube](https://webgpu.github.io/webgpu-samples/?sample=texturedCube)
 
-Use Triangle Shader Lab as a reference or a starting point for your own WebGPU experiments. The focus is simple: one triangle, clear code, and room to explore.
+Use Triangle Shader Lab as a reference or a starting point for your own WebGPU experiments. The focus is simple: two compact demos, clear code, and room to explore.

@@ -25,9 +25,10 @@ export function SiteFooter() {
         </div>
         <Divider />
         <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-          Triangle Shader Lab keeps the original hello triangle demo intact while
-          presenting it in a polished shell. Use it as a guide when learning the
-          fundamentals of WebGPU device setup, buffers, and shader execution.
+          Triangle Shader Lab keeps both the textured cube and hello triangle demos
+          close at hand while presenting them in a polished shell. Use it as a guide
+          when learning the fundamentals of WebGPU device setup, buffers, and shader
+          execution.
         </p>
       </div>
     </footer>

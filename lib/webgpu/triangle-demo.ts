@@ -1,12 +1,14 @@
 import { createHelloTriangleDemo } from "./samples/hello-triangle/main";
+import { createTexturedCubeDemo } from "./samples/textured-cube/main";
 import type { DemoInstance } from "./types";
 
-export type ShapeId = "hello-triangle";
+export type ShapeId = "textured-cube" | "hello-triangle";
 
 type ShapeMeta = {
   id: ShapeId;
   label: string;
   description: string;
+  localPath: string;
   source: {
     title: string;
     url: string;
@@ -15,10 +17,22 @@ type ShapeMeta = {
 
 export const availableShapes: ShapeMeta[] = [
   {
+    id: "textured-cube",
+    label: "Textured Cube",
+    description:
+      "Port of the WebGPU texturedCube sample. Demonstrates textured geometry, rotating model matrices, and uniform updates each frame (see samples/textured-cube/main.ts).",
+    localPath: "samples/textured-cube/main.ts",
+    source: {
+      title: "WebGPU Samples — Textured Cube",
+      url: "https://webgpu.github.io/webgpu-samples/?sample=texturedCube"
+    }
+  },
+  {
     id: "hello-triangle",
     label: "Hello Triangle",
     description:
-      "Baseline WebGPU pipeline inspired by the official Hello Triangle sample. Demonstrates vertex buffers, shaders, and render loop fundamentals.",
+      "Baseline WebGPU pipeline inspired by the official Hello Triangle sample. Demonstrates vertex buffers, shaders, and render loop fundamentals (see samples/hello-triangle/main.ts).",
+    localPath: "samples/hello-triangle/main.ts",
     source: {
       title: "WebGPU Samples — Hello Triangle",
       url: "https://webgpu.github.io/webgpu-samples/?sample=helloTriangle"
@@ -259,6 +273,8 @@ async function createDemoInstance(
   format: GPUTextureFormat
 ): Promise<DemoInstance> {
   switch (id) {
+    case "textured-cube":
+      return createTexturedCubeDemo(device, format);
     case "hello-triangle":
     default:
       return createHelloTriangleDemo(device, format);
