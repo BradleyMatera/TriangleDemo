@@ -37,13 +37,12 @@ export function AboutSection() {
         <div className="space-y-10">
           <SectionHeading
             eyebrow="What It Is"
-            title="A deliberately small WebGPU lab"
+            title="A simple WebGPU study"
             description={
               <>
-                Triangle Shader Lab is a teaching aid. It wraps a polished UI
-                around the canonical hello triangle and textured cube demos so you
-                can observe the render loop without rummaging through an engine or
-                marketing copy.
+                Triangle Shader Lab is a small project built to help understand 
+                WebGPU basics. It shows the canonical hello triangle and textured 
+                cube demos with a clean UI so you can see the code and render together.
               </>
             }
           />

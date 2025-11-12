@@ -16,18 +16,18 @@ const architectureTabs = [
     icon: <Blocks className="size-4" />,
     highlights: [
       {
-        title: "Adapter and device handshake",
+        title: "Adapter and device setup",
         description:
-          "initTriangleDemo negotiates the adapter, requests a device, and configures the canvas format before any drawing occurs."
+          "initTriangleDemo handles the WebGPU adapter negotiation, device request, and canvas configuration before any rendering happens."
       },
       {
-        title: "Render pass wiring",
+        title: "Render pass execution",
         description:
-          "Each frame creates a command encoder, sets up color attachments, and executes draw calls sourced from whichever demo is selected—textured cube or hello triangle."
+          "Each frame creates a command encoder, sets up color attachments, and executes draw calls for either the textured cube or hello triangle demo."
       }
     ],
     bottomNote:
-      "Start with initTriangleDemo(...) inside lib/webgpu/triangle-demo.ts."
+      "Check out initTriangleDemo(...) in lib/webgpu/triangle-demo.ts to see how we set up WebGPU."
   },
   {
     key: "buffers",

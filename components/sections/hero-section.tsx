@@ -27,20 +27,20 @@ export function HeroSection() {
         <div className="space-y-10">
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/60 bg-white/80 px-4 py-1 text-[13px] font-medium uppercase tracking-[0.28em] text-slate-700 shadow-card backdrop-blur dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
             <Sparkles className="size-4 text-brand" />
-            WebGPU study deck
+            WebGPU study
           </div>
           <h1 className="text-balance font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
             Triangle Shader Lab
             <span className="text-transparent bg-gradient-to-r from-brand via-brand-accent to-cyan-400 bg-clip-text">
               {" "}
-              focused learning
+              learning WebGPU
             </span>
-            : decode the hello triangle pipeline.
+            : seeing the code and render together.
           </h1>
           <p className="max-w-xl text-lg text-slate-600 dark:text-slate-300">
-            This site is a guided look at WebGPU&apos;s canonical hello triangle example.
-            It keeps the live render front and center while surfacing the code paths
-            that configure adapters, buffers, shaders, and draw calls.
+            This site shows the WebGPU hello triangle and textured cube examples in a 
+            clean web layout. You can see the live render and the code that makes it work 
+            at the same time.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Button

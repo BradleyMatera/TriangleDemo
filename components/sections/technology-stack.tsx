@@ -40,12 +40,12 @@ export function TechnologyStackSection() {
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
         <SectionHeading
           eyebrow="Tooling"
-          title="Modern shell around the demo code"
+          title="Standard web stack with WebGPU"
           description={
             <>
-              The interface leans on familiar web tooling so the WebGPU sample can
-              stay small. Treat these layers as support beams around the TypeScript
-              that actually talks to the GPU.
+              This project uses common web technologies with WebGPU for graphics. 
+              The focus is on showing WebGPU demos clearly, with the other tools 
+              supporting that goal without getting in the way.
             </>
           }
         />

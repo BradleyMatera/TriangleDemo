@@ -25,10 +25,11 @@ export function SiteFooter() {
         </div>
         <Divider />
         <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
-          Triangle Shader Lab keeps both the textured cube and hello triangle demos
-          close at hand while presenting them in a polished shell. Use it as a guide
-          when learning the fundamentals of WebGPU device setup, buffers, and shader
-          execution.
+          Triangle Shader Lab is a straightforward learning tool that combines WebGPU hello triangle 
+          and textured cube samples with a clean UI. It shows the code and rendered output side-by-side 
+          to help you understand WebGPU basics. This isn't a general-purpose rendering engine - it's 
+          specifically designed to demonstrate WebGPU fundamentals. Use it as a reference for learning, 
+          then create your own projects based on these examples.
         </p>
       </div>
     </footer>

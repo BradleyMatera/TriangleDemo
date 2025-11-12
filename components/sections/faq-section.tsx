@@ -7,22 +7,22 @@ const faqs = [
   {
     question: "What is Triangle Shader Lab?",
     answer:
-      "A focused learning tool that wraps the hello triangle and textured cube WebGPU samples in a presentational shell. It exists so you can see the code and the canvas at the same time."
+      "A learning tool that combines WebGPU hello triangle and textured cube samples with a clean UI. It shows the code and rendered output side-by-side to help you understand WebGPU basics."
   },
   {
     question: "Is this a general-purpose rendering engine?",
     answer:
-      "No. The goal is clarity, not breadth. Use it as a reference or a sandbox while studying WebGPU basics, then branch into your own experiments."
+      "No. This is specifically designed to demonstrate WebGPU basics. Use it as a reference for learning, then create your own projects based on these examples."
   },
   {
-    question: "How do I tweak each demo?",
+    question: "How do I modify the demos?",
     answer:
-      "Edit the code in `lib/webgpu/triangle-demo.ts`, `samples/textured-cube/main.ts`, or `samples/hello-triangle/main.ts`, then run `bun run dev` or `bun run build:pages` to see the outcome."
+      "Edit the files in `lib/webgpu/triangle-demo.ts`, `samples/textured-cube/main.ts`, or `samples/hello-triangle/main.ts`, then run `bun run dev` to see your changes."
   },
   {
-    question: "How should I share the result?",
+    question: "How do I deploy my version?",
     answer:
-      "Run `bun run build:pages`. The script exports static assets into `docs/` and copies `.nojekyll` so any static host (including GitHub Pages) can serve the build."
+      "Run `bun run build:pages` to export static assets to the `docs/` folder. The included `.nojekyll` file makes it GitHub Pages compatible."
   }
 ];
 
@@ -36,8 +36,8 @@ export function FAQSection() {
         <div className="space-y-10">
           <SectionHeading
             eyebrow="FAQs"
-            title="Quick answers before you explore"
-            description="Clarity first: here are the questions that usually come up when developers crack open the hello triangle or textured cube samples for the first time."
+            title="Straightforward answers"
+            description="Here are the questions that usually come up when developers look at WebGPU hello triangle or textured cube samples for the first time."
             align="center"
           />
           <Accordion

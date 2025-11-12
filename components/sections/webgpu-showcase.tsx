@@ -77,14 +77,13 @@ export function WebGpuShowcase() {
           <div className="space-y-10 min-w-0">
             <SectionHeading
               eyebrow="Live Demo"
-              title="Run the WebGPU demos in real time"
+              title="See the WebGPU code and render together"
               description={
                 <>
-                  Triangle Shader Lab demonstrates compact WebGPU pipelines:
-                  requesting the adapter, creating buffers, compiling WGSL, and
-                  presenting frames to the canvas. Toggle between the textured cube
-                  and hello triangle to see how the same render loop adapts. Everything
-                  you see on this page maps directly to code in{" "}
+                  Triangle Shader Lab shows the WebGPU hello triangle and textured 
+                  cube demos in a clean layout. You can see the live render and the 
+                  code that makes it work at the same time. Everything you see on 
+                  this page maps directly to code in{" "}
                   <code>lib/webgpu/triangle-demo.ts</code>.
                 </>
               }
@@ -203,16 +202,16 @@ export function WebGpuShowcase() {
 
 const demoHighlights = [
   {
-    label: "Pipeline",
-    title: "Straightforward configuration",
+    label: "Basics",
+    title: "Clear setup steps",
     description:
-      "Follow how the adapter, device, swap chain, and render pass descriptors are created inside lib/webgpu/triangle-demo.ts to support both demos."
+      "See how the adapter, device, and render pass are created in lib/webgpu/triangle-demo.ts. The code is simple and focused on the core WebGPU concepts."
   },
   {
-    label: "Iteration",
-    title: "Tweakable shaders",
+    label: "Tinkering",
+    title: "Easy to modify",
     description:
-      "Update the WGSL pipelines in samples/textured-cube/main.ts or samples/hello-triangle/main.ts and rebuild to validate your changes against the live canvas."
+      "Change the WGSL shaders in samples/textured-cube/main.ts or samples/hello-triangle/main.ts and rebuild to see your changes right away."
   }
 ];
 
