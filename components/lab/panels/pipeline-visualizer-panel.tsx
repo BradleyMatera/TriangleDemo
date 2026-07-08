@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Cpu, Info } from "lucide-react";
+import { AlertTriangle, ChevronRight, Cpu, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMetricsStore } from "@/lib/stores/metrics-store";
 import { useLessonStore } from "@/lib/stores/lesson-store";
+import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 
 const pipelineStages = [
   {
@@ -120,6 +121,7 @@ export function PipelineVisualizerPanel() {
   const [pulseStage, setPulseStage] = useState<string | null>(null);
   const framePulse = useMetricsStore((s) => s.metrics.framePulse);
   const activeLessonId = useLessonStore((s) => s.activeLessonId);
+  const compileError = useWorkspaceStore((s) => s.compileError);
   const emphasized = useMemo(
     () => new Set(lessonEmphasis[activeLessonId] ?? []),
     [activeLessonId]
@@ -152,6 +154,7 @@ export function PipelineVisualizerPanel() {
       <div className="relative flex flex-1 flex-col items-center gap-3 overflow-y-auto py-2">
         {pipelineStages.map((stage, i) => {
           const isEmphasized = emphasized.has(stage.id);
+          const hasCompileError = !!compileError && (stage.id === "vertex" || stage.id === "fragment");
           const isLast = i === pipelineStages.length - 1;
           return (
             <StageNode
@@ -161,6 +164,7 @@ export function PipelineVisualizerPanel() {
               isActive={activeStage === stage.id}
               isPulsing={pulseStage === stage.id}
               isEmphasized={isEmphasized}
+              hasCompileError={hasCompileError}
               onHover={() => setActiveStage(stage.id)}
               onLeave={() => setActiveStage(null)}
               onClick={() => setActiveStage(stage.id)}
@@ -188,6 +192,7 @@ export function PipelineVisualizerPanel() {
             <StageDetail
               stage={pipelineStages.find((s) => s.id === activeStage)!}
               emphasized={emphasized.has(activeStage)}
+              compileError={activeStage === "vertex" || activeStage === "fragment" ? compileError : null}
               onClose={() => setActiveStage(null)}
             />
           </motion.div>
@@ -203,6 +208,7 @@ function StageNode({
   isActive,
   isPulsing,
   isEmphasized,
+  hasCompileError,
   onHover,
   onLeave,
   onClick,
@@ -213,6 +219,7 @@ function StageNode({
   isActive: boolean;
   isPulsing: boolean;
   isEmphasized: boolean;
+  hasCompileError: boolean;
   onHover: () => void;
   onLeave: () => void;
   onClick: () => void;
@@ -236,6 +243,8 @@ function StageNode({
         "group relative w-full max-w-md cursor-pointer rounded-xl border px-4 py-3 text-center outline-none transition-all focus-visible:ring-2 focus-visible:ring-brand/60",
         isActive || isPulsing
           ? "border-brand/50 bg-brand/15 text-white shadow-[0_0_30px_rgba(108,140,255,0.2)]"
+          : hasCompileError
+            ? "border-rose-400/50 bg-rose-500/15 text-rose-100"
           : isEmphasized
             ? "border-cyan-400/40 bg-cyan-400/10 text-cyan-100"
             : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:bg-white/10"
@@ -247,6 +256,12 @@ function StageNode({
         {isEmphasized ? (
           <span className="rounded-full bg-cyan-400/20 px-1.5 py-0.5 text-[9px] font-medium text-cyan-300">
             lesson
+          </span>
+        ) : null}
+        {hasCompileError ? (
+          <span className="inline-flex items-center gap-1 rounded-full bg-rose-400/20 px-1.5 py-0.5 text-[9px] font-medium text-rose-200">
+            <AlertTriangle className="size-2.5" />
+            diagnostic
           </span>
         ) : null}
       </div>
@@ -296,10 +311,12 @@ function Packet({ active, emphasized, index }: { active: boolean; emphasized: bo
 function StageDetail({
   stage,
   emphasized,
+  compileError,
   onClose
 }: {
   stage: (typeof pipelineStages)[number];
   emphasized: boolean;
+  compileError: string | null;
   onClose: () => void;
 }) {
   return (
@@ -311,6 +328,9 @@ function StageDetail({
           {emphasized ? (
             <span className="rounded-full bg-cyan-400/20 px-2 py-0.5 text-[10px] text-cyan-300">emphasized by lesson</span>
           ) : null}
+          {compileError ? (
+            <span className="rounded-full bg-rose-400/20 px-2 py-0.5 text-[10px] text-rose-200">compile diagnostic</span>
+          ) : null}
         </div>
         <button
           onClick={onClose}
@@ -321,6 +341,11 @@ function StageDetail({
         </button>
       </div>
       <p className="text-[11px] leading-relaxed text-slate-300">{stage.detail}</p>
+      {compileError ? (
+        <div className="mt-3 rounded-lg border border-rose-400/20 bg-rose-500/10 px-3 py-2 text-[11px] leading-relaxed text-rose-200">
+          {compileError}
+        </div>
+      ) : null}
     </div>
   );
 }

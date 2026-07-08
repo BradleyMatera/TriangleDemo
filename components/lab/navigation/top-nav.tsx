@@ -35,6 +35,7 @@ const primaryNav: { id: PanelId; label: string; icon: typeof BookOpen }[] = [
   { id: "pipeline", label: "Pipeline", icon: Cpu },
   { id: "shaders", label: "Shaders", icon: Sparkles },
   { id: "geometry", label: "Geometry", icon: Box },
+  { id: "matrices", label: "Matrices", icon: Command },
   { id: "lighting", label: "Lighting", icon: Sun },
   { id: "textures", label: "Textures", icon: Image },
   { id: "performance", label: "Performance", icon: Gauge },
@@ -54,7 +55,7 @@ export function LabTopNav() {
     setSidebarMode
   } = useUiStore();
 
-  const openSidebarMode = (mode: "lessons" | "bookmarks" | "settings") => {
+  const openSidebarMode = (mode: "lessons" | "bookmarks" | "shortcuts" | "profile" | "settings") => {
     setSidebarMode(mode);
     if (!sidebarOpen) toggleSidebar();
   };
@@ -85,6 +86,7 @@ export function LabTopNav() {
                 <button
                   key={item.id}
                   onClick={() => setActivePanel(item.id)}
+                  title={`Open ${item.label}`}
                   className={cn(
                     "relative flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium transition-colors md:px-3",
                     isActive
@@ -112,6 +114,7 @@ export function LabTopNav() {
         <div className="flex shrink-0 items-center gap-1.5">
           <button
             onClick={openCommandPalette}
+            title="Open command palette"
             className="hidden items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-slate-400 transition-colors hover:border-white/20 hover:text-slate-200 sm:flex"
           >
             <Search className="size-3.5" />
@@ -130,9 +133,10 @@ export function LabTopNav() {
           </button>
 
           <button
-            onClick={openCommandPalette}
+            onClick={() => openSidebarMode("shortcuts")}
             className="hidden rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-200 sm:flex"
             aria-label="Keyboard shortcuts"
+            title="Keyboard shortcuts"
           >
             <Keyboard className="size-4" />
           </button>
@@ -141,6 +145,7 @@ export function LabTopNav() {
             onClick={() => openSidebarMode("bookmarks")}
             className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-200"
             aria-label="Bookmarks"
+            title="Bookmarks"
           >
             <Bookmark className="size-4" />
           </button>
@@ -149,14 +154,16 @@ export function LabTopNav() {
             onClick={() => openSidebarMode("settings")}
             className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-200"
             aria-label="Settings"
+            title="Settings"
           >
             <Settings className="size-4" />
           </button>
 
           <button
-            onClick={() => openSidebarMode("lessons")}
+            onClick={() => openSidebarMode("profile")}
             className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-200"
             aria-label="Profile and progress"
+            title="Profile and progress"
           >
             <User className="size-4" />
           </button>

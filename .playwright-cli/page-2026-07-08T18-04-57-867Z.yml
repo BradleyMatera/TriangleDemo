@@ -1,0 +1,275 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "WebGPU Lab" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img [ref=e9]
+            - generic [ref=e13]: WebGPU Lab
+          - navigation [ref=e14]:
+            - button "Editor" [ref=e15] [cursor=pointer]:
+              - generic [ref=e16]:
+                - img [ref=e17]
+                - generic [ref=e22]: Editor
+            - button "Lessons" [ref=e23] [cursor=pointer]:
+              - generic [ref=e25]:
+                - img [ref=e26]
+                - generic [ref=e29]: Lessons
+            - button "Pipeline" [ref=e30] [cursor=pointer]:
+              - generic [ref=e31]:
+                - img [ref=e32]
+                - generic [ref=e35]: Pipeline
+            - button "Shaders" [ref=e36] [cursor=pointer]:
+              - generic [ref=e37]:
+                - img [ref=e38]
+                - generic [ref=e40]: Shaders
+            - button "Geometry" [ref=e41] [cursor=pointer]:
+              - generic [ref=e42]:
+                - img [ref=e43]
+                - generic [ref=e46]: Geometry
+            - button "Matrices" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]:
+                - img [ref=e49]
+                - generic [ref=e51]: Matrices
+            - button "Lighting" [ref=e52] [cursor=pointer]:
+              - generic [ref=e53]:
+                - img [ref=e54]
+                - generic [ref=e60]: Lighting
+            - button "Textures" [ref=e61] [cursor=pointer]:
+              - generic [ref=e62]:
+                - img [ref=e63]
+                - generic [ref=e67]: Textures
+            - button "Performance" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]:
+                - img [ref=e70]
+                - generic [ref=e73]: Performance
+            - button "Playground" [ref=e74] [cursor=pointer]:
+              - generic [ref=e75]:
+                - img [ref=e76]
+                - generic [ref=e78]: Playground
+            - button "Examples" [ref=e79] [cursor=pointer]:
+              - generic [ref=e80]:
+                - img [ref=e81]
+                - generic [ref=e83]: Examples
+            - button "Docs" [ref=e84] [cursor=pointer]:
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - generic [ref=e88]: Docs
+        - generic [ref=e89]:
+          - button "Command Palette ⌘K" [ref=e90] [cursor=pointer]:
+            - img [ref=e91]
+            - generic [ref=e94]: Command Palette
+            - generic [ref=e95]: ⌘K
+          - button "Keyboard shortcuts" [ref=e96] [cursor=pointer]:
+            - img [ref=e97]
+          - button "Bookmarks" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+          - button "Settings" [ref=e102] [cursor=pointer]:
+            - img [ref=e103]
+          - button "Profile and progress" [ref=e106] [cursor=pointer]:
+            - img [ref=e107]
+          - generic "Toggle theme" [ref=e484] [cursor=pointer]:
+            - switch "Light" [ref=e485]
+            - generic [ref=e486]:
+              - img [ref=e487]
+              - img [ref=e493]
+            - generic [ref=e495]: Light
+    - generic [ref=e118]:
+      - complementary [ref=e119]:
+        - generic [ref=e120]:
+          - button "Lessons" [ref=e121] [cursor=pointer]:
+            - generic [ref=e123]:
+              - img [ref=e124]
+              - text: Lessons
+          - button "Bookmarks" [ref=e127] [cursor=pointer]:
+            - generic [ref=e128]:
+              - img [ref=e129]
+              - text: Bookmarks
+          - button "Keys" [active] [ref=e131] [cursor=pointer]:
+            - generic [ref=e132]:
+              - img [ref=e133]
+              - text: Keys
+          - button "Profile" [ref=e135] [cursor=pointer]:
+            - generic [ref=e136]:
+              - img [ref=e137]
+              - text: Profile
+          - button "Settings" [ref=e143] [cursor=pointer]:
+            - generic [ref=e144]:
+              - img [ref=e145]
+              - text: Settings
+        - generic [ref=e550]:
+          - generic [ref=e551]:
+            - heading "Global" [level=3] [ref=e552]:
+              - img [ref=e553]
+              - text: Global
+            - generic [ref=e555]:
+              - generic [ref=e556]:
+                - generic [ref=e557]: Open command palette
+                - generic [ref=e558]:
+                  - generic [ref=e559]: Ctrl
+                  - generic [ref=e560]: K
+              - generic [ref=e561]:
+                - generic [ref=e562]: Close dialogs and overlays
+                - generic [ref=e564]: Esc
+              - generic [ref=e565]:
+                - generic [ref=e566]: Move focus forward
+                - generic [ref=e568]: Tab
+              - generic [ref=e569]:
+                - generic [ref=e570]: Move focus backward
+                - generic [ref=e571]:
+                  - generic [ref=e572]: Shift
+                  - generic [ref=e573]: Tab
+          - generic [ref=e574]:
+            - heading "Workspace" [level=3] [ref=e575]:
+              - img [ref=e576]
+              - text: Workspace
+            - generic [ref=e578]:
+              - generic [ref=e579]:
+                - generic [ref=e580]: Apply shader changes from editor toolbar
+                - generic [ref=e582]: Run
+              - generic [ref=e583]:
+                - generic [ref=e584]: Toggle viewport grid overlay
+                - generic [ref=e586]: Grid
+              - generic [ref=e587]:
+                - generic [ref=e588]: Toggle axis overlay
+                - generic [ref=e590]: Axis
+              - generic [ref=e591]:
+                - generic [ref=e592]: Jump to documentation from status bar
+                - generic [ref=e594]: Docs
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - generic [ref=e283]: Course Progress
+            - generic [ref=e284]: 1 / 16
+          - button "Complete exercise" [ref=e287] [cursor=pointer]:
+            - img [ref=e288]
+            - text: Complete exercise
+      - main [ref=e291]:
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e296]:
+                - text: Lesson
+                - heading "Drawing Your First Triangle" [level=2] [ref=e297]
+                - paragraph [ref=e298]: 12 min
+              - button "Mark complete" [ref=e299] [cursor=pointer]:
+                - img [ref=e300]
+                - text: Mark complete
+            - generic [ref=e303]:
+              - button "Overview" [ref=e304] [cursor=pointer]:
+                - generic [ref=e305]:
+                  - img [ref=e306]
+                  - text: Overview
+              - button "Concept" [ref=e308] [cursor=pointer]:
+                - generic [ref=e309]:
+                  - img [ref=e310]
+                  - text: Concept
+              - button "Demo" [ref=e312] [cursor=pointer]:
+                - generic [ref=e314]:
+                  - img [ref=e315]
+                  - text: Demo
+              - button "Code" [ref=e317] [cursor=pointer]:
+                - generic [ref=e318]:
+                  - img [ref=e319]
+                  - text: Code
+              - button "Exercise" [ref=e323] [cursor=pointer]:
+                - generic [ref=e324]:
+                  - img [ref=e325]
+                  - text: Exercise
+              - button "Challenge" [ref=e327] [cursor=pointer]:
+                - generic [ref=e328]:
+                  - img [ref=e329]
+                  - text: Challenge
+              - button "Check" [ref=e335] [cursor=pointer]:
+                - generic [ref=e336]:
+                  - img [ref=e337]
+                  - text: Check
+              - button "Summary" [ref=e340] [cursor=pointer]:
+                - generic [ref=e341]:
+                  - img [ref=e342]
+                  - text: Summary
+            - generic [ref=e346]:
+              - generic [ref=e347]:
+                - generic [ref=e348]: Instructions
+                - paragraph [ref=e349]: The Preview panel shows a single red triangle. The vertex shader positions the corners using a hard-coded array; the fragment shader returns a constant red color.
+              - generic [ref=e350]:
+                - generic [ref=e351]: Tip
+                - paragraph [ref=e352]: Try editing the red value in the fragment shader to change the triangle color.
+          - generic [ref=e353]:
+            - generic [ref=e354]:
+              - generic [ref=e355]:
+                - generic [ref=e356]: WebGPU Viewport
+                - heading "WebGPU Demo — Hello Triangle" [level=3] [ref=e496]
+              - generic [ref=e358]:
+                - button "Grid" [ref=e359] [cursor=pointer]:
+                  - img [ref=e360]
+                - button "Axis" [ref=e362] [cursor=pointer]:
+                  - img [ref=e363]
+                - button "Wireframe" [ref=e366] [cursor=pointer]:
+                  - img [ref=e367]
+                - button "Normals" [ref=e370] [cursor=pointer]:
+                  - img [ref=e371]
+                - generic [ref=e376]:
+                  - button "Bounding boxes" [ref=e377] [cursor=pointer]:
+                    - img [ref=e378]
+                  - button "Vertices" [ref=e381] [cursor=pointer]:
+                    - img [ref=e382]
+                  - button "Tangents" [ref=e385] [cursor=pointer]:
+                    - img [ref=e386]
+                  - button "UV" [ref=e389] [cursor=pointer]:
+                    - img [ref=e390]
+                  - button "Depth" [ref=e392] [cursor=pointer]:
+                    - img [ref=e393]
+                  - button "Lighting only" [ref=e395] [cursor=pointer]:
+                    - img [ref=e396]
+                  - button "Overdraw" [ref=e398] [cursor=pointer]:
+                    - img [ref=e399]
+                  - button "Collision" [ref=e401] [cursor=pointer]:
+                    - img [ref=e402]
+                  - button "Vertex IDs" [ref=e405] [cursor=pointer]:
+                    - img [ref=e406]
+                  - button "Fragment IDs" [ref=e409] [cursor=pointer]:
+                    - img [ref=e410]
+                - button "Screenshot" [ref=e415] [cursor=pointer]:
+                  - img [ref=e416]
+                - button "Toggle fullscreen" [ref=e420] [cursor=pointer]:
+                  - img [ref=e421]
+            - generic [ref=e432]:
+              - generic [ref=e433]:
+                - img [ref=e434]
+                - text: 120 FPS
+              - generic [ref=e436]: 8.35 ms frame
+              - generic [ref=e437]: 1 draw calls
+              - generic [ref=e438]: 3 vertices
+              - generic [ref=e439]: 1 triangles
+              - generic [ref=e440]:
+                - img [ref=e441]
+                - text: Auto
+        - generic [ref=e444]:
+          - generic [ref=e445]:
+            - generic [ref=e446]:
+              - img [ref=e447]
+              - text: WebGPU Ready
+            - generic [ref=e450]:
+              - img [ref=e451]
+              - text: Device active
+            - generic [ref=e455]:
+              - img [ref=e456]
+              - text: GPU Queue
+          - generic [ref=e459]:
+            - button "Metrics on" [ref=e460] [cursor=pointer]:
+              - img [ref=e461]
+              - text: Metrics on
+            - button "Docs" [ref=e463] [cursor=pointer]:
+              - img [ref=e464]
+              - text: Docs
+            - generic [ref=e466]:
+              - img [ref=e467]
+              - text: Lesson 2 of 16
+            - generic [ref=e471]:
+              - img [ref=e472]
+              - text: 6%
+            - generic [ref=e474]: ⌘K
+  - button "Open Next.js Dev Tools" [ref=e480] [cursor=pointer]:
+    - img [ref=e481]
+  - alert [ref=e497]

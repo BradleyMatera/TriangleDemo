@@ -33,11 +33,13 @@ export function useGpuMetrics(enabled: boolean) {
       frameRef.current += 1;
 
       if (delta >= 500) {
-        const fps = Math.round((frameRef.current * 1000) / delta);
+        const frameCount = Math.max(frameRef.current, 1);
+        const fps = Math.round((frameCount * 1000) / delta);
+        const frameTime = Number((delta / frameCount).toFixed(2));
         setMetrics((prev) => ({
           ...prev,
           fps,
-          frameTime: Number((delta / frameRef.current).toFixed(2))
+          frameTime: Number.isFinite(frameTime) ? frameTime : 0
         }));
         frameRef.current = 0;
         lastRef.current = now;

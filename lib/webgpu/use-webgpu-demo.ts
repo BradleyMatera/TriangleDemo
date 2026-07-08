@@ -4,14 +4,14 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { initTriangleDemo, type ShapeId, type ShaderOverrides } from "./triangle-demo";
 import type { RenderStats } from "./types";
 
-type DemoState =
+export type DemoState =
   | { status: "initial" }
   | { status: "loading" }
   | { status: "ready" }
   | { status: "error"; message: string }
   | { status: "unsupported"; message: string };
 
-export function useWebGpuDemo(shapeId: ShapeId, shaders?: ShaderOverrides) {
+export function useWebGpuDemo(shapeId: ShapeId, shaders?: ShaderOverrides, demoRevision = 0) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const [state, setState] = useState<DemoState>({ status: "initial" });
@@ -68,7 +68,7 @@ export function useWebGpuDemo(shapeId: ShapeId, shaders?: ShaderOverrides) {
     }
     // Shader identity is tracked via shaderKey; full object identity would over-trigger re-runs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shapeId, shaderKey]);
+  }, [shapeId, shaderKey, demoRevision]);
 
   const applyShaders = useCallback((overrides: ShaderOverrides) => {
     void setShadersRef.current?.(shapeId, overrides);

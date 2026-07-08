@@ -79,11 +79,16 @@ export const useLessonStore = create<LessonState>()(
       },
       getEffectiveCatalog: () => {
         const { progress } = get();
-        return lessonCatalog.map((item) => {
+        return lessonCatalog.map((item, index) => {
           if (item.type === "chapter") {
-            const chapterLessons = lessonCatalog.filter(
-              (other) => other.type === "lesson" && other.title.startsWith(item.title)
+            const nextChapterIndex = lessonCatalog.findIndex(
+              (other, otherIndex) => otherIndex > index && other.type === "chapter"
             );
+            const chapterSlice = lessonCatalog.slice(
+              index + 1,
+              nextChapterIndex === -1 ? lessonCatalog.length : nextChapterIndex
+            );
+            const chapterLessons = chapterSlice.filter((other) => other.type === "lesson");
             const anyAvailable = chapterLessons.some((lesson) => progress[lesson.id!]?.status !== "locked");
             return { ...item, status: anyAvailable ? "available" : "locked" };
           }
@@ -107,7 +112,27 @@ export const useLessonStore = create<LessonState>()(
         })
     }),
     {
-      name: "webgpu-lab-lesson-progress"
+      name: "webgpu-lab-lesson-progress",
+      version: 1,
+      partialize: (state) => ({
+        activeLessonId: state.activeLessonId,
+        progress: state.progress,
+        bookmarks: state.bookmarks,
+        recent: state.recent
+      }),
+      merge: (persisted, current) => {
+        const restored = persisted as Partial<LessonState>;
+        return {
+          ...current,
+          ...restored,
+          progress: {
+            ...current.progress,
+            ...restored.progress
+          },
+          bookmarks: restored.bookmarks ?? current.bookmarks,
+          recent: restored.recent ?? current.recent
+        };
+      }
     }
   )
 );

@@ -1,5 +1,6 @@
 import { mat4, vec3 } from "wgpu-matrix";
 import type { DemoInstance } from "../../types";
+import { basicVertexWgsl, texturedFragmentWgsl } from "./shaders";
 import {
   cubeVertexArray,
   cubeVertexCount,
@@ -8,22 +9,12 @@ import {
   cubeUVOffset
 } from "../two-cubes/cube";
 
-const vertexShaderUrl = new URL("./shaders/basic.vert.wgsl", import.meta.url);
-const fragmentShaderUrl = new URL("./shaders/sampleTextureMixColor.frag.wgsl", import.meta.url);
 const textureUrl = new URL("./textures/Di-3d.png", import.meta.url);
 
-type ShaderPair = { vertex: string; fragment: string };
-let shaderCache: Promise<ShaderPair> | null = null;
-
-async function loadShaders(): Promise<ShaderPair> {
-  if (!shaderCache) {
-    shaderCache = Promise.all([
-      fetch(vertexShaderUrl).then((res) => res.text()),
-      fetch(fragmentShaderUrl).then((res) => res.text())
-    ]).then(([vertex, fragment]) => ({ vertex, fragment }));
-  }
-  return shaderCache;
-}
+export type TexturedCubeOptions = {
+  vertexShader?: string;
+  fragmentShader?: string;
+};
 
 async function loadCubeTexture(device: GPUDevice) {
   try {
@@ -94,12 +85,13 @@ async function loadCubeTexture(device: GPUDevice) {
 
 export async function createTexturedCubeDemo(
   device: GPUDevice,
-  format: GPUTextureFormat
+  format: GPUTextureFormat,
+  options: TexturedCubeOptions = {}
 ): Promise<DemoInstance> {
-  const [{ vertex, fragment }, textureAssets] = await Promise.all([
-    loadShaders(),
-    loadCubeTexture(device)
-  ]);
+  const vertex = options.vertexShader ?? basicVertexWgsl;
+  const fragment = options.fragmentShader ?? texturedFragmentWgsl;
+
+  const textureAssets = await loadCubeTexture(device);
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -204,6 +196,7 @@ export async function createTexturedCubeDemo(
       pass.setBindGroup(0, bindGroup);
       pass.draw(cubeVertexCount, 1, 0, 0);
     },
+    getStats: () => ({ drawCalls: 1, vertices: cubeVertexCount, triangles: cubeVertexCount / 3 }),
     dispose: () => {
       vertexBuffer.destroy();
       uniformBuffer.destroy();

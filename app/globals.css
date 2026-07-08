@@ -10,6 +10,12 @@
 :root.dark {
   color-scheme: dark;
   background-color: #05070f;
+  --lab-bg: #05070f;
+  --lab-panel: rgba(11, 12, 21, 0.8);
+  --lab-border: rgba(255, 255, 255, 0.1);
+  --lab-cyan: #67e8f9;
+  --lab-purple: #a855f7;
+  --lab-blue: #6c8cff;
 }
 
 * {
@@ -32,6 +38,16 @@ a {
   @apply text-brand hover:text-brand-accent transition-colors;
 }
 
+::selection {
+  background: rgba(103, 232, 249, 0.3);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.85);
+  outline-offset: 2px;
+}
+
 .hero-bg {
   @apply relative isolate overflow-hidden rounded-3xl border border-white/10 bg-white/20 backdrop-blur-xl dark:bg-white/5;
   box-shadow: 0 40px 120px rgba(44, 84, 255, 0.18);
@@ -47,6 +63,7 @@ a {
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.35), transparent 70%);
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.35), transparent 70%);
   pointer-events: none;
 }
@@ -93,6 +110,54 @@ a {
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Lab IDE scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Monaco editor integration */
+.monaco-editor {
+  border-radius: 0 0 1rem 1rem;
+}
+
+[data-reduce-motion="true"] *,
+[data-reduce-motion="true"] *::before,
+[data-reduce-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
 }

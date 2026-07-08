@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Zap, BookOpen, Layers, Palette, Box, Activity, FileText, Settings, GraduationCap, Sparkles, Sun, Image, Gamepad2, Lightbulb } from "lucide-react";
@@ -9,10 +9,25 @@ import { useLessonStore } from "@/lib/stores/lesson-store";
 import { cn } from "@/lib/utils";
 
 export function CommandPalette() {
-  const { commandPaletteOpen, closeCommandPalette, setActivePanel } = useUiStore();
+  const {
+    commandPaletteOpen,
+    closeCommandPalette,
+    setActivePanel,
+    setSidebarMode,
+    sidebarOpen,
+    toggleSidebar
+  } = useUiStore();
   const { setActiveLesson, getEffectiveCatalog } = useLessonStore();
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  const openSidebarMode = useCallback((mode: "bookmarks" | "shortcuts" | "profile" | "settings") => {
+    setSidebarMode(mode);
+    if (!sidebarOpen) toggleSidebar();
+  }, [setSidebarMode, sidebarOpen, toggleSidebar]);
 
   const items = useMemo(() => {
     const catalog = getEffectiveCatalog();
@@ -28,6 +43,9 @@ export function CommandPalette() {
       { id: "open-playground", label: "Open Shader Playground", icon: Gamepad2, action: () => setActivePanel("playground") },
       { id: "open-examples", label: "Open Examples", icon: Lightbulb, action: () => setActivePanel("examples") },
       { id: "open-docs", label: "Open Documentation", icon: FileText, action: () => setActivePanel("documentation") },
+      { id: "open-settings", label: "Open Settings", icon: Settings, action: () => openSidebarMode("settings") },
+      { id: "open-shortcuts", label: "Open Keyboard Shortcuts", icon: Zap, action: () => openSidebarMode("shortcuts") },
+      { id: "open-profile", label: "Open Profile and Progress", icon: GraduationCap, action: () => openSidebarMode("profile") },
       { id: "go-home", label: "Go to Landing Page", icon: BookOpen, action: () => router.push("/") }
     ];
 
@@ -44,13 +62,48 @@ export function CommandPalette() {
       }));
 
     return [...navItems, ...lessonItems];
-  }, [getEffectiveCatalog, setActiveLesson, setActivePanel, router]);
+  }, [getEffectiveCatalog, setActiveLesson, setActivePanel, router, openSidebarMode]);
 
   const filtered = useMemo(
     () =>
       items.filter((item) => item.label.toLowerCase().includes(query.toLowerCase())),
     [items, query]
   );
+
+  const runItem = (index: number) => {
+    const safeIndex = Math.min(index, Math.max(filtered.length - 1, 0));
+    const item = filtered[safeIndex];
+    if (!item) return;
+    item.action();
+    closeCommandPalette();
+  };
+
+  const trapFocus = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") return;
+    const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), input:not([disabled]), [href], select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable || focusable.length === 0) return;
+    const first = focusable[0]!;
+    const last = focusable[focusable.length - 1]!;
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (commandPaletteOpen) {
+      previousFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      return;
+    }
+    previousFocusRef.current?.focus();
+    previousFocusRef.current = null;
+  }, [commandPaletteOpen]);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -78,11 +131,16 @@ export function CommandPalette() {
           onClick={closeCommandPalette}
         >
           <motion.div
+            ref={dialogRef}
             initial={{ opacity: 0, y: -20, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.96 }}
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={trapFocus}
             className="w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-[#0B0C15]/95 shadow-2xl backdrop-blur-xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Command palette"
           >
             <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
               <Search className="size-4 text-slate-400" />
@@ -90,9 +148,30 @@ export function CommandPalette() {
                 autoFocus
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSelectedIndex(0);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    setSelectedIndex((index) => Math.min(index + 1, filtered.length - 1));
+                  }
+                  if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setSelectedIndex((index) => Math.max(index - 1, 0));
+                  }
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    runItem(selectedIndex);
+                  }
+                }}
                 placeholder="Search commands, lessons, or panels…"
                 className="flex-1 bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none"
+                role="combobox"
+                aria-expanded="true"
+                aria-controls="command-palette-results"
+                aria-activedescendant={filtered[selectedIndex]?.id}
               />
               <button
                 onClick={closeCommandPalette}
@@ -104,7 +183,7 @@ export function CommandPalette() {
               </button>
             </div>
 
-            <div className="max-h-[50vh] overflow-y-auto p-2">
+            <div id="command-palette-results" className="max-h-[50vh] overflow-y-auto p-2" role="listbox">
               {filtered.length === 0 ? (
                 <div className="px-4 py-8 text-center text-xs text-slate-500">No commands found.</div>
               ) : (
@@ -119,8 +198,11 @@ export function CommandPalette() {
                       }}
                       className={cn(
                         "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-white/10",
-                        index === 0 ? "bg-white/5" : ""
+                        index === selectedIndex ? "bg-white/10" : ""
                       )}
+                      id={item.id}
+                      role="option"
+                      aria-selected={index === selectedIndex}
                     >
                       <Icon className="size-4 text-brand-subtle" />
                       <span className="text-slate-200">{item.label}</span>

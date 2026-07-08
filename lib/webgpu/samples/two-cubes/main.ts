@@ -19,9 +19,12 @@ async function loadShaders() {
 
 export async function createTwoCubesDemo(
   device: GPUDevice,
-  format: GPUTextureFormat
+  format: GPUTextureFormat,
+  overrides?: { vertexShader?: string; fragmentShader?: string }
 ): Promise<DemoInstance> {
-  const { vertex, fragment } = await loadShaders();
+  const cache = await loadShaders();
+  const vertex = overrides?.vertexShader || cache.vertex;
+  const fragment = overrides?.fragmentShader || cache.fragment;
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -161,6 +164,7 @@ export async function createTwoCubesDemo(
       pass.setBindGroup(0, bindGroup1);
       pass.draw(cubeVertexCount, 1, 0, 0);
     },
+    getStats: () => ({ drawCalls: 2, vertices: cubeVertexCount * 2, triangles: cubeVertexCount * 2 / 3 }),
     dispose: () => {
       vertexBuffer.destroy();
       uniformBuffer.destroy();

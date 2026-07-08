@@ -17,25 +17,28 @@ const spaceGrotesk = SpaceGrotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bradleymatera.github.io/TriangleDemo/"),
-  title: "Triangle Shader Lab — WebGPU triangle walkthrough",
+  title: "WebGPU Lab — Interactive graphics learning platform",
   description:
-    "Triangle Shader Lab distills the canonical WebGPU 'hello triangle' sample into an interactive demo and annotated architecture overview.",
+    "WebGPU Lab is a production-grade interactive platform for learning modern graphics programming with live WebGPU rendering, WGSL editing, and GPU pipeline visualization.",
   keywords: [
     "WebGPU",
-    "hello triangle",
-    "shader lab",
+    "graphics programming",
+    "WGSL",
+    "WebGPU Lab",
     "Next.js 16",
     "Bun",
-    "NextUI",
     "TypeScript"
   ],
   authors: [{ name: "deondreE" }],
+  icons: {
+    icon: "/favicon.svg"
+  },
   openGraph: {
-    title: "Triangle Shader Lab — WebGPU triangle walkthrough",
+    title: "WebGPU Lab — Interactive graphics learning platform",
     description:
-      "A focused WebGPU playground highlighting the hello triangle pipeline, rendered through a polished Next.js 16 experience.",
+      "A production-grade WebGPU learning environment with live preview, pipeline visualizer, shader playground, and GPU diagnostics.",
     url: "https://bradleymatera.github.io/TriangleDemo/",
-    siteName: "Triangle Shader Lab",
+    siteName: "WebGPU Lab",
     locale: "en_US",
     type: "website"
   }

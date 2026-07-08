@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -12,11 +12,16 @@ import {
   CheckCircle2,
   Circle,
   GraduationCap,
+  Keyboard,
   History,
   Trophy,
   X,
   Menu,
-  Plus
+  Plus,
+  Type,
+  Monitor,
+  Save,
+  Accessibility
 } from "lucide-react";
 import { useLessonStore } from "@/lib/stores/lesson-store";
 import { useUiStore, type SidebarMode } from "@/lib/stores/ui-store";
@@ -25,6 +30,8 @@ import { cn } from "@/lib/utils";
 const modes: { id: SidebarMode; label: string; icon: typeof BookOpen }[] = [
   { id: "lessons", label: "Lessons", icon: GraduationCap },
   { id: "bookmarks", label: "Bookmarks", icon: Bookmark },
+  { id: "shortcuts", label: "Keys", icon: Keyboard },
+  { id: "profile", label: "Profile", icon: Trophy },
   { id: "settings", label: "Settings", icon: Settings }
 ];
 
@@ -39,6 +46,10 @@ export function LessonSidebar() {
   const catalog = useMemo(() => getEffectiveCatalog(), [getEffectiveCatalog]);
   const activeLesson = catalog.find((item) => item.id === activeLessonId);
   const isCompleted = activeLesson?.status === "completed";
+  const lessonItems = catalog.filter((item) => item.type === "lesson" && item.id);
+  const completedCount = lessonItems.filter((item) => item.id && progress[item.id]?.status === "completed").length;
+  const totalLessons = lessonItems.length;
+  const progressPercent = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
 
   return (
     <aside className={cn(
@@ -56,7 +67,7 @@ export function LessonSidebar() {
         </button>
       </div>
 
-      <div className="flex items-center gap-1 border-b border-white/10 p-2">
+      <div className="flex items-center gap-1 overflow-x-auto border-b border-white/10 p-2">
         {modes.map((mode) => {
           const Icon = mode.icon;
           const active = sidebarMode === mode.id;
@@ -65,7 +76,7 @@ export function LessonSidebar() {
               key={mode.id}
               onClick={() => setSidebarMode(mode.id)}
               className={cn(
-                "relative flex flex-1 items-center justify-center gap-1.5 rounded-lg py-1.5 text-xs font-medium transition-colors",
+                "relative flex shrink-0 items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium transition-colors",
                 active ? "text-white" : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
               )}
             >
@@ -112,6 +123,7 @@ export function LessonSidebar() {
                   key={item.id}
                   disabled={isLocked}
                   onClick={() => item.id && setActiveLesson(item.id)}
+                  title={isLocked ? "Complete the previous available lesson to unlock this one." : `Open ${item.title}`}
                   className={cn(
                     "group flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs transition-all",
                     isActive
@@ -152,6 +164,10 @@ export function LessonSidebar() {
           </div>
         ) : sidebarMode === "bookmarks" ? (
           <BookmarksPanel />
+        ) : sidebarMode === "shortcuts" ? (
+          <ShortcutsPanel />
+        ) : sidebarMode === "profile" ? (
+          <ProfilePanel completedCount={completedCount} totalLessons={totalLessons} progressPercent={progressPercent} />
         ) : (
           <SettingsPanel />
         )}
@@ -161,23 +177,146 @@ export function LessonSidebar() {
         <div className="rounded-xl border border-white/10 bg-white/5 p-3">
           <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-wider text-slate-500">
             <span>Course Progress</span>
-            <span className="text-brand">2 / 16</span>
+            <span className="text-brand">{completedCount} / {totalLessons}</span>
           </div>
           <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-            <div className="h-full w-[12%] rounded-full bg-gradient-to-r from-brand to-brand-accent" />
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent"
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
         </div>
         {activeLesson && !isCompleted ? (
           <button
             onClick={() => activeLesson.id && completeLesson(activeLesson.id)}
             className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-500/15 px-3 py-2 text-xs font-medium text-emerald-200 transition-colors hover:bg-emerald-500/25"
+            title="Marks this lesson complete and unlocks the next lesson."
           >
             <CheckCircle2 className="size-3.5" />
-            Complete exercise
+            Complete lesson and unlock next
           </button>
         ) : null}
       </div>
     </aside>
+  );
+}
+
+const shortcutGroups = [
+  {
+    title: "Global",
+    rows: [
+      { keys: ["Ctrl", "K"], label: "Open command palette" },
+      { keys: ["Esc"], label: "Close dialogs and overlays" },
+      { keys: ["Tab"], label: "Move focus forward" },
+      { keys: ["Shift", "Tab"], label: "Move focus backward" }
+    ]
+  },
+  {
+    title: "Workspace",
+    rows: [
+      { keys: ["Run"], label: "Apply shader changes from editor toolbar" },
+      { keys: ["Grid"], label: "Toggle viewport grid overlay" },
+      { keys: ["Axis"], label: "Toggle axis overlay" },
+      { keys: ["Docs"], label: "Jump to documentation from status bar" }
+    ]
+  }
+];
+
+function ShortcutsPanel() {
+  return (
+    <div className="space-y-3">
+      {shortcutGroups.map((group) => (
+        <div key={group.title} className="rounded-xl border border-white/10 bg-white/5 p-3">
+          <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+            <Keyboard className="size-3.5 text-brand-subtle" />
+            {group.title}
+          </h3>
+          <div className="space-y-2">
+            {group.rows.map((row) => (
+              <div key={row.label} className="flex items-center justify-between gap-3 text-xs text-slate-300">
+                <span>{row.label}</span>
+                <span className="flex shrink-0 items-center gap-1">
+                  {row.keys.map((key) => (
+                    <kbd key={key} className="rounded border border-white/10 bg-black/20 px-1.5 py-0.5 text-[10px] text-slate-300">
+                      {key}
+                    </kbd>
+                  ))}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProfilePanel({
+  completedCount,
+  totalLessons,
+  progressPercent
+}: {
+  completedCount: number;
+  totalLessons: number;
+  progressPercent: number;
+}) {
+  const recent = useLessonStore((s) => s.recent);
+  const catalog = useMemo(() => useLessonStore.getState().getEffectiveCatalog(), []);
+  const achievements = [
+    { title: "First Frame", unlocked: completedCount >= 1 },
+    { title: "Pipeline Reader", unlocked: completedCount >= 2 },
+    { title: "Shader Explorer", unlocked: completedCount >= 4 },
+    { title: "Optimization Ready", unlocked: completedCount >= totalLessons }
+  ];
+
+  return (
+    <div className="space-y-3">
+      <div className="rounded-xl border border-brand/20 bg-brand/10 p-3">
+        <div className="text-[10px] uppercase tracking-wider text-brand-subtle">Profile</div>
+        <div className="mt-1 font-display text-lg font-semibold text-white">{progressPercent}% complete</div>
+        <p className="mt-1 text-xs text-slate-400">
+          {completedCount} of {totalLessons} lessons complete.
+        </p>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <Trophy className="size-3.5 text-brand-subtle" />
+          Achievements
+        </h3>
+        <div className="space-y-2">
+          {achievements.map((achievement) => (
+            <div
+              key={achievement.title}
+              className={cn(
+                "flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs",
+                achievement.unlocked ? "bg-emerald-500/10 text-emerald-200" : "bg-white/5 text-slate-500"
+              )}
+            >
+              <Trophy className="size-3.5" />
+              {achievement.title}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <History className="size-3.5 text-brand-subtle" />
+          Recent Lessons
+        </h3>
+        <div className="space-y-1">
+          {recent.slice(0, 5).map((id) => {
+            const lesson = catalog.find((item) => item.id === id);
+            return (
+              <div key={id} className="truncate rounded-lg bg-black/20 px-2 py-1.5 text-xs text-slate-300">
+                {lesson?.title ?? id}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -217,46 +356,93 @@ function BookmarksPanel() {
 }
 
 function SettingsPanel() {
-  const { reduceMotion, toggleReduceMotion, showGpuMetrics, toggleGpuMetrics } = useUiStore();
+  const {
+    reduceMotion,
+    toggleReduceMotion,
+    showGpuMetrics,
+    toggleGpuMetrics,
+    highDensity,
+    toggleHighDensity,
+    minimap,
+    toggleMinimap,
+    autosave,
+    toggleAutosave
+  } = useUiStore();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    media.addEventListener("change", handler);
+    return () => media.removeEventListener("change", handler);
+  }, []);
 
   return (
     <div className="space-y-4">
       <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-        <h3 className="mb-2 text-xs font-semibold text-white">Appearance</h3>
-        <label className="flex items-center justify-between gap-3 text-xs text-slate-300">
-          Reduced motion
-          <button
-            onClick={toggleReduceMotion}
-            className={cn(
-              "relative h-5 w-9 rounded-full transition-colors",
-              reduceMotion ? "bg-brand" : "bg-white/10"
-            )}
-            aria-pressed={reduceMotion}
-            aria-label="Toggle reduced motion"
-          >
-            <span className={cn("absolute top-1 size-3 rounded-full bg-white transition-transform", reduceMotion ? "left-5" : "left-1")} />
-          </button>
-        </label>
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <Accessibility className="size-3.5 text-brand-subtle" />
+          Appearance
+        </h3>
+        <ToggleRow label="Reduced motion" active={reduceMotion} onClick={toggleReduceMotion} />
+        <p className="mt-2 text-[10px] text-slate-500">
+          System preference: {prefersReducedMotion ? "reduced" : "no-preference"}
+        </p>
       </div>
 
       <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-        <h3 className="mb-2 text-xs font-semibold text-white">Performance</h3>
-        <label className="flex items-center justify-between gap-3 text-xs text-slate-300">
-          Show GPU metrics
-          <button
-            onClick={toggleGpuMetrics}
-            className={cn(
-              "relative h-5 w-9 rounded-full transition-colors",
-              showGpuMetrics ? "bg-brand" : "bg-white/10"
-            )}
-            aria-pressed={showGpuMetrics}
-            aria-label="Toggle GPU metrics"
-          >
-            <span className={cn("absolute top-1 size-3 rounded-full bg-white transition-transform", showGpuMetrics ? "left-5" : "left-1")} />
-          </button>
-        </label>
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <Monitor className="size-3.5 text-brand-subtle" />
+          Performance
+        </h3>
+        <ToggleRow label="Show GPU metrics" active={showGpuMetrics} onClick={toggleGpuMetrics} />
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <Type className="size-3.5 text-brand-subtle" />
+          Editor
+        </h3>
+        <ToggleRow label="High density" active={highDensity} onClick={toggleHighDensity} />
+        <ToggleRow label="Minimap" active={minimap} onClick={toggleMinimap} />
+        <ToggleRow label="Autosave" active={autosave} onClick={toggleAutosave} />
       </div>
     </div>
+  );
+}
+
+function ToggleRow({
+  label,
+  active,
+  onClick
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <label className="flex items-center justify-between gap-3 py-1.5 text-xs text-slate-300">
+      {label}
+      <button
+        onClick={onClick}
+        className={cn(
+          "relative h-5 w-9 rounded-full transition-colors",
+          active ? "bg-brand" : "bg-white/10"
+        )}
+        aria-pressed={active}
+        aria-label={`Toggle ${label}`}
+      >
+        <span
+          className={cn(
+            "absolute top-1 size-3 rounded-full bg-white transition-transform",
+            active ? "left-5" : "left-1"
+          )}
+        />
+      </button>
+    </label>
   );
 }
 

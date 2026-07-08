@@ -10,11 +10,13 @@ import {
   Lightbulb,
   ListChecks,
   Play,
+  Route,
   Trophy,
   Zap
 } from "lucide-react";
 import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 import { useLessonStore } from "@/lib/stores/lesson-store";
+import { useUiStore } from "@/lib/stores/ui-store";
 import { getLessonContent, type LessonTabId } from "@/lib/lessons/content";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +35,7 @@ export function LessonContentPanel() {
   const activeLessonId = useLessonStore((s) => s.activeLessonId);
   const activeTab = useWorkspaceStore((s) => s.activeLessonTab);
   const setActiveTab = useWorkspaceStore((s) => s.setActiveLessonTab);
+  const setActivePanel = useUiStore((s) => s.setActivePanel);
   const content = getLessonContent(activeLessonId);
 
   return (
@@ -80,11 +83,72 @@ export function LessonContentPanel() {
         })}
       </div>
 
+      <LessonFlowBar activeTab={activeTab} onTab={setActiveTab} onPanel={setActivePanel} />
+
       <div className="flex-1 overflow-y-auto p-5">
         <LessonTabContent tab={activeTab} content={content} />
       </div>
     </div>
   );
+}
+
+function LessonFlowBar({
+  activeTab,
+  onTab,
+  onPanel
+}: {
+  activeTab: LessonTabId;
+  onTab: (tab: LessonTabId) => void;
+  onPanel: ReturnType<typeof useUiStore.getState>["setActivePanel"];
+}) {
+  const nextTab = getNextLessonTab(activeTab);
+
+  return (
+    <div className="border-b border-white/10 bg-slate-950/30 px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex min-w-0 items-start gap-2">
+          <Route className="mt-0.5 size-4 shrink-0 text-brand-subtle" />
+          <div>
+            <div className="text-xs font-semibold text-white">Recommended flow</div>
+            <p className="max-w-xl text-[11px] leading-relaxed text-slate-400">
+              Read the concept, inspect the live demo, open the editor when code is mentioned, then validate the
+              exercise before moving to the next lesson.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => onPanel("editor")}
+            className="rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-100 transition-colors hover:bg-cyan-300/20"
+          >
+            Open editor
+          </button>
+          <button
+            onClick={() => onPanel("pipeline")}
+            className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-slate-300 transition-colors hover:bg-white/10"
+          >
+            Inspect pipeline
+          </button>
+          <button
+            onClick={() => (nextTab ? onTab(nextTab) : onTab("summary"))}
+            className="rounded-lg border border-brand/30 bg-brand/15 px-3 py-1.5 text-[11px] font-semibold text-brand-subtle transition-colors hover:bg-brand/25"
+          >
+            {nextTab ? `Next: ${getTabLabel(nextTab)}` : "Review summary"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function getNextLessonTab(tab: LessonTabId): LessonTabId | null {
+  const order = tabs.map((item) => item.id);
+  const index = order.indexOf(tab);
+  return order[index + 1] ?? null;
+}
+
+function getTabLabel(tab: LessonTabId) {
+  return tabs.find((item) => item.id === tab)?.label ?? tab;
 }
 
 function LessonTabContent({
@@ -157,6 +221,7 @@ function LessonTabContent({
               </div>
             </details>
           ) : null}
+          <ExerciseValidation content={content} />
         </div>
       );
     case "challenge":
@@ -195,6 +260,94 @@ function LessonTabContent({
     default:
       return null;
   }
+}
+
+function ExerciseValidation({
+  content
+}: {
+  content: ReturnType<typeof getLessonContent>;
+}) {
+  const activeLessonId = useLessonStore((s) => s.activeLessonId);
+  const completeLesson = useLessonStore((s) => s.completeLesson);
+  const codeVertex = useWorkspaceStore((s) => s.codeVertex);
+  const codeFragment = useWorkspaceStore((s) => s.codeFragment);
+  const compileError = useWorkspaceStore((s) => s.compileError);
+  const [result, setResult] = useState<{
+    status: "idle" | "pass" | "fail";
+    message: string;
+  }>({
+    status: "idle",
+    message: "Validation checks current WGSL, compile status, and whether the starter code was meaningfully changed."
+  });
+
+  const validateExercise = () => {
+    const combined = `${codeVertex}\n${codeFragment}`;
+    const hasShaderEntry = /fn\s+\w+\s*\(/.test(combined);
+    const starter = content.exercise.starter.trim();
+    const solution = content.exercise.solution.trim();
+    const starterStillPresent = starter ? combined.includes(starter) : false;
+    const solutionLooksPresent = solution && solution.length < 120 ? combined.includes(solution) : false;
+
+    if (compileError) {
+      setResult({
+        status: "fail",
+        message: "Fix the current shader compile error before completing this exercise."
+      });
+      return;
+    }
+
+    if (!hasShaderEntry) {
+      setResult({
+        status: "fail",
+        message: "The editor does not currently contain a recognizable shader function."
+      });
+      return;
+    }
+
+    if (starter && starterStillPresent && !solutionLooksPresent) {
+      setResult({
+        status: "fail",
+        message: "The starter snippet is still present. Apply your exercise change in the editor, then validate again."
+      });
+      return;
+    }
+
+    completeLesson(activeLessonId);
+    setResult({
+      status: "pass",
+      message: "Exercise validated against the active code. Lesson progress updated and the next step is unlocked."
+    });
+  };
+
+  return (
+    <div className="rounded-xl border border-cyan-300/20 bg-cyan-300/10 p-4">
+      <div className="mb-2 flex items-center justify-between gap-3">
+        <div>
+          <div className="text-[10px] uppercase tracking-wider text-cyan-200">Exercise validator</div>
+          <p className="mt-1 text-xs leading-relaxed text-slate-300">{result.message}</p>
+        </div>
+        <button
+          onClick={validateExercise}
+          className="shrink-0 rounded-lg bg-cyan-400/20 px-3 py-2 text-xs font-semibold text-cyan-100 transition-colors hover:bg-cyan-400/30"
+        >
+          Validate code
+        </button>
+      </div>
+      {result.status !== "idle" ? (
+        <div
+          className={cn(
+            "rounded-lg border px-3 py-2 text-xs",
+            result.status === "pass"
+              ? "border-emerald-400/20 bg-emerald-400/10 text-emerald-200"
+              : "border-rose-400/20 bg-rose-400/10 text-rose-200"
+          )}
+          role="status"
+        >
+          {result.status === "pass" ? "Passed" : "Needs work"}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function CompleteButton() {

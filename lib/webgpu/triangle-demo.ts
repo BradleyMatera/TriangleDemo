@@ -1,8 +1,13 @@
+import { createTwoCubesDemo } from "./samples/two-cubes/main";
 import { createHelloTriangleDemo } from "./samples/hello-triangle/main";
 import { createTexturedCubeDemo } from "./samples/textured-cube/main";
-import type { DemoInstance } from "./types";
+import { createGeometryMeshDemo } from "./samples/geometry-lab/main";
+import type { DemoInstance, RenderStats } from "./types";
+import { useMetricsStore } from "@/lib/stores/metrics-store";
+import type { GeometryShapeId } from "@/lib/stores/geometry-store";
 
-export type ShapeId = "textured-cube" | "hello-triangle";
+export type WebGpuSampleId = "textured-cube" | "hello-triangle" | "two-cubes";
+export type ShapeId = WebGpuSampleId | GeometryShapeId;
 
 type ShapeMeta = {
   id: ShapeId;
@@ -17,6 +22,28 @@ type ShapeMeta = {
 
 export const availableShapes: ShapeMeta[] = [
   {
+    id: "hello-triangle",
+    label: "Hello Triangle",
+    description:
+      "Baseline WebGPU pipeline inspired by the official Hello Triangle sample. Demonstrates vertex buffers, shaders, and render loop fundamentals (see samples/hello-triangle/main.ts).",
+    localPath: "samples/hello-triangle/main.ts",
+    source: {
+      title: "WebGPU Samples — Hello Triangle",
+      url: "https://webgpu.github.io/webgpu-samples/?sample=helloTriangle"
+    }
+  },
+  {
+    id: "two-cubes",
+    label: "Two Cubes",
+    description:
+      "Port of the WebGPU twoCubes sample. Demonstrates multiple draw calls and distinct uniform buffers per object.",
+    localPath: "samples/two-cubes/main.ts",
+    source: {
+      title: "WebGPU Samples — Two Cubes",
+      url: "https://webgpu.github.io/webgpu-samples/?sample=twoCubes"
+    }
+  },
+  {
     id: "textured-cube",
     label: "Textured Cube",
     description:
@@ -28,14 +55,103 @@ export const availableShapes: ShapeMeta[] = [
     }
   },
   {
-    id: "hello-triangle",
-    label: "Hello Triangle",
-    description:
-      "Baseline WebGPU pipeline inspired by the official Hello Triangle sample. Demonstrates vertex buffers, shaders, and render loop fundamentals (see samples/hello-triangle/main.ts).",
-    localPath: "samples/hello-triangle/main.ts",
+    id: "triangle",
+    label: "Geometry Triangle",
+    description: "Interactive Geometry Lab mesh rendered by the shared WebGPU viewport.",
+    localPath: "samples/geometry-lab/main.ts",
     source: {
-      title: "WebGPU Samples — Hello Triangle",
-      url: "https://webgpu.github.io/webgpu-samples/?sample=helloTriangle"
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "quad",
+    label: "Geometry Quad",
+    description: "Indexed quad mesh rendered by the shared WebGPU viewport.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "cube",
+    label: "Geometry Cube",
+    description: "Indexed cube mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "sphere",
+    label: "Geometry Sphere",
+    description: "Generated UV sphere mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "plane",
+    label: "Geometry Plane",
+    description: "Subdividable plane mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "cylinder",
+    label: "Geometry Cylinder",
+    description: "Generated capped cylinder mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "cone",
+    label: "Geometry Cone",
+    description: "Generated cone mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "torus",
+    label: "Geometry Torus",
+    description: "Generated torus mesh controlled from the Geometry Lab.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "monkey",
+    label: "Monkey Proxy Mesh",
+    description: "A Suzanne-style proxy mesh assembled from generated primitives for topology practice.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
+    }
+  },
+  {
+    id: "bunny",
+    label: "Bunny Proxy Mesh",
+    description: "A bunny-style proxy mesh assembled from generated primitives for topology practice.",
+    localPath: "samples/geometry-lab/main.ts",
+    source: {
+      title: "WebGPU Lab — Geometry Mesh Renderer",
+      url: "#geometry-lab"
     }
   }
 ];
@@ -44,11 +160,18 @@ type DemoResult =
   | {
       status: "ready";
       cleanup: () => void;
-      setShape: (shapeId: ShapeId) => Promise<void>;
+      setShape: (shapeId: ShapeId, shaders?: ShaderOverrides) => Promise<void>;
+      setShaders: (shapeId: ShapeId, shaders: ShaderOverrides) => Promise<void>;
+      getStats: () => RenderStats;
       getShape: () => ShapeMeta;
     }
   | { status: "unsupported"; message: string }
   | { status: "error"; message: string; cause?: unknown };
+
+export type ShaderOverrides = {
+  vertexShader?: string;
+  fragmentShader?: string;
+};
 
 export async function initTriangleDemo(
   canvas: HTMLCanvasElement,
@@ -118,14 +241,17 @@ export async function initTriangleDemo(
 
     observer.observe(canvas);
 
-    const setShape = (shapeId: ShapeId) => {
+    let currentShaders: ShaderOverrides = {};
+
+    const setShape = (shapeId: ShapeId, shaders: ShaderOverrides = {}) => {
       requestedShape = shapeId;
+      currentShaders = shaders;
 
       const load = (async () => {
         const nextShape =
           availableShapes.find((shape) => shape.id === shapeId) ?? availableShapes[0]!;
 
-        const newDemo = await createDemoInstance(nextShape.id, device, format);
+        const newDemo = await createDemoInstance(nextShape.id, device, format, shaders);
 
         if (requestedShape !== shapeId) {
           newDemo.dispose();
@@ -165,6 +291,13 @@ export async function initTriangleDemo(
       return load;
     };
 
+    const setShaders = (shapeId: ShapeId, shaders: ShaderOverrides) => {
+      return setShape(shapeId, shaders);
+    };
+
+    let frameStats: RenderStats = { drawCalls: 0, vertices: 0, triangles: 0 };
+    let frameCount = 0;
+
     const frame = (timestamp: number) => {
       const demo = currentDemo;
       if (!demo) {
@@ -201,7 +334,20 @@ export async function initTriangleDemo(
       demo.render(pass);
       pass.end();
 
+      frameStats = demo.getStats();
+
       device.queue.submit([encoder.finish()]);
+
+      if (frameCount % 2 === 0) {
+        useMetricsStore.getState().updateMetrics({
+          drawCalls: frameStats.drawCalls,
+          vertices: frameStats.vertices,
+          triangles: frameStats.triangles
+        });
+        useMetricsStore.getState().pulseFrame();
+      }
+      frameCount += 1;
+
       animationFrame = requestAnimationFrame(frame);
     };
 
@@ -219,6 +365,8 @@ export async function initTriangleDemo(
       status: "ready",
       cleanup,
       setShape,
+      setShaders,
+      getStats: () => frameStats,
       getShape: () => currentShape
     };
   } catch (error) {
@@ -270,13 +418,17 @@ function configureCanvasContext({
 async function createDemoInstance(
   id: ShapeId,
   device: GPUDevice,
-  format: GPUTextureFormat
+  format: GPUTextureFormat,
+  shaders: ShaderOverrides = {}
 ): Promise<DemoInstance> {
   switch (id) {
+    case "two-cubes":
+      return createTwoCubesDemo(device, format, shaders);
     case "textured-cube":
-      return createTexturedCubeDemo(device, format);
+      return createTexturedCubeDemo(device, format, shaders);
     case "hello-triangle":
+      return createHelloTriangleDemo(device, format, shaders);
     default:
-      return createHelloTriangleDemo(device, format);
+      return createGeometryMeshDemo(device, format, id);
   }
 }

@@ -111,15 +111,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$providers$2f$t
 ;
 const metadata = {
     metadataBase: new URL("https://bradleymatera.github.io/TriangleDemo/"),
-    title: "Triangle Shader Lab — WebGPU triangle walkthrough",
-    description: "Triangle Shader Lab distills the canonical WebGPU 'hello triangle' sample into an interactive demo and annotated architecture overview.",
+    title: "WebGPU Lab — Interactive graphics learning platform",
+    description: "WebGPU Lab is a production-grade interactive platform for learning modern graphics programming with live WebGPU rendering, WGSL editing, and GPU pipeline visualization.",
     keywords: [
         "WebGPU",
-        "hello triangle",
-        "shader lab",
+        "graphics programming",
+        "WGSL",
+        "WebGPU Lab",
         "Next.js 16",
         "Bun",
-        "NextUI",
         "TypeScript"
     ],
     authors: [
@@ -127,11 +127,14 @@ const metadata = {
             name: "deondreE"
         }
     ],
+    icons: {
+        icon: "/favicon.svg"
+    },
     openGraph: {
-        title: "Triangle Shader Lab — WebGPU triangle walkthrough",
-        description: "A focused WebGPU playground highlighting the hello triangle pipeline, rendered through a polished Next.js 16 experience.",
+        title: "WebGPU Lab — Interactive graphics learning platform",
+        description: "A production-grade WebGPU learning environment with live preview, pipeline visualizer, shader playground, and GPU diagnostics.",
         url: "https://bradleymatera.github.io/TriangleDemo/",
-        siteName: "Triangle Shader Lab",
+        siteName: "WebGPU Lab",
         locale: "en_US",
         type: "website"
     }
@@ -147,17 +150,17 @@ function RootLayout({ children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/app/layout.tsx",
-                lineNumber: 56,
+                lineNumber: 59,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/layout.tsx",
-            lineNumber: 55,
+            lineNumber: 58,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/layout.tsx",
-        lineNumber: 50,
+        lineNumber: 53,
         columnNumber: 5
     }, this);
 }

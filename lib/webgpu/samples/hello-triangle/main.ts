@@ -1,25 +1,18 @@
 import type { DemoInstance } from "../../types";
+import { triangleVertexWgsl, redFragmentWgsl } from "./shaders";
 
-const vertexShaderUrl = new URL("./shaders/triangle.vert.wgsl", import.meta.url);
-const fragmentShaderUrl = new URL("./shaders/red.frag.wgsl", import.meta.url);
-
-let shaderCache: Promise<{ vertex: string; fragment: string }> | null = null;
-
-async function loadShaders() {
-  if (!shaderCache) {
-    shaderCache = Promise.all([
-      fetch(vertexShaderUrl).then((res) => res.text()),
-      fetch(fragmentShaderUrl).then((res) => res.text())
-    ]).then(([vertex, fragment]) => ({ vertex, fragment }));
-  }
-  return shaderCache;
-}
+export type HelloTriangleOptions = {
+  vertexShader?: string;
+  fragmentShader?: string;
+};
 
 export async function createHelloTriangleDemo(
   device: GPUDevice,
-  format: GPUTextureFormat
+  format: GPUTextureFormat,
+  options: HelloTriangleOptions = {}
 ): Promise<DemoInstance> {
-  const { vertex, fragment } = await loadShaders();
+  const vertex = options.vertexShader ?? triangleVertexWgsl;
+  const fragment = options.fragmentShader ?? redFragmentWgsl;
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -46,6 +39,7 @@ export async function createHelloTriangleDemo(
       pass.setPipeline(pipeline);
       pass.draw(3, 1, 0, 0);
     },
+    getStats: () => ({ drawCalls: 1, vertices: 3, triangles: 1 }),
     dispose: () => {
       // GPUShaderModule resources are GC-managed.
     }

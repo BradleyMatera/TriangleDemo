@@ -28,7 +28,7 @@ export type LessonSection = {
 };
 
 export type LessonDemo =
-  | { type: "webgpu"; shape: "hello-triangle" | "textured-cube" | "two-cubes" }
+  | { type: "webgpu"; shape: ShapeId }
   | { type: "placeholder" };
 
 export const lessonCatalog: LessonSection[] = [
@@ -72,3 +72,4 @@ export function getLessonById(id: LessonId) {
 export function getInitialLessonId(): LessonId {
   return "ch1-first-triangle";
 }
+import type { ShapeId } from "@/lib/webgpu/triangle-demo";
