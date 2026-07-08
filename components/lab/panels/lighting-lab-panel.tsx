@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Copy, Download, Lightbulb, Moon, Sun, Target, Eye, EyeOff } from "lucide-react";
+import { Copy, Download, Lightbulb, Moon, Sun, Target, Eye, EyeOff, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 
 interface LightSource {
   id: string;
@@ -27,6 +28,35 @@ export function LightingLabPanel() {
   const [activeId, setActiveId] = useState<string>("directional");
   const [showNormals, setShowNormals] = useState(false);
   const [lightingOnly, setLightingOnly] = useState(false);
+
+  const applyShaders = useWorkspaceStore((s) => s.applyShaders);
+
+  // Generate and push WGSL to the live preview whenever lights change
+  useEffect(() => {
+    const fragment = buildLitFragmentShader(lights, showNormals);
+    const vertex = `struct Uniforms {
+  mvp: mat4x4f,
+};
+@group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+struct VertexOut {
+  @builtin(position) position: vec4f,
+  @location(0) worldPos: vec3f,
+  @location(1) normal: vec3f,
+};
+
+@vertex
+fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
+  var out: VertexOut;
+  out.position = uniforms.mvp * vec4f(pos, 1.0);
+  out.worldPos = pos;
+  out.normal = normalize(pos);
+  return out;
+}
+`;
+    applyShaders({ vertexShader: vertex, fragmentShader: fragment });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lights, showNormals]);
 
   const activeLight = lights.find((l) => l.id === activeId) ?? lights[0]!;
 
@@ -100,6 +130,13 @@ export function LightingLabPanel() {
         })}
       </div>
 
+      <div className="mb-3 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-3 py-2">
+        <Info className="size-3.5 text-emerald-400 shrink-0" />
+        <span className="text-[11px] text-emerald-300 flex-1">
+          Lighting changes update the viewport cube in real time via generated WGSL.
+        </span>
+      </div>
+
       <div className="mb-3 flex flex-wrap items-center gap-2">
         <button
           onClick={() => updateLight(activeLight.id, { enabled: !activeLight.enabled })}
@@ -168,19 +205,15 @@ export function LightingLabPanel() {
       >
         <div className="mb-2 text-[10px] uppercase tracking-wider text-brand-subtle">{activeLight.name} settings</div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-            Intensity
-            <input
-              type="range"
-              min={0}
-              max={2}
-              step={0.05}
-              value={activeLight.intensity}
-              onChange={(e) => updateLight(activeLight.id, { intensity: Number(e.target.value) })}
-              className="accent-brand"
-            />
-            <span className="font-mono text-white">{activeLight.intensity.toFixed(2)}</span>
-          </label>
+          <NumericInput
+            label="Intensity"
+            value={activeLight.intensity}
+            min={0}
+            max={2}
+            step={0.05}
+            precision={2}
+            onChange={(v) => updateLight(activeLight.id, { intensity: v })}
+          />
           <label className="flex flex-col gap-1 text-[10px] text-slate-400">
             Color
             <div className="flex items-center gap-2">
@@ -253,6 +286,8 @@ export function LightingLabPanel() {
   );
 }
 
+import { NumericInput } from "@/components/lab/controls/numeric-input";
+
 function VectorSlider({
   label,
   value,
@@ -269,19 +304,14 @@ function VectorSlider({
   onChange: (value: number) => void;
 }) {
   return (
-    <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-      {label}
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="accent-brand"
-      />
-      <span className="font-mono text-white">{value.toFixed(2)}</span>
-    </label>
+    <NumericInput
+      label={label}
+      value={value}
+      min={min}
+      max={max}
+      step={step}
+      onChange={onChange}
+    />
   );
 }
 
@@ -303,6 +333,56 @@ function generateLightingWGSL(lights: LightSource[]): string {
     code += "\n";
   });
   return code;
+}
+
+function buildLitFragmentShader(lights: LightSource[], showNormals: boolean): string {
+  const ambient = lights.find((l) => l.id === "ambient" && l.enabled);
+  const directional = lights.find((l) => l.id === "directional" && l.enabled);
+  const point = lights.find((l) => l.id === "point" && l.enabled);
+
+  const ambientColor = ambient ? hexToRGB(ambient.color) : [0.05, 0.05, 0.08];
+  const ambientIntensity = ambient ? ambient.intensity : 0.1;
+
+  const dirColor = directional ? hexToRGB(directional.color) : [0, 0, 0];
+  const dirIntensity = directional ? directional.intensity : 0;
+  const dirDir = directional
+    ? [directional.direction.x, directional.direction.y, directional.direction.z]
+    : [0, -1, 0];
+
+  const ptColor = point ? hexToRGB(point.color) : [0, 0, 0];
+  const ptIntensity = point ? point.intensity : 0;
+  const ptPos = point ? [point.position.x, point.position.y, point.position.z] : [0, 0, 0];
+
+  const fmt = (n: number) => n.toFixed(2);
+
+  return `@fragment
+fn main(@location(0) worldPos: vec3f, @location(1) normal: vec3f) -> @location(0) vec4f {
+  let n = normalize(normal);
+
+  var color = vec3f(0.0, 0.0, 0.0);
+
+  // Ambient
+  color += vec3f(${fmt(ambientColor[0])}f, ${fmt(ambientColor[1])}f, ${fmt(ambientColor[2])}f) * ${fmt(ambientIntensity)}f;
+
+  // Directional
+  let dirLight = normalize(vec3f(${fmt(dirDir[0])}f, ${fmt(dirDir[1])}f, ${fmt(dirDir[2])}f));
+  let dirFactor = max(dot(n, -dirLight), 0.0);
+  color += vec3f(${fmt(dirColor[0])}f, ${fmt(dirColor[1])}f, ${fmt(dirColor[2])}f) * ${fmt(dirIntensity)}f * dirFactor;
+
+  // Point
+  let ptPos = vec3f(${fmt(ptPos[0])}f, ${fmt(ptPos[1])}f, ${fmt(ptPos[2])}f);
+  let ptVec = ptPos - worldPos;
+  let ptDist = length(ptVec);
+  let ptDir = normalize(ptVec);
+  let ptFactor = max(dot(n, ptDir), 0.0);
+  let ptAtten = 1.0 / (1.0 + 0.09 * ptDist + 0.032 * ptDist * ptDist);
+  color += vec3f(${fmt(ptColor[0])}f, ${fmt(ptColor[1])}f, ${fmt(ptColor[2])}f) * ${fmt(ptIntensity)}f * ptFactor * ptAtten;
+
+  ${showNormals ? "color = n * 0.5 + 0.5;" : ""}
+
+  return vec4f(color, 1.0);
+}
+`;
 }
 
 function hexToRGB(hex: string): number[] {

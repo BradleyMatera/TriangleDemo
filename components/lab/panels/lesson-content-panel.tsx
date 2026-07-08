@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import {
   BookOpen,
   CheckCircle2,
@@ -18,7 +19,11 @@ import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 import { useLessonStore } from "@/lib/stores/lesson-store";
 import { useUiStore } from "@/lib/stores/ui-store";
 import { getLessonContent, type LessonTabId } from "@/lib/lessons/content";
+import { getLessonShaderSource } from "@/lib/lessons/shader-source";
+import { useWgslValidator } from "@/components/lab/use-wgsl-validator";
 import { cn } from "@/lib/utils";
+
+const MonacoEditor = dynamic(() => import("@monaco-editor/react"), { ssr: false });
 
 const tabs: { id: LessonTabId; label: string; icon: typeof BookOpen }[] = [
   { id: "overview", label: "Overview", icon: BookOpen },
@@ -111,8 +116,8 @@ function LessonFlowBar({
           <div>
             <div className="text-xs font-semibold text-white">Recommended flow</div>
             <p className="max-w-xl text-[11px] leading-relaxed text-slate-400">
-              Read the concept, inspect the live demo, open the editor when code is mentioned, then validate the
-              exercise before moving to the next lesson.
+              Read the concept, inspect the live demo, review the code inline below, then use the Editor workspace
+              to experiment before validating the exercise.
             </p>
           </div>
         </div>
@@ -195,13 +200,7 @@ function LessonTabContent({
       );
     case "code":
       return (
-        <div className="space-y-4">
-          <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <div className="mb-1 text-[10px] uppercase tracking-wider text-brand-subtle">Focus</div>
-            <p className="text-sm font-medium text-white">{content.code.focus}</p>
-          </div>
-          <p className="text-sm leading-relaxed text-slate-300">{content.code.explanation}</p>
-        </div>
+        <LessonCodeTab content={content} />
       );
     case "exercise":
       return (
@@ -260,6 +259,121 @@ function LessonTabContent({
     default:
       return null;
   }
+}
+
+function LessonCodeTab({
+  content
+}: {
+  content: ReturnType<typeof getLessonContent>;
+}) {
+  const activeLessonId = useLessonStore((s) => s.activeLessonId);
+  const lessonSource = getLessonShaderSource(activeLessonId);
+  const [activeFile, setActiveFile] = useState<"vertex" | "fragment">("fragment");
+  const [showHint, setShowHint] = useState(false);
+  const { validate } = useWgslValidator();
+  const [compileError, setCompileError] = useState<string | null>(null);
+  const [validating, setValidating] = useState(false);
+
+  const activeCode = activeFile === "vertex" ? lessonSource.vertex : lessonSource.fragment;
+  const activeFileName = activeFile === "vertex" ? lessonSource.vertexFile : lessonSource.fragmentFile;
+
+  const handleValidate = useCallback(async () => {
+    setValidating(true);
+    const result = await validate(activeCode);
+    setValidating(false);
+    if (!result.valid) {
+      setCompileError(result.message ?? "Validation failed.");
+    } else {
+      setCompileError(null);
+    }
+  }, [activeCode, validate]);
+
+  return (
+    <div className="flex h-full flex-col gap-4">
+      <div className="space-y-3">
+        <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+          <div className="mb-1 text-[10px] uppercase tracking-wider text-brand-subtle">Focus</div>
+          <p className="text-sm font-medium text-white">{content.code.focus}</p>
+        </div>
+        <p className="text-sm leading-relaxed text-slate-300">{content.code.explanation}</p>
+      </div>
+
+      <div className="flex-1 min-h-[300px] flex flex-col gap-2 rounded-xl border border-white/10 bg-slate-950/50 overflow-hidden">
+        <div className="flex items-center justify-between border-b border-white/10 px-3 py-2">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setActiveFile("vertex")}
+              className={cn(
+                "rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors",
+                activeFile === "vertex"
+                  ? "bg-white/10 text-white"
+                  : "text-slate-400 hover:text-slate-200"
+              )}
+            >
+              Vertex WGSL
+            </button>
+            <button
+              onClick={() => setActiveFile("fragment")}
+              className={cn(
+                "rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors",
+                activeFile === "fragment"
+                  ? "bg-white/10 text-white"
+                  : "text-slate-400 hover:text-slate-200"
+              )}
+            >
+              Fragment WGSL
+            </button>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowHint((v) => !v)}
+              className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-slate-300 hover:bg-white/10 transition-colors"
+            >
+              {showHint ? "Hide hint" : "Show hint"}
+            </button>
+            <button
+              onClick={handleValidate}
+              disabled={validating}
+              className="rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-[10px] font-medium text-cyan-100 hover:bg-cyan-300/20 transition-colors disabled:opacity-50"
+            >
+              {validating ? "Checking..." : "Validate WGSL"}
+            </button>
+          </div>
+        </div>
+
+        {showHint ? (
+          <div className="mx-3 mt-2 rounded-lg border border-brand/20 bg-brand/10 px-3 py-2 text-[11px] text-slate-300">
+            <span className="font-semibold text-brand-subtle">Hint: </span>
+            This is read-only lesson code. Switch to the Editor workspace to experiment.
+          </div>
+        ) : null}
+
+        {compileError ? (
+          <div className="mx-3 mt-2 rounded-lg border border-rose-400/20 bg-rose-400/10 px-3 py-2 text-[11px] text-rose-200">
+            {compileError}
+          </div>
+        ) : null}
+
+        <div className="flex-1 min-h-0">
+          <MonacoEditor
+            height="100%"
+            language="wgsl"
+            value={activeCode}
+            options={{
+              readOnly: true,
+              minimap: { enabled: false },
+              scrollBeyondLastLine: false,
+              fontSize: 12,
+              lineNumbers: "on",
+              folding: true,
+              automaticLayout: true,
+              theme: "vs-dark"
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ExerciseValidation({

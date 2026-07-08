@@ -429,6 +429,6 @@ async function createDemoInstance(
     case "hello-triangle":
       return createHelloTriangleDemo(device, format, shaders);
     default:
-      return createGeometryMeshDemo(device, format, id);
+      return createGeometryMeshDemo(device, format, id, shaders);
   }
 }

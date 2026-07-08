@@ -27,6 +27,7 @@ import {
   type GeometryShapeId,
   type GeometryTransformMode
 } from "@/lib/stores/geometry-store";
+import { NumericInput } from "@/components/lab/controls/numeric-input";
 
 interface ShapeMeta {
   id: GeometryShapeId;
@@ -268,7 +269,7 @@ export function GeometryLabPanel() {
           <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
             <div className="mb-3 flex items-center justify-between gap-3">
               <h3 className="text-xs font-semibold text-white">2. Transform Mesh</h3>
-              <span className="text-[10px] text-slate-500">Sliders update live</span>
+              <span className="text-[10px] text-slate-500">Numeric controls update live</span>
             </div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
               {transformPresets.map((item) => {
@@ -383,7 +384,7 @@ function GuidedSteps() {
     <div className="grid gap-2 text-xs text-slate-300 sm:grid-cols-3">
       {[
         ["Pick", "Select a mesh primitive."],
-        ["Edit", "Adjust transform sliders."],
+        ["Edit", "Adjust transforms with numeric controls."],
         ["Inspect", "Watch topology and viewport update."]
       ].map(([title, body], index) => (
         <div key={title} className="rounded-xl border border-brand/20 bg-brand/10 p-3">
@@ -467,8 +468,6 @@ function ControlGrid({ children }: { children: ReactNode }) {
   return <div className="grid gap-3 text-[11px] text-slate-400 sm:grid-cols-3">{children}</div>;
 }
 
-import { NumericInput } from "@/components/lab/controls/numeric-input";
-
 function ControlSlider({
   label,
   value,
@@ -485,35 +484,15 @@ function ControlSlider({
   onChange: (value: number) => void;
 }) {
   return (
-    <div className="space-y-2">
-      <div className="mb-1 flex items-center justify-between gap-2">
-        <span className="text-xs text-slate-300">{label}</span>
-        <span className="font-mono text-[10px] text-slate-400">
-          {Number.isInteger(value) ? value : value.toFixed(2)}
-        </span>
-      </div>
-      <div className="flex items-center gap-2">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(event) => onChange(Number(event.target.value))}
-          className="flex-1 accent-brand"
-        />
-        <div className="w-20">
-          <NumericInput
-            value={value}
-            min={min}
-            max={max}
-            step={step}
-            onChange={onChange}
-            precision={step < 1 ? 2 : 0}
-          />
-        </div>
-      </div>
-    </div>
+    <NumericInput
+      label={label}
+      value={value}
+      min={min}
+      max={max}
+      step={step}
+      onChange={onChange}
+      precision={step < 1 ? 2 : 0}
+    />
   );
 }
 

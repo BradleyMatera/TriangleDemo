@@ -9527,72 +9527,73 @@ function NumericInput({ label, value, onChange, min = -Infinity, max = Infinity,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center bg-gray-800/50 border border-gray-700 rounded-md overflow-hidden",
+                className: "flex items-center rounded-lg border border-white/10 bg-white/[0.04] overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                         ref: inputRef,
                         id: id,
                         type: "text",
+                        inputMode: "decimal",
                         value: displayValue,
                         onChange: (e)=>handleChange(e.target.value),
                         onFocus: handleFocus,
                         onBlur: handleBlur,
                         onKeyDown: handleKeyDown,
-                        className: "flex-1 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className: "flex-1 bg-transparent px-2 py-1.5 text-[11px] font-mono text-white focus:outline-none focus:bg-white/[0.04] min-w-0 w-full"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/controls/numeric-input.tsx",
                         lineNumber: 101,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex flex-col border-l border-gray-700",
+                        className: "flex flex-col border-l border-white/10",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                                 type: "button",
                                 whileTap: {
-                                    scale: 0.95
+                                    scale: 0.85
                                 },
                                 onClick: handleIncrement,
-                                className: "p-1 hover:bg-gray-700/50 border-b border-gray-700",
+                                className: "px-1.5 py-0.5 hover:bg-white/10 border-b border-white/10 transition-colors",
                                 "aria-label": "Increment value",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__["Plus"], {
-                                    size: 12,
-                                    className: "text-gray-400"
+                                    size: 10,
+                                    className: "text-slate-400"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/controls/numeric-input.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/controls/numeric-input.tsx",
-                                lineNumber: 114,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
                                 type: "button",
                                 whileTap: {
-                                    scale: 0.95
+                                    scale: 0.85
                                 },
                                 onClick: handleDecrement,
-                                className: "p-1 hover:bg-gray-700/50",
+                                className: "px-1.5 py-0.5 hover:bg-white/10 transition-colors",
                                 "aria-label": "Decrement value",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$minus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Minus$3e$__["Minus"], {
-                                    size: 12,
-                                    className: "text-gray-400"
+                                    size: 10,
+                                    className: "text-slate-400"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/controls/numeric-input.tsx",
-                                    lineNumber: 130,
+                                    lineNumber: 131,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/controls/numeric-input.tsx",
-                                lineNumber: 123,
+                                lineNumber: 124,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/controls/numeric-input.tsx",
-                        lineNumber: 113,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this)
                 ]
@@ -9638,6 +9639,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$geometry$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/geometry-store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/controls/numeric-input.tsx [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -9849,7 +9851,7 @@ function GeometryLabPanel() {
                         children: "Geometry Lab"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 216,
+                        lineNumber: 217,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9862,7 +9864,7 @@ function GeometryLabPanel() {
                                         children: "Interactive Geometry"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 220,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -9870,13 +9872,13 @@ function GeometryLabPanel() {
                                         children: "This panel is the control surface. The WebGPU Viewport beside it is the live renderer. Select a mesh here, then use the transform controls to see the same object move in the viewport."
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 220,
+                                        lineNumber: 221,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 218,
+                                lineNumber: 219,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -9885,19 +9887,19 @@ function GeometryLabPanel() {
                                 children: "Reset mesh"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 225,
+                                lineNumber: 226,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 217,
+                        lineNumber: 218,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 215,
+                lineNumber: 216,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9908,7 +9910,7 @@ function GeometryLabPanel() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(GuidedSteps, {}, void 0, false, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 236,
+                                lineNumber: 237,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9922,7 +9924,7 @@ function GeometryLabPanel() {
                                                 children: "1. Choose Mesh"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 240,
+                                                lineNumber: 241,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -9930,13 +9932,13 @@ function GeometryLabPanel() {
                                                 children: "Updates WebGPU viewport"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 242,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 239,
+                                        lineNumber: 240,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -9953,7 +9955,7 @@ function GeometryLabPanel() {
                                                         className: "size-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 259,
+                                                        lineNumber: 260,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -9961,32 +9963,32 @@ function GeometryLabPanel() {
                                                         children: shape.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 260,
+                                                        lineNumber: 261,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(HoverHint, {
                                                         children: shape.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 261,
+                                                        lineNumber: 262,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, shape.id, true, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 248,
+                                                lineNumber: 249,
                                                 columnNumber: 19
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 244,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 238,
+                                lineNumber: 239,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10000,7 +10002,7 @@ function GeometryLabPanel() {
                                                 children: "2. Transform Mesh"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 270,
+                                                lineNumber: 271,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -10008,13 +10010,13 @@ function GeometryLabPanel() {
                                                 children: "Sliders update live"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 271,
+                                                lineNumber: 272,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 269,
+                                        lineNumber: 270,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10032,7 +10034,7 @@ function GeometryLabPanel() {
                                                         className: "size-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 290,
+                                                        lineNumber: 291,
                                                         columnNumber: 21
                                                     }, this),
                                                     item.name,
@@ -10040,19 +10042,19 @@ function GeometryLabPanel() {
                                                         children: item.help
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 293,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, item.id, true, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 278,
+                                                lineNumber: 279,
                                                 columnNumber: 19
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 273,
+                                        lineNumber: 274,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(TransformControls, {
@@ -10067,13 +10069,13 @@ function GeometryLabPanel() {
                                         onSubdivisions: setSubdivisions
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 298,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 268,
+                                lineNumber: 269,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10087,7 +10089,7 @@ function GeometryLabPanel() {
                                                 children: "3. Debug And Export"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 312,
+                                                lineNumber: 313,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -10099,20 +10101,20 @@ function GeometryLabPanel() {
                                                         className: "size-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 318,
+                                                        lineNumber: 319,
                                                         columnNumber: 17
                                                     }, this),
                                                     "Export JSON"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 314,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 311,
+                                        lineNumber: 312,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10130,7 +10132,7 @@ function GeometryLabPanel() {
                                                         className: "size-3.5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 339,
+                                                        lineNumber: 340,
                                                         columnNumber: 21
                                                     }, this),
                                                     item.name,
@@ -10138,31 +10140,31 @@ function GeometryLabPanel() {
                                                         children: item.help
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                        lineNumber: 341,
+                                                        lineNumber: 342,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, item.id, true, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 327,
+                                                lineNumber: 328,
                                                 columnNumber: 19
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 322,
+                                        lineNumber: 323,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 310,
+                                lineNumber: 311,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 235,
+                        lineNumber: 236,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -10178,7 +10180,7 @@ function GeometryLabPanel() {
                                                 children: "Selected Mesh"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 352,
+                                                lineNumber: 353,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -10186,13 +10188,13 @@ function GeometryLabPanel() {
                                                 children: activeShape.name
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 353,
+                                                lineNumber: 354,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 351,
+                                        lineNumber: 352,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -10200,13 +10202,13 @@ function GeometryLabPanel() {
                                         children: "WebGPU linked"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 355,
+                                        lineNumber: 356,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 350,
+                                lineNumber: 351,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -10214,14 +10216,14 @@ function GeometryLabPanel() {
                                 children: activeShape.viewportNote
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 359,
+                                lineNumber: 360,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(GeometryPreview, {
                                 shape: activeShape
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 360,
+                                lineNumber: 361,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10232,7 +10234,7 @@ function GeometryLabPanel() {
                                         value: topology.vertices
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 362,
+                                        lineNumber: 363,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricCard, {
@@ -10240,7 +10242,7 @@ function GeometryLabPanel() {
                                         value: topology.triangles
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 363,
+                                        lineNumber: 364,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(MetricCard, {
@@ -10248,13 +10250,13 @@ function GeometryLabPanel() {
                                         value: topology.indices
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 364,
+                                        lineNumber: 365,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 361,
+                                lineNumber: 362,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10267,39 +10269,39 @@ function GeometryLabPanel() {
                                                 className: "size-3.5 text-brand-subtle"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                                lineNumber: 368,
+                                                lineNumber: 369,
                                                 columnNumber: 15
                                             }, this),
                                             "How to read this"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                        lineNumber: 367,
+                                        lineNumber: 368,
                                         columnNumber: 13
                                     }, this),
                                     "Mesh choice and subdivision rebuild the WebGPU vertex/index buffers. Rotation, translation, and scale update the model matrix every frame. The small preview mirrors your controls so the workflow is readable even before looking at the viewport."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                                lineNumber: 366,
+                                lineNumber: 367,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 349,
+                        lineNumber: 350,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 234,
+                lineNumber: 235,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 214,
+        lineNumber: 215,
         columnNumber: 5
     }, this);
 }
@@ -10313,7 +10315,7 @@ function GuidedSteps() {
             ],
             [
                 "Edit",
-                "Adjust transform sliders."
+                "Adjust transforms with numeric controls."
             ],
             [
                 "Inspect",
@@ -10330,7 +10332,7 @@ function GuidedSteps() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 390,
+                        lineNumber: 391,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10338,7 +10340,7 @@ function GuidedSteps() {
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 393,
+                        lineNumber: 394,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10346,18 +10348,18 @@ function GuidedSteps() {
                         children: body
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 394,
+                        lineNumber: 395,
                         columnNumber: 11
                     }, this)
                 ]
             }, title, true, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 389,
+                lineNumber: 390,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 383,
+        lineNumber: 384,
         columnNumber: 5
     }, this);
 }
@@ -10373,12 +10375,12 @@ function TransformControls({ activeTransform, rotation, translation, scale, subd
                 onChange: onScale
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 425,
+                lineNumber: 426,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-            lineNumber: 424,
+            lineNumber: 425,
             columnNumber: 7
         }, this);
     }
@@ -10393,12 +10395,12 @@ function TransformControls({ activeTransform, rotation, translation, scale, subd
                 onChange: onSubdivisions
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 433,
+                lineNumber: 434,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-            lineNumber: 432,
+            lineNumber: 433,
             columnNumber: 7
         }, this);
     }
@@ -10427,12 +10429,12 @@ function TransformControls({ activeTransform, rotation, translation, scale, subd
                 onChange: (value)=>update(axis, value)
             }, axis, false, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 452,
+                lineNumber: 453,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 450,
+        lineNumber: 451,
         columnNumber: 5
     }, this);
 }
@@ -10442,85 +10444,22 @@ function ControlGrid({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 467,
+        lineNumber: 468,
         columnNumber: 10
     }, this);
 }
-;
 function ControlSlider({ label, value, min, max, step, onChange }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "space-y-2",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mb-1 flex items-center justify-between gap-2",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "text-xs text-slate-300",
-                        children: label
-                    }, void 0, false, {
-                        fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 490,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "font-mono text-[10px] text-slate-400",
-                        children: Number.isInteger(value) ? value : value.toFixed(2)
-                    }, void 0, false, {
-                        fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 491,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 489,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center gap-2",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                        type: "range",
-                        min: min,
-                        max: max,
-                        step: step,
-                        value: value,
-                        onChange: (event)=>onChange(Number(event.target.value)),
-                        className: "flex-1 accent-brand"
-                    }, void 0, false, {
-                        fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 496,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-20",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
-                            value: value,
-                            min: min,
-                            max: max,
-                            step: step,
-                            onChange: onChange,
-                            precision: step < 1 ? 2 : 0
-                        }, void 0, false, {
-                            fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                            lineNumber: 506,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 505,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 495,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+        label: label,
+        value: value,
+        min: min,
+        max: max,
+        step: step,
+        onChange: onChange,
+        precision: step < 1 ? 2 : 0
+    }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 488,
+        lineNumber: 487,
         columnNumber: 5
     }, this);
 }
@@ -10541,20 +10480,20 @@ function GeometryPreview({ shape }) {
                         children: "wireframe"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 531,
+                        lineNumber: 510,
                         columnNumber: 28
                     }, this) : null,
                     debug.normals ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DebugChip, {
                         children: "normals"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 532,
+                        lineNumber: 511,
                         columnNumber: 26
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 530,
+                lineNumber: 509,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -10567,26 +10506,26 @@ function GeometryPreview({ shape }) {
                         className: "size-16"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 541,
+                        lineNumber: 520,
                         columnNumber: 9
                     }, this),
                     debug.normals ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "absolute -right-9 -top-8 h-px w-16 rotate-[-38deg] bg-emerald-300 shadow-[0_0_16px_rgba(110,231,183,0.8)]"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                        lineNumber: 543,
+                        lineNumber: 522,
                         columnNumber: 11
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 534,
+                lineNumber: 513,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 529,
+        lineNumber: 508,
         columnNumber: 5
     }, this);
 }
@@ -10596,7 +10535,7 @@ function DebugChip({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 551,
+        lineNumber: 530,
         columnNumber: 10
     }, this);
 }
@@ -10609,20 +10548,20 @@ function MetricCard({ label, value }) {
                 children: value.toLocaleString()
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 557,
+                lineNumber: 536,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 children: label
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-                lineNumber: 558,
+                lineNumber: 537,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 556,
+        lineNumber: 535,
         columnNumber: 5
     }, this);
 }
@@ -10632,7 +10571,7 @@ function HoverHint({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/geometry-lab-panel.tsx",
-        lineNumber: 565,
+        lineNumber: 544,
         columnNumber: 5
     }, this);
 }
@@ -10663,6 +10602,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$move$2d$3d$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Move3D$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/move-3d.js [app-ssr] (ecmascript) <export default as Move3D>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$scale$2d$3d$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Scale3D$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/scale-3d.js [app-ssr] (ecmascript) <export default as Scale3D>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/controls/numeric-input.tsx [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
@@ -11379,6 +11319,7 @@ function MatrixLabPanel() {
         columnNumber: 5
     }, this);
 }
+;
 function ParamGroup({ label, values, params, min, max, step, onChange }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "rounded-xl border border-white/10 bg-white/5 p-3",
@@ -11388,98 +11329,53 @@ function ParamGroup({ label, values, params, min, max, step, onChange }) {
                 children: label
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                lineNumber: 240,
+                lineNumber: 242,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col gap-2",
-                children: values.map((k)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "flex items-center gap-2 text-[10px] text-slate-400",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "w-4",
-                                children: String(k).slice(-1).toUpperCase()
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                                lineNumber: 244,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "range",
-                                min: min,
-                                max: max,
-                                step: step,
-                                value: params[k],
-                                onChange: (e)=>onChange(k, Number(e.target.value)),
-                                className: "flex-1 accent-brand"
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                                lineNumber: 245,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "w-8 text-right font-mono text-white",
-                                children: formatNumber(Number(params[k]))
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                                lineNumber: 254,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, k, true, {
+                children: values.map((k)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+                        label: String(k).slice(-1).toUpperCase(),
+                        value: Number(params[k]),
+                        min: min,
+                        max: max,
+                        step: step,
+                        onChange: (v)=>onChange(k, v)
+                    }, String(k), false, {
                         fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                        lineNumber: 243,
+                        lineNumber: 245,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                lineNumber: 241,
+                lineNumber: 243,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-        lineNumber: 239,
+        lineNumber: 241,
         columnNumber: 5
     }, this);
 }
 function ParamKnob({ label, value, min, max, step, onChange }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "rounded-xl border border-white/10 bg-white/5 p-3",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-            className: "flex flex-col gap-1 text-[10px] text-slate-400",
-            children: [
-                label,
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                    type: "range",
-                    min: min,
-                    max: max,
-                    step: step,
-                    value: value,
-                    onChange: (e)=>onChange(Number(e.target.value)),
-                    className: "accent-brand"
-                }, void 0, false, {
-                    fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                    lineNumber: 281,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "font-mono text-white",
-                    children: formatNumber(value)
-                }, void 0, false, {
-                    fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-                    lineNumber: 290,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+            label: label,
+            value: value,
+            min: min,
+            max: max,
+            step: step,
+            onChange: onChange
+        }, void 0, false, {
             fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-            lineNumber: 279,
+            lineNumber: 277,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/matrix-lab-panel.tsx",
-        lineNumber: 278,
+        lineNumber: 276,
         columnNumber: 5
     }, this);
 }
@@ -11686,6 +11582,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript) <export default as Eye>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/eye-off.js [app-ssr] (ecmascript) <export default as EyeOff>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/controls/numeric-input.tsx [app-ssr] (ecmascript)");
 "use client";
 ;
 ;
@@ -12018,35 +11915,17 @@ function LightingLabPanel() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 gap-3 sm:grid-cols-2",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "flex flex-col gap-1 text-[10px] text-slate-400",
-                                children: [
-                                    "Intensity",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "range",
-                                        min: 0,
-                                        max: 2,
-                                        step: 0.05,
-                                        value: activeLight.intensity,
-                                        onChange: (e)=>updateLight(activeLight.id, {
-                                                intensity: Number(e.target.value)
-                                            }),
-                                        className: "accent-brand"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 173,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "font-mono text-white",
-                                        children: activeLight.intensity.toFixed(2)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 182,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+                                label: "Intensity",
+                                value: activeLight.intensity,
+                                min: 0,
+                                max: 2,
+                                step: 0.05,
+                                precision: 2,
+                                onChange: (v)=>updateLight(activeLight.id, {
+                                        intensity: v
+                                    })
+                            }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                 lineNumber: 171,
                                 columnNumber: 11
@@ -12067,7 +11946,7 @@ function LightingLabPanel() {
                                                 className: "size-7 rounded border border-white/10 bg-transparent"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 183,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12075,19 +11954,19 @@ function LightingLabPanel() {
                                                 children: activeLight.color
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                                lineNumber: 193,
+                                                lineNumber: 189,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 186,
+                                        lineNumber: 182,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 184,
+                                lineNumber: 180,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -12109,7 +11988,7 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "x", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 202,
+                                    lineNumber: 198,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12121,7 +12000,7 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "y", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 199,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12133,7 +12012,7 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "z", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 200,
                                     columnNumber: 17
                                 }, this)
                             ]
@@ -12148,7 +12027,7 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "x", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 204,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12160,7 +12039,7 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "y", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 209,
+                                    lineNumber: 205,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12172,14 +12051,14 @@ function LightingLabPanel() {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "z", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 206,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 199,
+                        lineNumber: 195,
                         columnNumber: 11
                     }, this) : null
                 ]
@@ -12208,7 +12087,7 @@ function LightingLabPanel() {
                                     children: "Scene preview"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 221,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12225,18 +12104,18 @@ function LightingLabPanel() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 222,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                            lineNumber: 224,
+                            lineNumber: 220,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 223,
+                        lineNumber: 219,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12249,7 +12128,7 @@ function LightingLabPanel() {
                                     children: "normals"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 229,
                                     columnNumber: 28
                                 }, this) : null,
                                 lightingOnly ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12257,18 +12136,18 @@ function LightingLabPanel() {
                                     children: "lighting only"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 230,
                                     columnNumber: 29
                                 }, this) : null
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                            lineNumber: 232,
+                            lineNumber: 228,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 231,
+                        lineNumber: 227,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12282,11 +12161,35 @@ function LightingLabPanel() {
                                         children: lights.filter((l)=>l.enabled).length
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 239,
+                                        lineNumber: 235,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Active lights"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                        lineNumber: 236,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                lineNumber: 234,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "rounded-lg bg-white/5 p-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "font-display text-sm text-white",
+                                        children: activeLight.type
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                        lineNumber: 239,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: "Selected type"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 240,
@@ -12303,14 +12206,14 @@ function LightingLabPanel() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "font-display text-sm text-white",
-                                        children: activeLight.type
+                                        children: activeLight.intensity.toFixed(2)
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 243,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: "Selected type"
+                                        children: "Intensity"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 244,
@@ -12321,41 +12224,17 @@ function LightingLabPanel() {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                 lineNumber: 242,
                                 columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "rounded-lg bg-white/5 p-2",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "font-display text-sm text-white",
-                                        children: activeLight.intensity.toFixed(2)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 247,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: "Intensity"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 248,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 246,
-                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 237,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this)
                 ]
             }, `${showNormals}-${lightingOnly}`, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 217,
+                lineNumber: 213,
                 columnNumber: 7
             }, this)
         ]
@@ -12365,36 +12244,18 @@ function LightingLabPanel() {
         columnNumber: 5
     }, this);
 }
+;
 function VectorSlider({ label, value, min, max, step, onChange }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-        className: "flex flex-col gap-1 text-[10px] text-slate-400",
-        children: [
-            label,
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                type: "range",
-                min: min,
-                max: max,
-                step: step,
-                value: value,
-                onChange: (e)=>onChange(Number(e.target.value)),
-                className: "accent-brand"
-            }, void 0, false, {
-                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 274,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "font-mono text-white",
-                children: value.toFixed(2)
-            }, void 0, false, {
-                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 283,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+        label: label,
+        value: value,
+        min: min,
+        max: max,
+        step: step,
+        onChange: onChange
+    }, void 0, false, {
         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-        lineNumber: 272,
+        lineNumber: 270,
         columnNumber: 5
     }, this);
 }
@@ -12447,7 +12308,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileImage$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-image.js [app-ssr] (ecmascript) <export default as FileImage>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$grid$2d$3x3$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid3X3$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/grid-3x3.js [app-ssr] (ecmascript) <export default as Grid3X3>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/controls/numeric-input.tsx [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -12586,7 +12449,7 @@ function TexturesLabPanel() {
                         children: "Textures Lab"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 103,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -12594,7 +12457,7 @@ function TexturesLabPanel() {
                         children: "Texture & UV Module"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 104,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12602,13 +12465,13 @@ function TexturesLabPanel() {
                         children: "Preview sampler settings, UV transforms, texture cards, and common errors."
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 105,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 102,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12628,20 +12491,20 @@ function TexturesLabPanel() {
                                         className: "size-3 text-emerald-400"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 126,
                                         columnNumber: 31
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
                                         className: "size-3 text-rose-400"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 126,
                                         columnNumber: 86
                                     }, this),
                                     card.name
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 124,
+                                lineNumber: 125,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12649,19 +12512,19 @@ function TexturesLabPanel() {
                                 children: card.format
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 128,
+                                lineNumber: 129,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, card.id, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 112,
+                        lineNumber: 113,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 108,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12678,14 +12541,14 @@ function TexturesLabPanel() {
                                     className: "size-3.5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                    lineNumber: 147,
+                                    lineNumber: 148,
                                     columnNumber: 15
                                 }, this),
                                 preset.label
                             ]
                         }, preset.id, true, {
                             fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                            lineNumber: 138,
+                            lineNumber: 139,
                             columnNumber: 13
                         }, this);
                     }),
@@ -12698,14 +12561,14 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 161,
+                                lineNumber: 162,
                                 columnNumber: 11
                             }, this),
                             "UV grid"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 153,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -12718,14 +12581,14 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 171,
+                                lineNumber: 172,
                                 columnNumber: 11
                             }, this),
                             "Copy WGSL"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 165,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -12738,20 +12601,20 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 180,
+                                lineNumber: 181,
                                 columnNumber: 11
                             }, this),
                             "Export"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 174,
+                        lineNumber: 175,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 134,
+                lineNumber: 135,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -12773,7 +12636,7 @@ function TexturesLabPanel() {
                                 children: activeCard.name
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 192,
+                                lineNumber: 193,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12785,13 +12648,13 @@ function TexturesLabPanel() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 193,
+                                lineNumber: 194,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 191,
+                        lineNumber: 192,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12799,7 +12662,7 @@ function TexturesLabPanel() {
                         children: activeCard.description
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 195,
+                        lineNumber: 196,
                         columnNumber: 9
                     }, this),
                     activeCard.error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12809,20 +12672,20 @@ function TexturesLabPanel() {
                                 className: "mt-0.5 size-3.5 shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 198,
+                                lineNumber: 199,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: activeCard.error
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 199,
+                                lineNumber: 200,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 197,
+                        lineNumber: 198,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-wrap gap-1",
@@ -12831,126 +12694,72 @@ function TexturesLabPanel() {
                                 children: u
                             }, u, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 204,
+                                lineNumber: 205,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 202,
+                        lineNumber: 203,
                         columnNumber: 11
                     }, this)
                 ]
             }, active, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 185,
+                lineNumber: 186,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "mb-3 grid grid-cols-1 gap-3 sm:grid-cols-3",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "flex flex-col gap-1 text-[10px] text-slate-400",
-                        children: [
-                            "UV scale",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "range",
-                                min: 0.1,
-                                max: 4,
-                                step: 0.1,
-                                value: uvScale,
-                                onChange: (e)=>setUvScale(Number(e.target.value)),
-                                className: "accent-brand"
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 213,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "font-mono text-white",
-                                children: uvScale.toFixed(1)
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 222,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+                        label: "UV scale",
+                        value: uvScale,
+                        min: 0.1,
+                        max: 4,
+                        step: 0.1,
+                        precision: 1,
+                        onChange: (v)=>setUvScale(v)
+                    }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 211,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "flex flex-col gap-1 text-[10px] text-slate-400",
-                        children: [
-                            "U offset",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "range",
-                                min: -1,
-                                max: 1,
-                                step: 0.05,
-                                value: uvOffset.u,
-                                onChange: (e)=>setUvOffset((v)=>({
-                                            ...v,
-                                            u: Number(e.target.value)
-                                        })),
-                                className: "accent-brand"
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 226,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "font-mono text-white",
-                                children: uvOffset.u.toFixed(2)
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 235,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+                        label: "U offset",
+                        value: uvOffset.u,
+                        min: -1,
+                        max: 1,
+                        step: 0.05,
+                        precision: 2,
+                        onChange: (v)=>setUvOffset((prev)=>({
+                                    ...prev,
+                                    u: v
+                                }))
+                    }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 224,
+                        lineNumber: 221,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                        className: "flex flex-col gap-1 text-[10px] text-slate-400",
-                        children: [
-                            "V offset",
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "range",
-                                min: -1,
-                                max: 1,
-                                step: 0.05,
-                                value: uvOffset.v,
-                                onChange: (e)=>setUvOffset((v)=>({
-                                            ...v,
-                                            v: Number(e.target.value)
-                                        })),
-                                className: "accent-brand"
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 239,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "font-mono text-white",
-                                children: uvOffset.v.toFixed(2)
-                            }, void 0, false, {
-                                fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 248,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
+                        label: "V offset",
+                        value: uvOffset.v,
+                        min: -1,
+                        max: 1,
+                        step: 0.05,
+                        precision: 2,
+                        onChange: (v)=>setUvOffset((prev)=>({
+                                    ...prev,
+                                    v: v
+                                }))
+                    }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 237,
+                        lineNumber: 230,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 210,
+                lineNumber: 211,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -12974,7 +12783,7 @@ function TexturesLabPanel() {
                                         children: "UV preview"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 249,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12992,26 +12801,26 @@ function TexturesLabPanel() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 261,
+                                        lineNumber: 250,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 259,
+                                lineNumber: 248,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileImage$3e$__["FileImage"], {
                                 className: "size-4 text-slate-500"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 265,
+                                lineNumber: 254,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 258,
+                        lineNumber: 247,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13025,7 +12834,7 @@ function TexturesLabPanel() {
                                         children: activeCard.format
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 269,
+                                        lineNumber: 258,
                                         columnNumber: 13
                                     }, this),
                                     showGrid ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -13033,7 +12842,7 @@ function TexturesLabPanel() {
                                         children: "grid"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 270,
+                                        lineNumber: 259,
                                         columnNumber: 25
                                     }, this) : null,
                                     !activeCard.valid ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -13041,13 +12850,13 @@ function TexturesLabPanel() {
                                         children: "error"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 271,
+                                        lineNumber: 260,
                                         columnNumber: 34
                                     }, this) : null
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 268,
+                                lineNumber: 257,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13068,23 +12877,23 @@ function TexturesLabPanel() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 273,
                                         columnNumber: 17
                                     }, this) : null
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                    lineNumber: 274,
+                                    lineNumber: 263,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 273,
+                                lineNumber: 262,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 267,
+                        lineNumber: 256,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13098,20 +12907,20 @@ function TexturesLabPanel() {
                                         children: sampler.magFilter
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 286,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Mag filter"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 298,
+                                        lineNumber: 287,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 296,
+                                lineNumber: 285,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13122,20 +12931,20 @@ function TexturesLabPanel() {
                                         children: sampler.addressModeU
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 301,
+                                        lineNumber: 290,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Wrap U"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 302,
+                                        lineNumber: 291,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 300,
+                                lineNumber: 289,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13146,38 +12955,38 @@ function TexturesLabPanel() {
                                         children: activeCard.usage.length
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 305,
+                                        lineNumber: 294,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Usages"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 295,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 304,
+                                lineNumber: 293,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 295,
+                        lineNumber: 284,
                         columnNumber: 9
                     }, this)
                 ]
             }, `${active}-${sampler.id}-${uvScale}-${uvOffset.u}-${uvOffset.v}-${showGrid}`, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 252,
+                lineNumber: 241,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-        lineNumber: 101,
+        lineNumber: 102,
         columnNumber: 5
     }, this);
 }

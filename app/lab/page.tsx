@@ -18,6 +18,7 @@ import { PerformancePanel } from "@/components/lab/panels/performance-panel";
 import { DocumentationPanel } from "@/components/lab/panels/documentation-panel";
 import { StatusBar } from "@/components/lab/status-bar";
 import { CommandPalette } from "@/components/lab/command-palette";
+import { ResizableSplitPane } from "@/components/lab/ui/resizable-split-pane";
 import { useLessonStore } from "@/lib/stores/lesson-store";
 import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 import { useUiStore } from "@/lib/stores/ui-store";
@@ -97,83 +98,52 @@ function ActiveWorkspace({
   switch (activePanel) {
     case "editor":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <CodeEditorPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<CodeEditorPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "pipeline":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <PipelineVisualizerPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<PipelineVisualizerPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "shaders":
-      return <ShaderPlaygroundPanel />;
+      return (
+        <ResizableSplitPane leftPane={<ShaderPlaygroundPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={55} />
+      );
     case "geometry":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <GeometryLabPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<GeometryLabPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "matrices":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <MatrixLabPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<MatrixLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "lighting":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <LightingLabPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<LightingLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "textures":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <TexturesLabPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<TexturesLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "examples":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <ExamplesLabPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<ExamplesLabPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "performance":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <PerformancePanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<PerformancePanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "playground":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <ShaderPlaygroundPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<ShaderPlaygroundPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={55} />
       );
     case "documentation":
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-2">
-          <DocumentationPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<DocumentationPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
       );
     case "lessons":
     default:
       return (
-        <div className="flex h-full flex-col gap-4 lg:grid lg:h-full lg:grid-cols-[1fr_1.2fr]">
-          <LessonContentPanel />
-          <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
-        </div>
+        <ResizableSplitPane leftPane={<LessonContentPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={40} />
       );
   }
 }

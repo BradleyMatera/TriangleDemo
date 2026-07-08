@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Copy, Download, Eye, EyeOff, Grid3X3, Move3D, Rotate3D, Scale3D } from "lucide-react";
+import { Copy, Download, Eye, EyeOff, Grid3X3, Move3D, Rotate3D, Scale3D, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useGeometryStore } from "@/lib/stores/geometry-store";
 
 type MatrixId = "model" | "world" | "view" | "projection" | "perspective" | "orthographic";
 
@@ -33,6 +34,59 @@ export function MatrixLabPanel() {
 
   const activeMatrix = matrices.find((m) => m.id === active) ?? matrices[0]!;
   const matrix = computeMatrix(active, params);
+
+  // Wire matrix transforms to the viewport via the geometry store
+  const geoRotation = useGeometryStore((s) => s.rotation);
+  const geoTranslation = useGeometryStore((s) => s.translation);
+  const geoScale = useGeometryStore((s) => s.scale);
+  const setRotation = useGeometryStore((s) => s.setRotationAxis);
+  const setTranslation = useGeometryStore((s) => s.setTranslationAxis);
+  const setScale = useGeometryStore((s) => s.setScale);
+
+  const syncToViewport = active === "world" || active === "model";
+
+  useEffect(() => {
+    if (!syncToViewport) return;
+    // Only update if params actually differ from current geo store values
+    if (
+      params.rx !== geoRotation.x ||
+      params.ry !== geoRotation.y ||
+      params.rz !== geoRotation.z
+    ) {
+      setRotation("x", params.rx);
+      setRotation("y", params.ry);
+      setRotation("z", params.rz);
+    }
+    if (
+      params.tx !== geoTranslation.x ||
+      params.ty !== geoTranslation.y ||
+      params.tz !== geoTranslation.z
+    ) {
+      setTranslation("x", params.tx);
+      setTranslation("y", params.ty);
+      setTranslation("z", params.tz);
+    }
+    if (params.sx !== geoScale) {
+      setScale(params.sx);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params, syncToViewport]);
+
+  // Also sync viewport → panel when switching to world/model view
+  const syncFromViewport = () => {
+    setParams((p) => ({
+      ...p,
+      rx: geoRotation.x,
+      ry: geoRotation.y,
+      rz: geoRotation.z,
+      tx: geoTranslation.x,
+      ty: geoTranslation.y,
+      tz: geoTranslation.z,
+      sx: geoScale,
+      sy: geoScale,
+      sz: geoScale,
+    }));
+  };
 
   const handleCopy = () => {
     void navigator.clipboard.writeText(formatMatrix(matrix));
@@ -86,6 +140,28 @@ export function MatrixLabPanel() {
           );
         })}
       </div>
+
+      {syncToViewport ? (
+        <div className="mb-3 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-3 py-2">
+          <Info className="size-3.5 text-emerald-400 shrink-0" />
+          <span className="text-[11px] text-emerald-300 flex-1">
+            Changes here update the viewport cube in real time.
+          </span>
+          <button
+            onClick={syncFromViewport}
+            className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 text-[10px] text-emerald-300 hover:bg-emerald-500/20 transition-colors"
+          >
+            Sync from viewport
+          </button>
+        </div>
+      ) : (
+        <div className="mb-3 flex items-center gap-2 rounded-xl border border-brand/20 bg-brand/10 px-3 py-2">
+          <Info className="size-3.5 text-brand-subtle shrink-0" />
+          <span className="text-[11px] text-slate-300">
+            Select &ldquo;World&rdquo; or &ldquo;Model&rdquo; to control the viewport cube directly.
+          </span>
+        </div>
+      )}
 
       <div className="mb-3 rounded-xl border border-white/10 bg-white/5 p-3">
         <div className="mb-2 flex items-center justify-between">
@@ -218,6 +294,8 @@ export function MatrixLabPanel() {
   );
 }
 
+import { NumericInput } from "@/components/lab/controls/numeric-input";
+
 function ParamGroup({
   label,
   values,
@@ -240,19 +318,15 @@ function ParamGroup({
       <div className="mb-2 text-[10px] uppercase tracking-wider text-brand-subtle">{label}</div>
       <div className="flex flex-col gap-2">
         {values.map((k) => (
-          <label key={k as string} className="flex items-center gap-2 text-[10px] text-slate-400">
-            <span className="w-4">{String(k).slice(-1).toUpperCase()}</span>
-            <input
-              type="range"
-              min={min}
-              max={max}
-              step={step}
-              value={params[k as string]}
-              onChange={(e) => onChange(k as string, Number(e.target.value))}
-              className="flex-1 accent-brand"
-            />
-            <span className="w-8 text-right font-mono text-white">{formatNumber(Number(params[k as string]))}</span>
-          </label>
+          <NumericInput
+            key={String(k)}
+            label={String(k).slice(-1).toUpperCase()}
+            value={Number(params[k as string])}
+            min={min}
+            max={max}
+            step={step}
+            onChange={(v) => onChange(k as string, v)}
+          />
         ))}
       </div>
     </div>
@@ -276,19 +350,14 @@ function ParamKnob({
 }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/5 p-3">
-      <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-        {label}
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="accent-brand"
-        />
-        <span className="font-mono text-white">{formatNumber(value)}</span>
-      </label>
+      <NumericInput
+        label={label}
+        value={value}
+        min={min}
+        max={max}
+        step={step}
+        onChange={onChange}
+      />
     </div>
   );
 }

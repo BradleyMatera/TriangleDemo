@@ -97,37 +97,38 @@ export function NumericInput({
         </label>
       )}
       
-      <div className="flex items-center bg-gray-800/50 border border-gray-700 rounded-md overflow-hidden">
+      <div className="flex items-center rounded-lg border border-white/10 bg-white/[0.04] overflow-hidden">
         <input
           ref={inputRef}
           id={id}
           type="text"
+          inputMode="decimal"
           value={displayValue}
           onChange={(e) => handleChange(e.target.value)}
           onFocus={handleFocus}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="flex-1 bg-transparent px-2 py-1.5 text-[11px] font-mono text-white focus:outline-none focus:bg-white/[0.04] min-w-0 w-full"
         />
         
-        <div className="flex flex-col border-l border-gray-700">
+        <div className="flex flex-col border-l border-white/10">
           <motion.button
             type="button"
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.85 }}
             onClick={handleIncrement}
-            className="p-1 hover:bg-gray-700/50 border-b border-gray-700"
+            className="px-1.5 py-0.5 hover:bg-white/10 border-b border-white/10 transition-colors"
             aria-label="Increment value"
           >
-            <Plus size={12} className="text-gray-400" />
+            <Plus size={10} className="text-slate-400" />
           </motion.button>
           <motion.button
             type="button"
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.85 }}
             onClick={handleDecrement}
-            className="p-1 hover:bg-gray-700/50"
+            className="px-1.5 py-0.5 hover:bg-white/10 transition-colors"
             aria-label="Decrement value"
           >
-            <Minus size={12} className="text-gray-400" />
+            <Minus size={10} className="text-slate-400" />
           </motion.button>
         </div>
       </div>

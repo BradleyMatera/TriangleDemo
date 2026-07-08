@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Copy, Download, ImageIcon, Layers, AlertCircle, CheckCircle2, FileImage, Grid3X3 } from "lucide-react";
+import { Copy, Download, ImageIcon, Layers, AlertCircle, CheckCircle2, FileImage, Grid3X3, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { NumericInput } from "@/components/lab/controls/numeric-input";
 
 interface TextureCard {
   id: string;
@@ -103,6 +104,13 @@ export function TexturesLabPanel() {
         <span className="text-[10px] uppercase tracking-[0.3em] text-brand-subtle">Textures Lab</span>
         <h2 className="mt-1 font-display text-lg font-semibold text-white">Texture & UV Module</h2>
         <p className="text-xs text-slate-400">Preview sampler settings, UV transforms, texture cards, and common errors.</p>
+      </div>
+
+      <div className="mb-3 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-3 py-2">
+        <Info className="size-3.5 text-emerald-400 shrink-0" />
+        <span className="text-[11px] text-emerald-300 flex-1">
+          UV scale and offset update the texture preview below in real time.
+        </span>
       </div>
 
       <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -208,45 +216,33 @@ export function TexturesLabPanel() {
       </motion.div>
 
       <div className="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-          UV scale
-          <input
-            type="range"
-            min={0.1}
-            max={4}
-            step={0.1}
-            value={uvScale}
-            onChange={(e) => setUvScale(Number(e.target.value))}
-            className="accent-brand"
-          />
-          <span className="font-mono text-white">{uvScale.toFixed(1)}</span>
-        </label>
-        <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-          U offset
-          <input
-            type="range"
-            min={-1}
-            max={1}
-            step={0.05}
-            value={uvOffset.u}
-            onChange={(e) => setUvOffset((v) => ({ ...v, u: Number(e.target.value) }))}
-            className="accent-brand"
-          />
-          <span className="font-mono text-white">{uvOffset.u.toFixed(2)}</span>
-        </label>
-        <label className="flex flex-col gap-1 text-[10px] text-slate-400">
-          V offset
-          <input
-            type="range"
-            min={-1}
-            max={1}
-            step={0.05}
-            value={uvOffset.v}
-            onChange={(e) => setUvOffset((v) => ({ ...v, v: Number(e.target.value) }))}
-            className="accent-brand"
-          />
-          <span className="font-mono text-white">{uvOffset.v.toFixed(2)}</span>
-        </label>
+        <NumericInput
+          label="UV scale"
+          value={uvScale}
+          min={0.1}
+          max={4}
+          step={0.1}
+          precision={1}
+          onChange={(v) => setUvScale(v)}
+        />
+        <NumericInput
+          label="U offset"
+          value={uvOffset.u}
+          min={-1}
+          max={1}
+          step={0.05}
+          precision={2}
+          onChange={(v) => setUvOffset((prev) => ({ ...prev, u: v }))}
+        />
+        <NumericInput
+          label="V offset"
+          value={uvOffset.v}
+          min={-1}
+          max={1}
+          step={0.05}
+          precision={2}
+          onChange={(v) => setUvOffset((prev) => ({ ...prev, v: v }))}
+        />
       </div>
 
       <motion.div

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode, RefObject } from "react";
+import { NumericInput } from "@/components/lab/controls/numeric-input";
 import type { DemoState } from "@/lib/webgpu/use-webgpu-demo";
 import { EmptyState } from "@/components/lab/ui/empty-state";
 import { LabButton } from "@/components/lab/ui/lab-button";
@@ -368,39 +369,40 @@ export function CameraControls({
         </div>
       </div>
       <div className="grid gap-3 text-[11px] text-slate-400 sm:grid-cols-5">
-        <CameraSlider
+        <CameraNumericInput
           label="Orbit X"
           value={camera.orbitX}
           min={-90}
           max={90}
           onChange={(value) => onCameraChange({ ...camera, orbitX: value })}
         />
-        <CameraSlider
+        <CameraNumericInput
           label="Orbit Y"
           value={camera.orbitY}
           min={-180}
           max={180}
           onChange={(value) => onCameraChange({ ...camera, orbitY: value })}
         />
-        <CameraSlider
+        <CameraNumericInput
           label="Pan X"
           value={camera.panX}
           min={-80}
           max={80}
           onChange={(value) => onCameraChange({ ...camera, panX: value })}
         />
-        <CameraSlider
+        <CameraNumericInput
           label="Pan Y"
           value={camera.panY}
           min={-80}
           max={80}
           onChange={(value) => onCameraChange({ ...camera, panY: value })}
         />
-        <CameraSlider
+        <CameraNumericInput
           label="Zoom"
           value={Math.round(camera.zoom * 100)}
           min={50}
           max={180}
+          step={5}
           onChange={(value) => onCameraChange({ ...camera, zoom: value / 100 })}
           suffix="%"
         />
@@ -409,13 +411,14 @@ export function CameraControls({
   );
 }
 
-function CameraSlider({
+function CameraNumericInput({
   label,
   value,
   min,
   max,
   suffix = "",
-  onChange
+  onChange,
+  step = 1
 }: {
   label: string;
   value: number;
@@ -423,25 +426,17 @@ function CameraSlider({
   max: number;
   suffix?: string;
   onChange: (value: number) => void;
+  step?: number;
 }) {
   return (
-    <label className="min-w-0">
-      <div className="mb-1 flex items-center justify-between gap-2">
-        <span>{label}</span>
-        <span className="text-slate-300">
-          {value}
-          {suffix}
-        </span>
-      </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value))}
-        className="w-full accent-cyan-300"
-      />
-    </label>
+    <NumericInput
+      label={`${label} (${value}${suffix})`}
+      value={value}
+      min={min}
+      max={max}
+      step={step}
+      onChange={onChange}
+    />
   );
 }
 

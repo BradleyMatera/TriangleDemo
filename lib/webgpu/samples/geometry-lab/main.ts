@@ -1,6 +1,7 @@
 import { mat4 } from "gl-matrix";
 import type { DemoInstance } from "../../types";
 import { useGeometryStore, type GeometryShapeId } from "@/lib/stores/geometry-store";
+import type { ShaderOverrides } from "../../triangle-demo";
 
 type MeshData = {
   vertices: Float32Array;
@@ -9,7 +10,7 @@ type MeshData = {
   triangleCount: number;
 };
 
-const vertexShader = /* wgsl */ `
+const defaultVertexShader = /* wgsl */ `
 struct Uniforms {
   mvp: mat4x4f,
 };
@@ -30,7 +31,7 @@ fn main(@location(0) position: vec3f, @location(1) color: vec3f) -> VertexOut {
 }
 `;
 
-const fragmentShader = /* wgsl */ `
+const defaultFragmentShader = /* wgsl */ `
 @fragment
 fn main(@location(0) color: vec3f) -> @location(0) vec4f {
   return vec4f(color, 1.0);
@@ -40,14 +41,18 @@ fn main(@location(0) color: vec3f) -> @location(0) vec4f {
 export async function createGeometryMeshDemo(
   device: GPUDevice,
   format: GPUTextureFormat,
-  shapeId: GeometryShapeId
+  shapeId: GeometryShapeId,
+  shaders?: ShaderOverrides
 ): Promise<DemoInstance> {
   const mesh = buildMesh(shapeId, useGeometryStore.getState().subdivisions);
+
+  const effectiveVertex = shaders?.vertexShader ?? defaultVertexShader;
+  const effectiveFragment = shaders?.fragmentShader ?? defaultFragmentShader;
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
     vertex: {
-      module: device.createShaderModule({ code: vertexShader }),
+      module: device.createShaderModule({ code: effectiveVertex }),
       entryPoint: "main",
       buffers: [
         {
@@ -60,7 +65,7 @@ export async function createGeometryMeshDemo(
       ]
     },
     fragment: {
-      module: device.createShaderModule({ code: fragmentShader }),
+      module: device.createShaderModule({ code: effectiveFragment }),
       entryPoint: "main",
       targets: [{ format }]
     },
