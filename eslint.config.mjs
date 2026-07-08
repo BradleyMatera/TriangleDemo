@@ -7,7 +7,8 @@ const config = [
   ...next,
   {
     rules: {
-      "react/jsx-props-no-spreading": "off"
+      "react/jsx-props-no-spreading": "off",
+      "react-hooks/set-state-in-effect": "off"
     }
   }
 ];

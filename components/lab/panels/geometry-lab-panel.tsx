@@ -467,6 +467,8 @@ function ControlGrid({ children }: { children: ReactNode }) {
   return <div className="grid gap-3 text-[11px] text-slate-400 sm:grid-cols-3">{children}</div>;
 }
 
+import { NumericInput } from "@/components/lab/controls/numeric-input";
+
 function ControlSlider({
   label,
   value,
@@ -483,21 +485,35 @@ function ControlSlider({
   onChange: (value: number) => void;
 }) {
   return (
-    <label className="min-w-0">
+    <div className="space-y-2">
       <div className="mb-1 flex items-center justify-between gap-2">
-        <span>{label}</span>
-        <span className="font-mono text-slate-300">{Number.isInteger(value) ? value : value.toFixed(2)}</span>
+        <span className="text-xs text-slate-300">{label}</span>
+        <span className="font-mono text-[10px] text-slate-400">
+          {Number.isInteger(value) ? value : value.toFixed(2)}
+        </span>
       </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value))}
-        className="w-full accent-brand"
-      />
-    </label>
+      <div className="flex items-center gap-2">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(event) => onChange(Number(event.target.value))}
+          className="flex-1 accent-brand"
+        />
+        <div className="w-20">
+          <NumericInput
+            value={value}
+            min={min}
+            max={max}
+            step={step}
+            onChange={onChange}
+            precision={step < 1 ? 2 : 0}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
