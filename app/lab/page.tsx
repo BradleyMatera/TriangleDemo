@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { LabTopNav } from "@/components/lab/navigation/top-nav";
 import { LessonSidebar } from "@/components/lab/sidebar/lesson-sidebar";
 import { LessonContentPanel } from "@/components/lab/panels/lesson-content-panel";
@@ -29,6 +29,7 @@ import { cn } from "@/lib/utils";
 import type { ShaderOverrides, ShapeId } from "@/lib/webgpu/triangle-demo";
 
 export default function LabPage() {
+  const [mounted, setMounted] = useState(false);
   const activePanel = useUiStore((s) => s.activePanel);
   const reduceMotion = useUiStore((s) => s.reduceMotion);
   const highDensity = useUiStore((s) => s.highDensity);
@@ -50,6 +51,18 @@ export default function LabPage() {
     }),
     [appliedShaders, codeVertex, codeFragment]
   );
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="flex h-[100dvh] w-screen items-center justify-center bg-[#05070f] text-sm text-slate-400">
+        Loading WebGPU Lab...
+      </div>
+    );
+  }
 
   return (
     <div

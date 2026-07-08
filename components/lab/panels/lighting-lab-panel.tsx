@@ -33,7 +33,7 @@ export function LightingLabPanel() {
 
   // Generate and push WGSL to the live preview whenever lights change
   useEffect(() => {
-    const fragment = buildLitFragmentShader(lights, showNormals);
+    const fragment = buildLitFragmentShader(lights, showNormals, lightingOnly);
     const vertex = `struct Uniforms {
   mvp: mat4x4f,
 };
@@ -43,6 +43,7 @@ struct VertexOut {
   @builtin(position) position: vec4f,
   @location(0) worldPos: vec3f,
   @location(1) normal: vec3f,
+  @location(2) baseColor: vec3f,
 };
 
 @vertex
@@ -51,12 +52,13 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
   out.position = uniforms.mvp * vec4f(pos, 1.0);
   out.worldPos = pos;
   out.normal = normalize(pos);
+  out.baseColor = col;
   return out;
 }
 `;
     applyShaders({ vertexShader: vertex, fragmentShader: fragment });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lights, showNormals]);
+  }, [lights, showNormals, lightingOnly]);
 
   const activeLight = lights.find((l) => l.id === activeId) ?? lights[0]!;
 
@@ -335,7 +337,7 @@ function generateLightingWGSL(lights: LightSource[]): string {
   return code;
 }
 
-function buildLitFragmentShader(lights: LightSource[], showNormals: boolean): string {
+function buildLitFragmentShader(lights: LightSource[], showNormals: boolean, lightingOnly = false): string {
   const ambient = lights.find((l) => l.id === "ambient" && l.enabled);
   const directional = lights.find((l) => l.id === "directional" && l.enabled);
   const point = lights.find((l) => l.id === "point" && l.enabled);
@@ -354,20 +356,27 @@ function buildLitFragmentShader(lights: LightSource[], showNormals: boolean): st
   const ptPos = point ? [point.position.x, point.position.y, point.position.z] : [0, 0, 0];
 
   const fmt = (n: number) => n.toFixed(2);
+  const albedoExpression = lightingOnly
+    ? "vec3f(1.0, 1.0, 1.0)"
+    : "clamp(baseColor * 1.15, vec3f(0.0, 0.0, 0.0), vec3f(1.0, 1.0, 1.0))";
 
   return `@fragment
-fn main(@location(0) worldPos: vec3f, @location(1) normal: vec3f) -> @location(0) vec4f {
+fn main(@location(0) worldPos: vec3f, @location(1) normal: vec3f, @location(2) baseColor: vec3f) -> @location(0) vec4f {
   let n = normalize(normal);
+  let viewDir = normalize(vec3f(0.0, 0.0, 4.0) - worldPos);
+  let albedo = ${albedoExpression};
 
-  var color = vec3f(0.0, 0.0, 0.0);
+  var lightEnergy = vec3f(0.0, 0.0, 0.0);
 
   // Ambient
-  color += vec3f(${fmt(ambientColor[0])}f, ${fmt(ambientColor[1])}f, ${fmt(ambientColor[2])}f) * ${fmt(ambientIntensity)}f;
+  lightEnergy += vec3f(${fmt(ambientColor[0])}f, ${fmt(ambientColor[1])}f, ${fmt(ambientColor[2])}f) * ${fmt(ambientIntensity)}f;
 
   // Directional
   let dirLight = normalize(vec3f(${fmt(dirDir[0])}f, ${fmt(dirDir[1])}f, ${fmt(dirDir[2])}f));
   let dirFactor = max(dot(n, -dirLight), 0.0);
-  color += vec3f(${fmt(dirColor[0])}f, ${fmt(dirColor[1])}f, ${fmt(dirColor[2])}f) * ${fmt(dirIntensity)}f * dirFactor;
+  let dirHalf = normalize(viewDir - dirLight);
+  let dirSpec = pow(max(dot(n, dirHalf), 0.0), 20.0) * 0.28;
+  lightEnergy += vec3f(${fmt(dirColor[0])}f, ${fmt(dirColor[1])}f, ${fmt(dirColor[2])}f) * ${fmt(dirIntensity)}f * (dirFactor + dirSpec);
 
   // Point
   let ptPos = vec3f(${fmt(ptPos[0])}f, ${fmt(ptPos[1])}f, ${fmt(ptPos[2])}f);
@@ -376,7 +385,11 @@ fn main(@location(0) worldPos: vec3f, @location(1) normal: vec3f) -> @location(0
   let ptDir = normalize(ptVec);
   let ptFactor = max(dot(n, ptDir), 0.0);
   let ptAtten = 1.0 / (1.0 + 0.09 * ptDist + 0.032 * ptDist * ptDist);
-  color += vec3f(${fmt(ptColor[0])}f, ${fmt(ptColor[1])}f, ${fmt(ptColor[2])}f) * ${fmt(ptIntensity)}f * ptFactor * ptAtten;
+  let ptHalf = normalize(viewDir + ptDir);
+  let ptSpec = pow(max(dot(n, ptHalf), 0.0), 28.0) * 0.35;
+  lightEnergy += vec3f(${fmt(ptColor[0])}f, ${fmt(ptColor[1])}f, ${fmt(ptColor[2])}f) * ${fmt(ptIntensity)}f * (ptFactor + ptSpec) * ptAtten;
+
+  var color = clamp(albedo * lightEnergy, vec3f(0.0, 0.0, 0.0), vec3f(1.0, 1.0, 1.0));
 
   ${showNormals ? "color = n * 0.5 + 0.5;" : ""}
 
