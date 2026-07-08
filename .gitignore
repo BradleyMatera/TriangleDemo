@@ -3,3 +3,4 @@ bin*
 obj*
 dist
 honest.md
+.superpowers/
