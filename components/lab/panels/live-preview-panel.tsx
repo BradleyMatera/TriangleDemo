@@ -4,14 +4,15 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useWebGpuDemo } from "@/lib/webgpu/use-webgpu-demo";
 import { useGpuMetrics } from "@/components/lab/use-gpu-metrics";
 import { useUiStore } from "@/lib/stores/ui-store";
+import { useCameraStore } from "@/lib/stores/camera-store";
+import { useMetricsStore } from "@/lib/stores/metrics-store";
 import {
   CameraControls,
   ViewportCanvas,
   ViewportHeader,
   ViewportMetricsBar,
   type RecordingState,
-  type ScreenshotState,
-  type ViewportCameraState
+  type ScreenshotState
 } from "@/components/lab/panels/live-preview-ui";
 import { cn } from "@/lib/utils";
 import type { ShapeId } from "@/lib/webgpu/triangle-demo";
@@ -35,15 +36,17 @@ export function LivePreviewPanel({
   const [recordingMessage, setRecordingMessage] = useState("");
   const [resolution, setResolution] = useState("Auto");
   const [frameCount, setFrameCount] = useState(0);
-  const [camera, setCamera] = useState<ViewportCameraState>({
-    orbitX: -15,
-    orbitY: 0,
-    panX: 0,
-    panY: 0,
-    zoom: 1
-  });
+  const cameraStore = useCameraStore();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef(0);
+
+  useEffect(() => {
+    useMetricsStore.getState().setDemoStatus(
+      state.status === "unsupported" || state.status === "error"
+        ? { type: state.status, message: state.message }
+        : { type: state.status }
+    );
+  }, [state]);
 
   useEffect(() => {
     if (!showGpuMetrics) return;
@@ -180,16 +183,9 @@ export function LivePreviewPanel({
   );
 
   const resetCamera = useCallback(() => {
-    setCamera({
-      orbitX: -15,
-      orbitY: 0,
-      panX: 0,
-      panY: 0,
-      zoom: 1
-    });
-  }, []);
+    cameraStore.reset();
+  }, [cameraStore]);
 
-  const cameraTransform = `translate(${camera.panX}px, ${camera.panY}px) scale(${camera.zoom}) rotateX(${camera.orbitX / 10}deg) rotateZ(${camera.orbitY / 25}deg)`;
   const isUnavailable = state.status === "unsupported" || state.status === "error";
   const unavailableMessage = isUnavailable ? state.message : "";
 
@@ -217,7 +213,6 @@ export function LivePreviewPanel({
       <ViewportCanvas
         canvasRef={canvasRef}
         state={state}
-        cameraTransform={cameraTransform}
         isUnavailable={isUnavailable}
         unavailableMessage={unavailableMessage}
         resolution={resolution}
@@ -227,9 +222,13 @@ export function LivePreviewPanel({
       />
 
       <CameraControls
-        camera={camera}
+        camera={cameraStore}
         resolution={resolution}
-        onCameraChange={setCamera}
+        onCameraChange={(next) => {
+          cameraStore.setOrbit(next.orbitX, next.orbitY);
+          cameraStore.setPan(next.panX, next.panY);
+          cameraStore.setZoom(next.zoom);
+        }}
         onResolutionChange={setResolution}
         onReset={resetCamera}
       />

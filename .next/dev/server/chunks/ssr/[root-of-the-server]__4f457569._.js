@@ -41,6 +41,9 @@ const useUiStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modu
         toggleSidebar: ()=>set((state)=>({
                     sidebarOpen: !state.sidebarOpen
                 })),
+        closeSidebar: ()=>set({
+                sidebarOpen: false
+            }),
         setSidebarMode: (mode)=>set({
                 sidebarMode: mode
             }),
@@ -189,7 +192,11 @@ const lessonCatalog = [
         id: "intro",
         title: "Introduction",
         status: "completed",
-        description: "What is WebGPU and how does the lab work?"
+        description: "What is WebGPU and how does the lab work?",
+        demo: {
+            type: "webgpu",
+            shape: "hello-triangle"
+        }
     },
     {
         type: "chapter",
@@ -215,7 +222,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch2-vertex-buffers",
         title: "Vertex Buffers",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "triangle"
+        }
     },
     {
         type: "chapter",
@@ -226,7 +237,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch3-index-buffers",
         title: "Index Buffers",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "quad"
+        }
     },
     {
         type: "chapter",
@@ -237,7 +252,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch4-uniform-buffers",
         title: "Uniform Buffers",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "cube"
+        }
     },
     {
         type: "chapter",
@@ -248,7 +267,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch5-matrices",
         title: "Matrices",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "two-cubes"
+        }
     },
     {
         type: "chapter",
@@ -259,7 +282,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch6-coordinate-systems",
         title: "Coordinate Systems",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "textured-cube"
+        }
     },
     {
         type: "chapter",
@@ -285,7 +312,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch8-lighting",
         title: "Lighting",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "cube"
+        }
     },
     {
         type: "chapter",
@@ -296,7 +327,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch9-model-loading",
         title: "Model Loading",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "monkey"
+        }
     },
     {
         type: "chapter",
@@ -307,7 +342,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch10-instancing",
         title: "Instancing",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "two-cubes"
+        }
     },
     {
         type: "chapter",
@@ -318,7 +357,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch11-shadow-mapping",
         title: "Shadow Mapping",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "textured-cube"
+        }
     },
     {
         type: "chapter",
@@ -329,7 +372,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch12-post-processing",
         title: "Post Processing",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "cube"
+        }
     },
     {
         type: "chapter",
@@ -340,7 +387,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch13-particles",
         title: "Particles",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "sphere"
+        }
     },
     {
         type: "chapter",
@@ -351,7 +402,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch14-compute-shaders",
         title: "Compute Shaders",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "cube"
+        }
     },
     {
         type: "chapter",
@@ -362,7 +417,11 @@ const lessonCatalog = [
         type: "lesson",
         id: "ch15-optimization",
         title: "Optimization",
-        status: "locked"
+        status: "locked",
+        demo: {
+            type: "webgpu",
+            shape: "two-cubes"
+        }
     }
 ];
 function getLessonById(id) {
@@ -405,6 +464,7 @@ function unlockNextLesson(catalog, id) {
 const useLessonStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$react$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["create"])()((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$middleware$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["persist"])((set, get)=>({
         activeLessonId: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getInitialLessonId"])(),
         progress: buildInitialProgress(),
+        unlocked: false,
         bookmarks: [],
         recent: [
             (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getInitialLessonId"])()
@@ -439,26 +499,28 @@ const useLessonStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
             });
         },
         isLessonAvailable: (id)=>{
+            if (get().unlocked) return true;
             const status = get().progress[id]?.status;
             return status === "available" || status === "in-progress" || status === "completed";
         },
         getEffectiveCatalog: ()=>{
-            const { progress } = get();
+            const { progress, unlocked } = get();
             return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"].map((item, index)=>{
                 if (item.type === "chapter") {
                     const nextChapterIndex = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"].findIndex((other, otherIndex)=>otherIndex > index && other.type === "chapter");
                     const chapterSlice = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"].slice(index + 1, nextChapterIndex === -1 ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"].length : nextChapterIndex);
                     const chapterLessons = chapterSlice.filter((other)=>other.type === "lesson");
-                    const anyAvailable = chapterLessons.some((lesson)=>progress[lesson.id]?.status !== "locked");
+                    const anyAvailable = unlocked || chapterLessons.some((lesson)=>progress[lesson.id]?.status !== "locked");
                     return {
                         ...item,
                         status: anyAvailable ? "available" : "locked"
                     };
                 }
                 const lessonProgress = progress[item.id];
+                const status = unlocked ? "available" : lessonProgress?.status ?? "locked";
                 return {
                     ...item,
-                    status: lessonProgress?.status ?? "locked"
+                    status
                 };
             });
         },
@@ -482,13 +544,38 @@ const useLessonStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_
                 return {
                     recent: next
                 };
-            })
+            }),
+        unlockAll: ()=>set((state)=>{
+                const updated = {
+                    ...state.progress
+                };
+                for (const item of __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"]){
+                    if (item.type === "lesson" && item.id && updated[item.id]?.status === "locked") {
+                        updated[item.id] = {
+                            status: "available"
+                        };
+                    }
+                }
+                return {
+                    unlocked: true,
+                    progress: updated
+                };
+            }),
+        lockAll: ()=>set(()=>({
+                    unlocked: false,
+                    activeLessonId: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getInitialLessonId"])(),
+                    progress: buildInitialProgress(),
+                    recent: [
+                        (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getInitialLessonId"])()
+                    ]
+                }))
     }), {
     name: "webgpu-lab-lesson-progress",
-    version: 1,
+    version: 2,
     partialize: (state)=>({
             activeLessonId: state.activeLessonId,
             progress: state.progress,
+            unlocked: state.unlocked,
             bookmarks: state.bookmarks,
             recent: state.recent
         }),
@@ -1299,6 +1386,9 @@ function BookmarksPanel() {
 }
 function SettingsPanel() {
     const { reduceMotion, toggleReduceMotion, showGpuMetrics, toggleGpuMetrics, highDensity, toggleHighDensity, minimap, toggleMinimap, autosave, toggleAutosave } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])();
+    const unlocked = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.unlocked);
+    const unlockAll = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.unlockAll);
+    const lockAll = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.lockAll);
     const [prefersReducedMotion, setPrefersReducedMotion] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(()=>{
         if ("TURBOPACK compile-time truthy", 1) return false;
         //TURBOPACK unreachable
@@ -1319,18 +1409,61 @@ function SettingsPanel() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         className: "mb-2 flex items-center gap-2 text-xs font-semibold text-white",
                         children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
+                                className: "size-3.5 text-brand-subtle"
+                            }, void 0, false, {
+                                fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
+                                lineNumber: 390,
+                                columnNumber: 11
+                            }, this),
+                            "Course"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
+                        lineNumber: 389,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
+                        label: "Unlock all lessons",
+                        active: unlocked,
+                        onClick: ()=>unlocked ? lockAll() : unlockAll()
+                    }, void 0, false, {
+                        fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
+                        lineNumber: 393,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "mt-2 text-[10px] text-slate-500",
+                        children: unlocked ? "All lessons are unlocked for free exploration." : "Complete each lesson to unlock the next, or toggle this to explore freely."
+                    }, void 0, false, {
+                        fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
+                        lineNumber: 398,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
+                lineNumber: 388,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "rounded-xl border border-white/10 bg-white/5 p-3",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "mb-2 flex items-center gap-2 text-xs font-semibold text-white",
+                        children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$accessibility$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Accessibility$3e$__["Accessibility"], {
                                 className: "size-3.5 text-brand-subtle"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                                lineNumber: 387,
+                                lineNumber: 407,
                                 columnNumber: 11
                             }, this),
                             "Appearance"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 386,
+                        lineNumber: 406,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
@@ -1339,7 +1472,7 @@ function SettingsPanel() {
                         onClick: toggleReduceMotion
                     }, void 0, false, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 390,
+                        lineNumber: 410,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1350,13 +1483,13 @@ function SettingsPanel() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 391,
+                        lineNumber: 411,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                lineNumber: 385,
+                lineNumber: 405,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1369,14 +1502,14 @@ function SettingsPanel() {
                                 className: "size-3.5 text-brand-subtle"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                                lineNumber: 398,
+                                lineNumber: 418,
                                 columnNumber: 11
                             }, this),
                             "Performance"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 397,
+                        lineNumber: 417,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
@@ -1385,13 +1518,13 @@ function SettingsPanel() {
                         onClick: toggleGpuMetrics
                     }, void 0, false, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 401,
+                        lineNumber: 421,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                lineNumber: 396,
+                lineNumber: 416,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1404,14 +1537,14 @@ function SettingsPanel() {
                                 className: "size-3.5 text-brand-subtle"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                                lineNumber: 406,
+                                lineNumber: 426,
                                 columnNumber: 11
                             }, this),
                             "Editor"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 405,
+                        lineNumber: 425,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
@@ -1420,7 +1553,7 @@ function SettingsPanel() {
                         onClick: toggleHighDensity
                     }, void 0, false, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 409,
+                        lineNumber: 429,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
@@ -1429,7 +1562,7 @@ function SettingsPanel() {
                         onClick: toggleMinimap
                     }, void 0, false, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 410,
+                        lineNumber: 430,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ToggleRow, {
@@ -1438,19 +1571,19 @@ function SettingsPanel() {
                         onClick: toggleAutosave
                     }, void 0, false, {
                         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                        lineNumber: 411,
+                        lineNumber: 431,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                lineNumber: 404,
+                lineNumber: 424,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-        lineNumber: 384,
+        lineNumber: 387,
         columnNumber: 5
     }, this);
 }
@@ -1468,18 +1601,18 @@ function ToggleRow({ label, active, onClick }) {
                     className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("absolute top-1 size-3 rounded-full bg-white transition-transform", active ? "left-5" : "left-1")
                 }, void 0, false, {
                     fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                    lineNumber: 438,
+                    lineNumber: 458,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-                lineNumber: 429,
+                lineNumber: 449,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-        lineNumber: 427,
+        lineNumber: 447,
         columnNumber: 5
     }, this);
 }
@@ -1494,12 +1627,12 @@ function MobileSidebarToggle() {
             className: "size-4"
         }, void 0, false, {
             fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-            lineNumber: 461,
+            lineNumber: 481,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/lab/sidebar/lesson-sidebar.tsx",
-        lineNumber: 452,
+        lineNumber: 472,
         columnNumber: 5
     }, this);
 }
@@ -1611,6 +1744,11 @@ const primaryNav = [
 function LabTopNav() {
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const { activePanel, setActivePanel, openCommandPalette, sidebarOpen, toggleSidebar, setSidebarMode } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])();
+    const openPanel = (panel)=>{
+        setActivePanel(panel);
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+    };
     const openSidebarMode = (mode)=>{
         setSidebarMode(mode);
         if (!sidebarOpen) toggleSidebar();
@@ -1633,12 +1771,12 @@ function LabTopNav() {
                                         className: "size-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1646,18 +1784,18 @@ function LabTopNav() {
                                     children: "WebGPU Lab"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 67,
+                            lineNumber: 74,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$sidebar$2f$lesson$2d$sidebar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MobileSidebarToggle"], {}, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 79,
+                            lineNumber: 86,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1666,7 +1804,7 @@ function LabTopNav() {
                                 const Icon = item.icon;
                                 const isActive = activePanel === item.id;
                                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>setActivePanel(item.id),
+                                    onClick: ()=>openPanel(item.id),
                                     title: `Open ${item.label}`,
                                     className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("relative flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium transition-colors md:px-3", isActive ? "text-white" : "text-slate-400 hover:bg-white/5 hover:text-slate-200"),
                                     children: [
@@ -1680,7 +1818,7 @@ function LabTopNav() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                            lineNumber: 98,
+                                            lineNumber: 105,
                                             columnNumber: 21
                                         }, this) : null,
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1690,7 +1828,7 @@ function LabTopNav() {
                                                     className: "size-3.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                                    lineNumber: 105,
+                                                    lineNumber: 112,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1698,31 +1836,31 @@ function LabTopNav() {
                                                     children: item.label
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                                    lineNumber: 106,
+                                                    lineNumber: 113,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                            lineNumber: 104,
+                                            lineNumber: 111,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, item.id, true, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 93,
                                     columnNumber: 17
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 81,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                    lineNumber: 66,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1737,7 +1875,7 @@ function LabTopNav() {
                                     className: "size-3.5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 120,
+                                    lineNumber: 127,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1745,7 +1883,7 @@ function LabTopNav() {
                                     children: "Command Palette"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 128,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("kbd", {
@@ -1753,13 +1891,13 @@ function LabTopNav() {
                                     children: "⌘K"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 115,
+                            lineNumber: 122,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1770,12 +1908,12 @@ function LabTopNav() {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                lineNumber: 132,
+                                lineNumber: 139,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 127,
+                            lineNumber: 134,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1787,12 +1925,12 @@ function LabTopNav() {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                lineNumber: 141,
+                                lineNumber: 148,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 135,
+                            lineNumber: 142,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1804,12 +1942,12 @@ function LabTopNav() {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                lineNumber: 150,
+                                lineNumber: 157,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 144,
+                            lineNumber: 151,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1821,12 +1959,12 @@ function LabTopNav() {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                lineNumber: 159,
+                                lineNumber: 166,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 153,
+                            lineNumber: 160,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1838,41 +1976,41 @@ function LabTopNav() {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                                lineNumber: 168,
+                                lineNumber: 175,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 162,
+                            lineNumber: 169,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "ml-1 h-4 w-px bg-white/10"
                         }, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 171,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$theme$2d$toggle$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ThemeToggle"], {}, void 0, false, {
                             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                            lineNumber: 172,
+                            lineNumber: 179,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/lab/navigation/top-nav.tsx",
-                    lineNumber: 114,
+                    lineNumber: 121,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/lab/navigation/top-nav.tsx",
-            lineNumber: 65,
+            lineNumber: 72,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/lab/navigation/top-nav.tsx",
-        lineNumber: 64,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }
@@ -2863,25 +3001,114 @@ const defaultSource = {
     vertex: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$hello$2d$triangle$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["triangleVertexWgsl"],
     fragment: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$hello$2d$triangle$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["redFragmentWgsl"]
 };
+const geometryVertexWgsl = `struct Uniforms {
+  mvp: mat4x4f,
+};
+
+@group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+struct VertexOut {
+  @builtin(position) position: vec4f,
+  @location(0) color: vec3f,
+};
+
+@vertex
+fn main(@location(0) position: vec3f, @location(1) color: vec3f) -> VertexOut {
+  var output: VertexOut;
+  output.position = uniforms.mvp * vec4f(position, 1.0);
+  output.color = color;
+  return output;
+}
+`;
+const geometryFragmentWgsl = `@fragment
+fn main(@location(0) color: vec3f) -> @location(0) vec4f {
+  return vec4f(color, 1.0);
+}
+`;
+const geometrySource = {
+    vertexFile: "geometry.vert.wgsl",
+    fragmentFile: "geometry.frag.wgsl",
+    vertex: geometryVertexWgsl,
+    fragment: geometryFragmentWgsl
+};
+const twoCubesFragmentWgsl = `@fragment
+fn main(
+  @location(0) fragUV: vec2f,
+  @location(1) fragPosition: vec4f
+) -> @location(0) vec4f {
+  return vec4f(fragUV, 0.5, 1.0) * fragPosition;
+}
+`;
+const twoCubesSource = {
+    vertexFile: "basic.vert.wgsl",
+    fragmentFile: "uv.frag.wgsl",
+    vertex: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["basicVertexWgsl"],
+    fragment: twoCubesFragmentWgsl
+};
+const litVertexWgsl = `struct Uniforms {
+  mvp: mat4x4f,
+};
+
+@group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+struct VertexOut {
+  @builtin(position) position: vec4f,
+  @location(0) worldPos: vec3f,
+  @location(1) normal: vec3f,
+  @location(2) baseColor: vec3f,
+};
+
+@vertex
+fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
+  var out: VertexOut;
+  out.position = uniforms.mvp * vec4f(pos, 1.0);
+  out.worldPos = pos;
+  out.normal = normalize(pos);
+  out.baseColor = col;
+  return out;
+}
+`;
+const litFragmentWgsl = `@fragment
+fn main(
+  @location(0) worldPos: vec3f,
+  @location(1) normal: vec3f,
+  @location(2) baseColor: vec3f
+) -> @location(0) vec4f {
+  let lightDir = normalize(vec3f(0.5, -1.0, 0.5));
+  let ambient = 0.2;
+  let diff = max(dot(normal, -lightDir), 0.0);
+  return vec4f(baseColor * (ambient + diff), 1.0);
+}
+`;
+const litSource = {
+    vertexFile: "lit.vert.wgsl",
+    fragmentFile: "lit.frag.wgsl",
+    vertex: litVertexWgsl,
+    fragment: litFragmentWgsl
+};
+const texturedSource = {
+    vertexFile: "basic.vert.wgsl",
+    fragmentFile: "sampleTextureMixColor.frag.wgsl",
+    vertex: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["basicVertexWgsl"],
+    fragment: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["texturedFragmentWgsl"]
+};
 const sources = {
+    intro: defaultSource,
     "ch1-first-triangle": defaultSource,
-    "ch2-vertex-buffers": defaultSource,
-    "ch3-index-buffers": defaultSource,
-    "ch4-uniform-buffers": defaultSource,
-    "ch5-matrices": defaultSource,
-    "ch6-coordinate-systems": defaultSource,
-    "ch7-textures": {
-        vertexFile: "basic.vert.wgsl",
-        fragmentFile: "sampleTextureMixColor.frag.wgsl",
-        vertex: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["basicVertexWgsl"],
-        fragment: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["texturedFragmentWgsl"]
-    },
-    "ch8-lighting": {
-        vertexFile: "basic.vert.wgsl",
-        fragmentFile: "sampleTextureMixColor.frag.wgsl",
-        vertex: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["basicVertexWgsl"],
-        fragment: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["texturedFragmentWgsl"]
-    }
+    "ch2-vertex-buffers": geometrySource,
+    "ch3-index-buffers": geometrySource,
+    "ch4-uniform-buffers": geometrySource,
+    "ch5-matrices": twoCubesSource,
+    "ch6-coordinate-systems": texturedSource,
+    "ch7-textures": texturedSource,
+    "ch8-lighting": litSource,
+    "ch9-model-loading": geometrySource,
+    "ch10-instancing": twoCubesSource,
+    "ch11-shadow-mapping": texturedSource,
+    "ch12-post-processing": litSource,
+    "ch13-particles": geometrySource,
+    "ch14-compute-shaders": geometrySource,
+    "ch15-optimization": twoCubesSource
 };
 function getLessonShaderSource(id) {
     return sources[id] ?? defaultSource;
@@ -4870,7 +5097,8 @@ async function loadCubeTexture(device) {
 async function createTexturedCubeDemo(device, format, options = {}) {
     const vertex = options.vertexShader ?? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["basicVertexWgsl"];
     const fragment = options.fragmentShader ?? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$textured$2d$cube$2f$shaders$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["texturedFragmentWgsl"];
-    const textureAssets = await loadCubeTexture(device);
+    const usesTexture = /textureSample|mySampler|myTexture/.test(fragment);
+    const textureAssets = usesTexture ? await loadCubeTexture(device) : null;
     const pipeline = device.createRenderPipeline({
         layout: "auto",
         vertex: {
@@ -4928,24 +5156,27 @@ async function createTexturedCubeDemo(device, format, options = {}) {
         size: 64,
         usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
     });
+    const entries = [
+        {
+            binding: 0,
+            resource: {
+                buffer: uniformBuffer
+            }
+        }
+    ];
+    if (usesTexture && textureAssets) {
+        entries.push({
+            binding: 1,
+            resource: textureAssets.sampler
+        });
+        entries.push({
+            binding: 2,
+            resource: textureAssets.texture.createView()
+        });
+    }
     const bindGroup = device.createBindGroup({
         layout: pipeline.getBindGroupLayout(0),
-        entries: [
-            {
-                binding: 0,
-                resource: {
-                    buffer: uniformBuffer
-                }
-            },
-            {
-                binding: 1,
-                resource: textureAssets.sampler
-            },
-            {
-                binding: 2,
-                resource: textureAssets.texture.createView()
-            }
-        ]
+        entries
     });
     let aspect = 1;
     let projectionMatrix = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wgpu$2d$matrix$2f$dist$2f$3$2e$x$2f$wgpu$2d$matrix$2e$module$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mat4"].perspective(2 * Math.PI / 5, aspect, 1, 100);
@@ -4991,7 +5222,7 @@ async function createTexturedCubeDemo(device, format, options = {}) {
         dispose: ()=>{
             vertexBuffer.destroy();
             uniformBuffer.destroy();
-            textureAssets.texture.destroy();
+            if (textureAssets) textureAssets.texture.destroy();
         }
     };
 }
@@ -5613,12 +5844,18 @@ const useMetricsStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node
             textures: 0,
             framePulse: 0
         },
+        demoStatus: {
+            type: "initial"
+        },
         updateMetrics: (patch)=>set((state)=>({
                     metrics: {
                         ...state.metrics,
                         ...patch
                     }
                 })),
+        setDemoStatus: (status)=>set({
+                demoStatus: status
+            }),
         pulseFrame: ()=>set((state)=>({
                     metrics: {
                         ...state.metrics,
@@ -5634,7 +5871,9 @@ __turbopack_context__.s([
     "availableShapes",
     ()=>availableShapes,
     "initTriangleDemo",
-    ()=>initTriangleDemo
+    ()=>initTriangleDemo,
+    "sampleShapes",
+    ()=>sampleShapes
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$two$2d$cubes$2f$main$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/webgpu/samples/two-cubes/main.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$samples$2f$hello$2d$triangle$2f$main$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/webgpu/samples/hello-triangle/main.ts [app-ssr] (ecmascript)");
@@ -5646,7 +5885,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$
 ;
 ;
 ;
-const availableShapes = [
+const sampleShapes = [
     {
         id: "hello-triangle",
         label: "Hello Triangle",
@@ -5676,7 +5915,9 @@ const availableShapes = [
             title: "WebGPU Samples — Textured Cube",
             url: "https://webgpu.github.io/webgpu-samples/?sample=texturedCube"
         }
-    },
+    }
+];
+const geometryShapes = [
     {
         id: "triangle",
         label: "Geometry Triangle",
@@ -5777,6 +6018,10 @@ const availableShapes = [
             url: "#geometry-lab"
         }
     }
+];
+const availableShapes = [
+    ...sampleShapes,
+    ...geometryShapes
 ];
 async function initTriangleDemo(canvas, titleElement) {
     try {
@@ -7270,9 +7515,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$webgpu$2f$use$2d$webgpu$2d$demo$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/webgpu/use-webgpu-demo.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$use$2d$gpu$2d$metrics$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/use-gpu-metrics.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/ui-store.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/metrics-store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$ui$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/panels/live-preview-ui.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -7300,6 +7547,16 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
     });
     const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const frameRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(0);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMetricsStore"].getState().setDemoStatus(state.status === "unsupported" || state.status === "error" ? {
+            type: state.status,
+            message: state.message
+        } : {
+            type: state.status
+        });
+    }, [
+        state
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         if (!showGpuMetrics) return;
         let raf;
@@ -7451,7 +7708,7 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
                 className: "glow-ring"
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-                lineNumber: 204,
+                lineNumber: 213,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$ui$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ViewportHeader"], {
@@ -7465,7 +7722,7 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
                 onToggleFullscreen: ()=>setIsFullscreen((v)=>!v)
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-                lineNumber: 206,
+                lineNumber: 215,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$ui$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ViewportCanvas"], {
@@ -7483,7 +7740,7 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
                     })
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-                lineNumber: 217,
+                lineNumber: 226,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$ui$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CameraControls"], {
@@ -7494,7 +7751,7 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
                 onReset: resetCamera
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-                lineNumber: 229,
+                lineNumber: 238,
                 columnNumber: 7
             }, this),
             showGpuMetrics ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$ui$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ViewportMetricsBar"], {
@@ -7504,13 +7761,13 @@ function LivePreviewPanel({ shapeId, shaderOverrides, demoRevision = 0 }) {
                 resolution: resolution
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-                lineNumber: 238,
+                lineNumber: 247,
                 columnNumber: 9
             }, this) : null
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/live-preview-panel.tsx",
-        lineNumber: 197,
+        lineNumber: 206,
         columnNumber: 5
     }, this);
 }
@@ -11992,7 +12249,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         children: "Lighting Lab"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 105,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -12000,7 +12257,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         children: "Lighting Module"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 106,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12008,13 +12265,13 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         children: "Configure ambient, directional, and point lights; preview normals and lighting-only state."
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 107,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 104,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12032,7 +12289,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 className: "size-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 127,
+                                lineNumber: 126,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12040,7 +12297,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 children: light.name
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 128,
+                                lineNumber: 127,
                                 columnNumber: 15
                             }, this),
                             !light.enabled ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12048,19 +12305,19 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 children: "off"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 129,
+                                lineNumber: 128,
                                 columnNumber: 33
                             }, this) : null
                         ]
                     }, light.id, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 115,
+                        lineNumber: 114,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 110,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12070,7 +12327,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         className: "size-3.5 text-emerald-400 shrink-0"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 136,
+                        lineNumber: 135,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12078,13 +12335,13 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         children: "Lighting changes update the viewport cube in real time via generated WGSL."
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 137,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 135,
+                lineNumber: 134,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12095,70 +12352,67 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 enabled: !activeLight.enabled
                             }),
                         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-medium transition-colors", activeLight.enabled ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-300" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"),
-                        "aria-pressed": activeLight.enabled,
                         children: [
                             activeLight.enabled ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sun$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sun$3e$__["Sun"], {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 153,
+                                lineNumber: 151,
                                 columnNumber: 34
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 153,
+                                lineNumber: 151,
                                 columnNumber: 65
                             }, this),
                             activeLight.enabled ? "Enabled" : "Disabled"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 143,
+                        lineNumber: 142,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>setShowNormals((v)=>!v),
                         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-medium transition-colors", showNormals ? "border-cyan-400/40 bg-cyan-400/15 text-cyan-300" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"),
-                        "aria-pressed": showNormals,
                         children: [
                             showNormals ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 166,
+                                lineNumber: 163,
                                 columnNumber: 26
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2d$off$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__EyeOff$3e$__["EyeOff"], {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 166,
+                                lineNumber: 163,
                                 columnNumber: 57
                             }, this),
                             "Normals"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 156,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         onClick: ()=>setLightingOnly((v)=>!v),
                         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[11px] font-medium transition-colors", lightingOnly ? "border-brand/40 bg-brand/15 text-brand" : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10"),
-                        "aria-pressed": lightingOnly,
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$target$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Target$3e$__["Target"], {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 179,
+                                lineNumber: 175,
                                 columnNumber: 11
                             }, this),
                             "Lighting only"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 169,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -12171,14 +12425,14 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 188,
+                                lineNumber: 184,
                                 columnNumber: 11
                             }, this),
                             "Copy WGSL"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 182,
+                        lineNumber: 178,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -12191,20 +12445,20 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 197,
+                                lineNumber: 193,
                                 columnNumber: 11
                             }, this),
                             "Export"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 191,
+                        lineNumber: 187,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 142,
+                lineNumber: 141,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -12226,7 +12480,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 208,
+                        lineNumber: 204,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12244,7 +12498,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     })
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 210,
+                                lineNumber: 206,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -12263,7 +12517,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                                 className: "size-7 rounded border border-white/10 bg-transparent"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 218,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12271,25 +12525,25 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                                 children: activeLight.color
                                             }, void 0, false, {
                                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 224,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 217,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 219,
+                                lineNumber: 215,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 209,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, this),
                     activeLight.type !== "ambient" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12305,7 +12559,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "x", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 233,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12317,7 +12571,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "y", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 234,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12329,7 +12583,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "position", "z", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 239,
+                                    lineNumber: 235,
                                     columnNumber: 17
                                 }, this)
                             ]
@@ -12344,7 +12598,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "x", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 239,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12356,7 +12610,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "y", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 240,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(VectorSlider, {
@@ -12368,20 +12622,20 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     onChange: (v)=>updateVector(activeLight.id, "direction", "z", v)
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 241,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 234,
+                        lineNumber: 230,
                         columnNumber: 11
                     }, this) : null
                 ]
             }, activeId, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 202,
+                lineNumber: 198,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -12404,7 +12658,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     children: "Scene preview"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 256,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12421,18 +12675,18 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 261,
+                                    lineNumber: 257,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                            lineNumber: 259,
+                            lineNumber: 255,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 258,
+                        lineNumber: 254,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12445,7 +12699,7 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     children: "normals"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 268,
+                                    lineNumber: 264,
                                     columnNumber: 28
                                 }, this) : null,
                                 lightingOnly ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12453,18 +12707,18 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                     children: "lighting only"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                    lineNumber: 269,
+                                    lineNumber: 265,
                                     columnNumber: 29
                                 }, this) : null
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                            lineNumber: 267,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 266,
+                        lineNumber: 262,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12478,11 +12732,35 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                         children: lights.filter((l)=>l.enabled).length
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 274,
+                                        lineNumber: 270,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Active lights"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                        lineNumber: 271,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                lineNumber: 269,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "rounded-lg bg-white/5 p-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "font-display text-sm text-white",
+                                        children: activeLight.type
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
+                                        lineNumber: 274,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: "Selected type"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 275,
@@ -12499,14 +12777,14 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "font-display text-sm text-white",
-                                        children: activeLight.type
+                                        children: activeLight.intensity.toFixed(2)
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 278,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: "Selected type"
+                                        children: "Intensity"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                         lineNumber: 279,
@@ -12517,47 +12795,23 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
                                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
                                 lineNumber: 277,
                                 columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "rounded-lg bg-white/5 p-2",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "font-display text-sm text-white",
-                                        children: activeLight.intensity.toFixed(2)
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 282,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: "Intensity"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                        lineNumber: 283,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                                lineNumber: 281,
-                                columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                        lineNumber: 272,
+                        lineNumber: 268,
                         columnNumber: 9
                     }, this)
                 ]
             }, `${showNormals}-${lightingOnly}`, true, {
                 fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-                lineNumber: 252,
+                lineNumber: 248,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-        lineNumber: 103,
+        lineNumber: 102,
         columnNumber: 5
     }, this);
 }
@@ -12572,7 +12826,7 @@ function VectorSlider({ label, value, min, max, step, onChange }) {
         onChange: onChange
     }, void 0, false, {
         fileName: "[project]/components/lab/panels/lighting-lab-panel.tsx",
-        lineNumber: 309,
+        lineNumber: 305,
         columnNumber: 5
     }, this);
 }
@@ -12706,7 +12960,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$info$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Info$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/info.js [app-ssr] (ecmascript) <export default as Info>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/lab/controls/numeric-input.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$workspace$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/workspace-store.ts [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -12800,6 +13056,29 @@ const samplerPresets = [
         addressModeV: "mirror-repeat"
     }
 ];
+const textureVertexShader = `struct Uniforms {
+  modelViewProjectionMatrix : mat4x4f,
+}
+@binding(0) @group(0) var<uniform> uniforms : Uniforms;
+
+struct VertexOutput {
+  @builtin(position) Position : vec4f,
+  @location(0) fragUV : vec2f,
+  @location(1) fragPosition: vec4f,
+}
+
+@vertex
+fn main(
+  @location(0) position : vec4f,
+  @location(1) uv : vec2f
+) -> VertexOutput {
+  var output : VertexOutput;
+  output.Position = uniforms.modelViewProjectionMatrix * position;
+  output.fragUV = uv;
+  output.fragPosition = 0.5 * (position + vec4(1.0, 1.0, 1.0, 1.0));
+  return output;
+}
+`;
 function TexturesLabPanel() {
     const [active, setActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("color");
     const [sampler, setSampler] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(samplerPresets[1]);
@@ -12809,6 +13088,19 @@ function TexturesLabPanel() {
         v: 0
     });
     const [showGrid, setShowGrid] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const applyShaders = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$workspace$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useWorkspaceStore"])((s)=>s.applyShaders);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        applyShaders({
+            vertexShader: textureVertexShader,
+            fragmentShader: buildTextureFragmentShader(sampler, uvScale, uvOffset, showGrid)
+        });
+    }, [
+        sampler,
+        uvScale,
+        uvOffset,
+        showGrid,
+        applyShaders
+    ]);
     const activeCard = sampleCards.find((c)=>c.id === active) ?? sampleCards[0];
     const handleCopyWGSL = ()=>{
         const code = generateSamplerWGSL(sampler, uvScale, uvOffset);
@@ -12846,7 +13138,7 @@ function TexturesLabPanel() {
                         children: "Textures Lab"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 104,
+                        lineNumber: 137,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -12854,7 +13146,7 @@ function TexturesLabPanel() {
                         children: "Texture & UV Module"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 105,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -12862,13 +13154,13 @@ function TexturesLabPanel() {
                         children: "Preview sampler settings, UV transforms, texture cards, and common errors."
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 106,
+                        lineNumber: 139,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 103,
+                lineNumber: 136,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12878,7 +13170,7 @@ function TexturesLabPanel() {
                         className: "size-3.5 text-emerald-400 shrink-0"
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 110,
+                        lineNumber: 143,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12886,13 +13178,13 @@ function TexturesLabPanel() {
                         children: "UV scale and offset update the texture preview below in real time."
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 111,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 109,
+                lineNumber: 142,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12912,20 +13204,20 @@ function TexturesLabPanel() {
                                         className: "size-3 text-emerald-400"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 166,
                                         columnNumber: 31
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
                                         className: "size-3 text-rose-400"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 166,
                                         columnNumber: 86
                                     }, this),
                                     card.name
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 132,
+                                lineNumber: 165,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -12933,19 +13225,19 @@ function TexturesLabPanel() {
                                 children: card.format
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 136,
+                                lineNumber: 169,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, card.id, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 120,
+                        lineNumber: 153,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 116,
+                lineNumber: 149,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -12962,14 +13254,14 @@ function TexturesLabPanel() {
                                     className: "size-3.5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 188,
                                     columnNumber: 15
                                 }, this),
                                 preset.label
                             ]
                         }, preset.id, true, {
                             fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                            lineNumber: 146,
+                            lineNumber: 179,
                             columnNumber: 13
                         }, this);
                     }),
@@ -12982,14 +13274,14 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 169,
+                                lineNumber: 202,
                                 columnNumber: 11
                             }, this),
                             "UV grid"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 161,
+                        lineNumber: 194,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -13002,14 +13294,14 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 179,
+                                lineNumber: 212,
                                 columnNumber: 11
                             }, this),
                             "Copy WGSL"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 173,
+                        lineNumber: 206,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -13022,20 +13314,20 @@ function TexturesLabPanel() {
                                 className: "size-3.5"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 188,
+                                lineNumber: 221,
                                 columnNumber: 11
                             }, this),
                             "Export"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 182,
+                        lineNumber: 215,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 142,
+                lineNumber: 175,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -13057,7 +13349,7 @@ function TexturesLabPanel() {
                                 children: activeCard.name
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 200,
+                                lineNumber: 233,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -13069,13 +13361,13 @@ function TexturesLabPanel() {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 201,
+                                lineNumber: 234,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 199,
+                        lineNumber: 232,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -13083,7 +13375,7 @@ function TexturesLabPanel() {
                         children: activeCard.description
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 203,
+                        lineNumber: 236,
                         columnNumber: 9
                     }, this),
                     activeCard.error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13093,20 +13385,20 @@ function TexturesLabPanel() {
                                 className: "mt-0.5 size-3.5 shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 206,
+                                lineNumber: 239,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 children: activeCard.error
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 207,
+                                lineNumber: 240,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 205,
+                        lineNumber: 238,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-wrap gap-1",
@@ -13115,18 +13407,18 @@ function TexturesLabPanel() {
                                 children: u
                             }, u, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 212,
+                                lineNumber: 245,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 210,
+                        lineNumber: 243,
                         columnNumber: 11
                     }, this)
                 ]
             }, active, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 193,
+                lineNumber: 226,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13142,7 +13434,7 @@ function TexturesLabPanel() {
                         onChange: (v)=>setUvScale(v)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 219,
+                        lineNumber: 252,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
@@ -13158,7 +13450,7 @@ function TexturesLabPanel() {
                                 }))
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 228,
+                        lineNumber: 261,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$controls$2f$numeric$2d$input$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NumericInput"], {
@@ -13174,13 +13466,13 @@ function TexturesLabPanel() {
                                 }))
                     }, void 0, false, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 237,
+                        lineNumber: 270,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 218,
+                lineNumber: 251,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -13204,7 +13496,7 @@ function TexturesLabPanel() {
                                         children: "UV preview"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 256,
+                                        lineNumber: 289,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -13222,26 +13514,26 @@ function TexturesLabPanel() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 257,
+                                        lineNumber: 290,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 255,
+                                lineNumber: 288,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileImage$3e$__["FileImage"], {
                                 className: "size-4 text-slate-500"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 261,
+                                lineNumber: 294,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 254,
+                        lineNumber: 287,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13255,7 +13547,7 @@ function TexturesLabPanel() {
                                         children: activeCard.format
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 265,
+                                        lineNumber: 298,
                                         columnNumber: 13
                                     }, this),
                                     showGrid ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -13263,7 +13555,7 @@ function TexturesLabPanel() {
                                         children: "grid"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 299,
                                         columnNumber: 25
                                     }, this) : null,
                                     !activeCard.valid ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -13271,13 +13563,13 @@ function TexturesLabPanel() {
                                         children: "error"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 267,
+                                        lineNumber: 300,
                                         columnNumber: 34
                                     }, this) : null
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 264,
+                                lineNumber: 297,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13298,23 +13590,23 @@ function TexturesLabPanel() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 280,
+                                        lineNumber: 313,
                                         columnNumber: 17
                                     }, this) : null
                                 }, void 0, false, {
                                     fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 303,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 269,
+                                lineNumber: 302,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 263,
+                        lineNumber: 296,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13328,20 +13620,20 @@ function TexturesLabPanel() {
                                         children: sampler.magFilter
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 326,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Mag filter"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 327,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 292,
+                                lineNumber: 325,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13352,20 +13644,20 @@ function TexturesLabPanel() {
                                         children: sampler.addressModeU
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 297,
+                                        lineNumber: 330,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Wrap U"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 298,
+                                        lineNumber: 331,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 296,
+                                lineNumber: 329,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -13376,40 +13668,77 @@ function TexturesLabPanel() {
                                         children: activeCard.usage.length
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 301,
+                                        lineNumber: 334,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         children: "Usages"
                                     }, void 0, false, {
                                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                        lineNumber: 302,
+                                        lineNumber: 335,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                                lineNumber: 300,
+                                lineNumber: 333,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                        lineNumber: 291,
+                        lineNumber: 324,
                         columnNumber: 9
                     }, this)
                 ]
             }, `${active}-${sampler.id}-${uvScale}-${uvOffset.u}-${uvOffset.v}-${showGrid}`, true, {
                 fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-                lineNumber: 248,
+                lineNumber: 281,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/panels/textures-lab-panel.tsx",
-        lineNumber: 102,
+        lineNumber: 135,
         columnNumber: 5
     }, this);
+}
+function wrapUV(modeU, modeV) {
+    const wrap = (coord, mode)=>{
+        switch(mode){
+            case "repeat":
+                return `fract(${coord})`;
+            case "mirror-repeat":
+                return `1.0 - abs(fract(${coord} / 2.0) * 2.0 - 1.0)`;
+            case "clamp-to-edge":
+            default:
+                return `clamp(${coord}, 0.0, 1.0)`;
+        }
+    };
+    return `vec2f(${wrap("uv.x", modeU)}, ${wrap("uv.y", modeV)})`;
+}
+function buildTextureFragmentShader(sampler, uvScale, uvOffset, showGrid) {
+    const wrapped = wrapUV(sampler.addressModeU, sampler.addressModeV);
+    const gridCheck = showGrid ? `
+  let grid = step(0.95, fract(uv.x * 8.0)) + step(0.95, fract(uv.y * 8.0));
+  color = mix(color, vec3f(0.2, 0.9, 1.0), grid * 0.35);` : "";
+    return `struct FragmentInput {
+  @location(0) fragUV: vec2f,
+  @location(1) fragPosition: vec4f,
+}
+
+@fragment
+fn main(input: FragmentInput) -> @location(0) vec4f {
+  var uv = input.fragUV * ${uvScale.toFixed(1)} + vec2f(${uvOffset.u.toFixed(2)}, ${uvOffset.v.toFixed(2)});
+  uv = ${wrapped};
+
+  let checker = step(0.5, fract(uv.x * 8.0)) + step(0.5, fract(uv.y * 8.0));
+  var color = mix(vec3f(0.15, 0.18, 0.25), vec3f(0.85, 0.88, 0.95), checker % 2.0);
+  ${gridCheck}
+
+  return vec4f(color, 1.0);
+}
+`;
 }
 function generateSamplerWGSL(sampler, uvScale, uvOffset) {
     return `// Auto-generated sampler configuration
@@ -15039,6 +15368,7 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$activity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Activity$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/activity.js [app-ssr] (ecmascript) <export default as Activity>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-ssr] (ecmascript) <export default as AlertCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$book$2d$open$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookOpen$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/book-open.js [app-ssr] (ecmascript) <export default as BookOpen>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check.js [app-ssr] (ecmascript) <export default as CheckCircle2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cpu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Cpu$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/cpu.js [app-ssr] (ecmascript) <export default as Cpu>");
@@ -15047,6 +15377,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$wifi$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Wifi$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/wifi.js [app-ssr] (ecmascript) <export default as Wifi>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/ui-store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/lesson-store.ts [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/stores/metrics-store.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/lessons/catalog.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/utils.ts [app-ssr] (ecmascript)");
 "use client";
@@ -15056,16 +15387,47 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$
 ;
 ;
 ;
+;
+const statusConfig = {
+    initial: {
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cpu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Cpu$3e$__["Cpu"],
+        label: "Initializing WebGPU…",
+        color: "text-slate-400"
+    },
+    loading: {
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$activity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Activity$3e$__["Activity"],
+        label: "Loading WebGPU…",
+        color: "text-cyan-300"
+    },
+    ready: {
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"],
+        label: "WebGPU Ready",
+        color: "text-emerald-400"
+    },
+    unsupported: {
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"],
+        label: "WebGPU Unsupported",
+        color: "text-amber-300"
+    },
+    error: {
+        icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"],
+        label: "WebGPU Error",
+        color: "text-rose-400"
+    }
+};
 function StatusBar() {
     const { showGpuMetrics, toggleGpuMetrics, activePanel, setActivePanel } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])();
     const activeLessonId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.activeLessonId);
     const progress = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.progress);
+    const demoStatus = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$metrics$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMetricsStore"])((s)=>s.demoStatus);
     const lessons = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$lessons$2f$catalog$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["lessonCatalog"].filter((item)=>item.type === "lesson");
     const lessonIndex = lessons.findIndex((item)=>item.id === activeLessonId);
     const lessonNumber = lessonIndex >= 0 ? lessonIndex + 1 : 1;
     const totalLessons = lessons.length;
     const completedCount = lessons.filter((item)=>item.id && progress[item.id]?.status === "completed").length;
     const progressPercent = totalLessons > 0 ? Math.round(completedCount / totalLessons * 100) : 0;
+    const config = statusConfig[demoStatus.type];
+    const StatusIcon = config.icon;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
         className: "flex h-8 items-center justify-between border-t border-white/10 bg-[#0B0C15]/90 px-3 text-[11px] text-slate-400 backdrop-blur-xl",
         children: [
@@ -15073,20 +15435,21 @@ function StatusBar() {
                 className: "flex items-center gap-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "inline-flex items-center gap-1.5 text-emerald-400",
+                        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("inline-flex items-center gap-1.5", config.color),
+                        title: demoStatus.type === "error" || demoStatus.type === "unsupported" ? demoStatus.message : undefined,
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(StatusIcon, {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 25,
+                                lineNumber: 38,
                                 columnNumber: 11
                             }, this),
-                            "WebGPU Ready"
+                            config.label
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 24,
+                        lineNumber: 37,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -15096,14 +15459,14 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 29,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, this),
-                            "Device active"
+                            demoStatus.type === "ready" ? "Device active" : demoStatus.type === "unsupported" ? "No device" : "Waiting for device"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 28,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -15113,20 +15476,20 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 33,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, this),
                             "GPU Queue"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 32,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/status-bar.tsx",
-                lineNumber: 23,
+                lineNumber: 36,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -15140,7 +15503,7 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 46,
+                                lineNumber: 59,
                                 columnNumber: 11
                             }, this),
                             "Metrics ",
@@ -15148,7 +15511,7 @@ function StatusBar() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 39,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -15159,14 +15522,14 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 56,
+                                lineNumber: 69,
                                 columnNumber: 11
                             }, this),
                             "Docs"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 49,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -15176,7 +15539,7 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 60,
+                                lineNumber: 73,
                                 columnNumber: 11
                             }, this),
                             "Lesson ",
@@ -15186,7 +15549,7 @@ function StatusBar() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 59,
+                        lineNumber: 72,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -15196,7 +15559,7 @@ function StatusBar() {
                                 className: "size-3"
                             }, void 0, false, {
                                 fileName: "[project]/components/lab/status-bar.tsx",
-                                lineNumber: 64,
+                                lineNumber: 77,
                                 columnNumber: 11
                             }, this),
                             progressPercent,
@@ -15204,7 +15567,7 @@ function StatusBar() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 63,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -15213,24 +15576,24 @@ function StatusBar() {
                             children: "⌘K"
                         }, void 0, false, {
                             fileName: "[project]/components/lab/status-bar.tsx",
-                            lineNumber: 68,
+                            lineNumber: 81,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/lab/status-bar.tsx",
-                        lineNumber: 67,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/lab/status-bar.tsx",
-                lineNumber: 38,
+                lineNumber: 51,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/lab/status-bar.tsx",
-        lineNumber: 22,
+        lineNumber: 35,
         columnNumber: 5
     }, this);
 }
@@ -15313,7 +15676,7 @@ function CommandPalette() {
             },
             {
                 id: "open-shaders",
-                label: "Open Shader Playground",
+                label: "Open Shader Gallery",
                 icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"],
                 action: ()=>setActivePanel("shaders")
             },
@@ -15846,8 +16209,31 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$
 ;
 ;
 ;
+const panelIds = new Set([
+    "editor",
+    "lessons",
+    "pipeline",
+    "shaders",
+    "geometry",
+    "matrices",
+    "lighting",
+    "textures",
+    "performance",
+    "playground",
+    "examples",
+    "documentation"
+]);
+function getPanelFromHash() {
+    if ("TURBOPACK compile-time truthy", 1) return null;
+    //TURBOPACK unreachable
+    ;
+    const hashPanel = undefined;
+}
 function LabPage() {
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const activePanel = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])((s)=>s.activePanel);
+    const setActivePanel = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])((s)=>s.setActivePanel);
+    const closeSidebar = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])((s)=>s.closeSidebar);
     const reduceMotion = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])((s)=>s.reduceMotion);
     const highDensity = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$ui$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useUiStore"])((s)=>s.highDensity);
     const activeLessonId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$stores$2f$lesson$2d$store$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLessonStore"])((s)=>s.activeLessonId);
@@ -15865,13 +16251,38 @@ function LabPage() {
         codeVertex,
         codeFragment
     ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const syncPanelFromHash = ()=>{
+            const hashPanel = getPanelFromHash();
+            if (!hashPanel) return;
+            setActivePanel(hashPanel);
+            if (hashPanel !== "lessons") closeSidebar();
+        };
+        syncPanelFromHash();
+        setMounted(true);
+        window.addEventListener("hashchange", syncPanelFromHash);
+        return ()=>window.removeEventListener("hashchange", syncPanelFromHash);
+    }, [
+        closeSidebar,
+        setActivePanel
+    ]);
+    if (!mounted) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "flex h-[100dvh] w-screen items-center justify-center bg-[#05070f] text-sm text-slate-400",
+            children: "Loading WebGPU Lab..."
+        }, void 0, false, {
+            fileName: "[project]/app/lab/page.tsx",
+            lineNumber: 95,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         "data-reduce-motion": reduceMotion ? "true" : undefined,
         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex h-[100dvh] w-screen flex-col overflow-hidden bg-[#05070f]", highDensity && "text-[95%]"),
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$navigation$2f$top$2d$nav$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LabTopNav"], {}, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 62,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -15879,7 +16290,7 @@ function LabPage() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$sidebar$2f$lesson$2d$sidebar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LessonSidebar"], {}, void 0, false, {
                         fileName: "[project]/app/lab/page.tsx",
-                        lineNumber: 65,
+                        lineNumber: 112,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -15894,47 +16305,47 @@ function LabPage() {
                                     demoRevision: activePanel === "geometry" ? geometryRevision : 0
                                 }, void 0, false, {
                                     fileName: "[project]/app/lab/page.tsx",
-                                    lineNumber: 69,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/lab/page.tsx",
-                                lineNumber: 68,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "hidden lg:block",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$status$2d$bar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["StatusBar"], {}, void 0, false, {
                                     fileName: "[project]/app/lab/page.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 124,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/lab/page.tsx",
-                                lineNumber: 76,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/lab/page.tsx",
-                        lineNumber: 67,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 64,
+                lineNumber: 111,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$command$2d$palette$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CommandPalette"], {}, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 82,
+                lineNumber: 129,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/lab/page.tsx",
-        lineNumber: 55,
+        lineNumber: 102,
         columnNumber: 5
     }, this);
 }
@@ -15944,7 +16355,7 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$code$2d$editor$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CodeEditorPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 101,
+                    lineNumber: 148,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -15953,19 +16364,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 101,
+                    lineNumber: 148,
                     columnNumber: 71
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 101,
+                lineNumber: 148,
                 columnNumber: 9
             }, this);
         case "pipeline":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$pipeline$2d$visualizer$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PipelineVisualizerPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 105,
+                    lineNumber: 152,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -15974,19 +16385,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 105,
+                    lineNumber: 152,
                     columnNumber: 79
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 105,
+                lineNumber: 152,
                 columnNumber: 9
             }, this);
         case "shaders":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$shader$2d$playground$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ShaderPlaygroundPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 109,
+                    lineNumber: 156,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -15995,20 +16406,20 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 109,
+                    lineNumber: 156,
                     columnNumber: 77
                 }, void 0),
                 defaultLeftWidth: 55
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 109,
+                lineNumber: 156,
                 columnNumber: 9
             }, this);
         case "geometry":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$geometry$2d$lab$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GeometryLabPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 113,
+                    lineNumber: 160,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16017,19 +16428,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 113,
+                    lineNumber: 160,
                     columnNumber: 72
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 113,
+                lineNumber: 160,
                 columnNumber: 9
             }, this);
         case "matrices":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$matrix$2d$lab$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MatrixLabPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 117,
+                    lineNumber: 164,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16038,19 +16449,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 117,
+                    lineNumber: 164,
                     columnNumber: 70
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 117,
+                lineNumber: 164,
                 columnNumber: 9
             }, this);
         case "lighting":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$lighting$2d$lab$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LightingLabPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 121,
+                    lineNumber: 168,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16059,40 +16470,40 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 121,
+                    lineNumber: 168,
                     columnNumber: 72
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 121,
+                lineNumber: 168,
                 columnNumber: 9
             }, this);
         case "textures":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$textures$2d$lab$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TexturesLabPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 125,
+                    lineNumber: 172,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
-                    shapeId: "cube",
+                    shapeId: "textured-cube",
                     shaderOverrides: shaderOverrides,
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 125,
+                    lineNumber: 172,
                     columnNumber: 72
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 125,
+                lineNumber: 172,
                 columnNumber: 9
             }, this);
         case "examples":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$examples$2d$lab$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ExamplesLabPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 129,
+                    lineNumber: 176,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16101,19 +16512,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 129,
+                    lineNumber: 176,
                     columnNumber: 72
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 129,
+                lineNumber: 176,
                 columnNumber: 9
             }, this);
         case "performance":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$performance$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PerformancePanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 133,
+                    lineNumber: 180,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16122,19 +16533,19 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 133,
+                    lineNumber: 180,
                     columnNumber: 72
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 133,
+                lineNumber: 180,
                 columnNumber: 9
             }, this);
         case "playground":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$shader$2d$playground$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ShaderPlaygroundPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 137,
+                    lineNumber: 184,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16143,20 +16554,20 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 137,
+                    lineNumber: 184,
                     columnNumber: 77
                 }, void 0),
                 defaultLeftWidth: 55
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 137,
+                lineNumber: 184,
                 columnNumber: 9
             }, this);
         case "documentation":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$documentation$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DocumentationPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 141,
+                    lineNumber: 188,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16165,12 +16576,12 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 141,
+                    lineNumber: 188,
                     columnNumber: 74
                 }, void 0)
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 141,
+                lineNumber: 188,
                 columnNumber: 9
             }, this);
         case "lessons":
@@ -16178,7 +16589,7 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$ui$2f$resizable$2d$split$2d$pane$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ResizableSplitPane"], {
                 leftPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$lesson$2d$content$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LessonContentPanel"], {}, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 146,
+                    lineNumber: 193,
                     columnNumber: 39
                 }, void 0),
                 rightPane: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$lab$2f$panels$2f$live$2d$preview$2d$panel$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LivePreviewPanel"], {
@@ -16187,13 +16598,13 @@ function ActiveWorkspace({ activePanel, shapeId, shaderOverrides, demoRevision }
                     demoRevision: demoRevision
                 }, void 0, false, {
                     fileName: "[project]/app/lab/page.tsx",
-                    lineNumber: 146,
+                    lineNumber: 193,
                     columnNumber: 74
                 }, void 0),
                 defaultLeftWidth: 40
             }, void 0, false, {
                 fileName: "[project]/app/lab/page.tsx",
-                lineNumber: 146,
+                lineNumber: 193,
                 columnNumber: 9
             }, this);
     }

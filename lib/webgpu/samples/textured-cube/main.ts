@@ -1,5 +1,6 @@
 import { mat4, vec3 } from "wgpu-matrix";
 import type { DemoInstance } from "../../types";
+import { useCameraStore } from "@/lib/stores/camera-store";
 import { basicVertexWgsl, texturedFragmentWgsl } from "./shaders";
 import {
   cubeVertexArray,
@@ -91,7 +92,8 @@ export async function createTexturedCubeDemo(
   const vertex = options.vertexShader ?? basicVertexWgsl;
   const fragment = options.fragmentShader ?? texturedFragmentWgsl;
 
-  const textureAssets = await loadCubeTexture(device);
+  const usesTexture = /textureSample|mySampler|myTexture/.test(fragment);
+  const textureAssets = usesTexture ? await loadCubeTexture(device) : null;
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -146,13 +148,17 @@ export async function createTexturedCubeDemo(
     usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
   });
 
+  const entries: GPUBindGroupEntry[] = [
+    { binding: 0, resource: { buffer: uniformBuffer } }
+  ];
+  if (usesTexture && textureAssets) {
+    entries.push({ binding: 1, resource: textureAssets.sampler });
+    entries.push({ binding: 2, resource: textureAssets.texture.createView() });
+  }
+
   const bindGroup = device.createBindGroup({
     layout: pipeline.getBindGroupLayout(0),
-    entries: [
-      { binding: 0, resource: { buffer: uniformBuffer } },
-      { binding: 1, resource: textureAssets.sampler },
-      { binding: 2, resource: textureAssets.texture.createView() }
-    ]
+    entries
   });
 
   let aspect = 1;
@@ -160,8 +166,9 @@ export async function createTexturedCubeDemo(
   const uniformData = new Float32Array(16);
 
   const getTransformationMatrix = (timestamp: number) => {
+    const camera = useCameraStore.getState();
     const viewMatrix = mat4.identity();
-    mat4.translate(viewMatrix, vec3.fromValues(0, 0, -4), viewMatrix);
+    mat4.translate(viewMatrix, vec3.fromValues(camera.panX * 0.02, -camera.panY * 0.02, -4 / camera.zoom), viewMatrix);
 
     const now = timestamp / 1000;
     mat4.rotate(
@@ -170,6 +177,8 @@ export async function createTexturedCubeDemo(
       1,
       viewMatrix
     );
+    mat4.rotate(viewMatrix, vec3.fromValues(1, 0, 0), degreesToRadians(camera.orbitX), viewMatrix);
+    mat4.rotate(viewMatrix, vec3.fromValues(0, 1, 0), degreesToRadians(camera.orbitY), viewMatrix);
 
     const modelViewProjectionMatrix = mat4.create();
     mat4.multiply(projectionMatrix, viewMatrix, modelViewProjectionMatrix);
@@ -200,7 +209,11 @@ export async function createTexturedCubeDemo(
     dispose: () => {
       vertexBuffer.destroy();
       uniformBuffer.destroy();
-      textureAssets.texture.destroy();
+      if (textureAssets) textureAssets.texture.destroy();
     }
   };
+}
+
+function degreesToRadians(value: number) {
+  return (value * Math.PI) / 180;
 }

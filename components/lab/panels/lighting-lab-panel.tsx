@@ -61,7 +61,6 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
   }, [lights, showNormals, lightingOnly]);
 
   const activeLight = lights.find((l) => l.id === activeId) ?? lights[0]!;
-
   const updateLight = (id: string, patch: Partial<LightSource>) => {
     setLights((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
   };
@@ -249,41 +248,13 @@ fn main(@location(0) pos: vec3f, @location(1) col: vec3f) -> VertexOut {
         ) : null}
       </motion.div>
 
-      <motion.div
-        key={`${showNormals}-${lightingOnly}`}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-1 flex-col rounded-xl border border-white/10 bg-slate-950/50 p-4"
-      >
-        <div className="mb-2 flex items-center justify-between">
-          <div>
-            <div className="text-sm font-semibold text-white">Scene preview</div>
-            <p className="max-w-md text-[11px] text-slate-400">
-              Active lights: {lights.filter((l) => l.enabled).length} / {lights.length} · Normals {showNormals ? "on" : "off"} · Lighting only {lightingOnly ? "on" : "off"}
-            </p>
-          </div>
-        </div>
-        <div className="relative flex-1 rounded-lg border border-dashed border-white/10 bg-white/5">
-          <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-            {showNormals ? <span className="rounded bg-cyan-400/20 px-1.5 py-0.5 text-[9px] text-cyan-300">normals</span> : null}
-            {lightingOnly ? <span className="rounded bg-brand/20 px-1.5 py-0.5 text-[9px] text-brand-subtle">lighting only</span> : null}
-          </div>
-        </div>
-        <div className="mt-3 grid grid-cols-3 gap-2 text-center text-[11px] text-slate-400">
-          <div className="rounded-lg bg-white/5 p-2">
-            <div className="font-display text-sm text-white">{lights.filter((l) => l.enabled).length}</div>
-            <div>Active lights</div>
-          </div>
-          <div className="rounded-lg bg-white/5 p-2">
-            <div className="font-display text-sm text-white">{activeLight.type}</div>
-            <div>Selected type</div>
-          </div>
-          <div className="rounded-lg bg-white/5 p-2">
-            <div className="font-display text-sm text-white">{activeLight.intensity.toFixed(2)}</div>
-            <div>Intensity</div>
-          </div>
-        </div>
-      </motion.div>
+      <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-center text-[11px] text-slate-400">
+        Active lights: <span className="font-semibold text-white">{lights.filter((l) => l.enabled).length} / {lights.length}</span>
+        <span className="mx-2 text-slate-600">·</span>
+        Normals: <span className="font-semibold text-white">{showNormals ? "on" : "off"}</span>
+        <span className="mx-2 text-slate-600">·</span>
+        Lighting only: <span className="font-semibold text-white">{lightingOnly ? "on" : "off"}</span>
+      </div>
     </div>
   );
 }

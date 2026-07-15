@@ -229,7 +229,6 @@ function ViewportTooltip({ children }: { children: ReactNode }) {
 export function ViewportCanvas({
   canvasRef,
   state,
-  cameraTransform,
   isUnavailable,
   unavailableMessage,
   resolution,
@@ -239,7 +238,6 @@ export function ViewportCanvas({
 }: {
   canvasRef: RefObject<HTMLCanvasElement | null>;
   state: DemoState;
-  cameraTransform: string;
   isUnavailable: boolean;
   unavailableMessage: string;
   resolution: string;
@@ -255,7 +253,6 @@ export function ViewportCanvas({
         <canvas
           ref={webGpuCanvasRef}
           className="h-full w-full rounded-xl bg-slate-950"
-          style={{ transform: cameraTransform, transition: "transform 180ms ease" }}
         />
 
         <AnimatePresence>

@@ -1,5 +1,12 @@
 import { create } from "zustand";
 
+export type DemoRuntimeStatus =
+  | { type: "initial" }
+  | { type: "loading" }
+  | { type: "ready" }
+  | { type: "unsupported"; message: string }
+  | { type: "error"; message: string };
+
 export interface GpuMetrics {
   fps: number;
   frameTime: number;
@@ -16,7 +23,9 @@ export interface GpuMetrics {
 
 interface MetricsState {
   metrics: GpuMetrics;
+  demoStatus: DemoRuntimeStatus;
   updateMetrics: (patch: Partial<GpuMetrics>) => void;
+  setDemoStatus: (status: DemoRuntimeStatus) => void;
   pulseFrame: () => void;
 }
 
@@ -34,8 +43,10 @@ export const useMetricsStore = create<MetricsState>((set) => ({
     textures: 0,
     framePulse: 0
   },
+  demoStatus: { type: "initial" },
   updateMetrics: (patch) =>
     set((state) => ({ metrics: { ...state.metrics, ...patch } })),
+  setDemoStatus: (status) => set({ demoStatus: status }),
   pulseFrame: () =>
     set((state) => ({
       metrics: { ...state.metrics, framePulse: state.metrics.framePulse + 1 }

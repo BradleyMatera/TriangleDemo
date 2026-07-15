@@ -4,9 +4,10 @@ Triangle Shader Lab is a focused WebGPU walkthrough that keeps the canonical "he
 
 ## 🔻 Core Focus
 
-- **Two demos, one surface.** Toggle between the textured cube and hello triangle to compare pipelines while the canvas stays front and center.
-- **Source-first exploration.** The render loop lives in `lib/webgpu/triangle-demo.ts`; the cube and triangle implementations reside in `lib/webgpu/samples/textured-cube/main.ts` and `lib/webgpu/samples/hello-triangle/main.ts`.
-- **Hands-on learning.** Each section of the site points back to those files so you can correlate UI copy with the code that actually drives the GPU.
+- **Three canonical demos on the landing page.** Toggle between the hello triangle, two-cubes, and textured-cube samples to compare pipelines while the canvas stays front and center.
+- **A full WebGPU Lab in `/lab`.** Explore 16 interactive lessons, a WGSL editor, pipeline visualizer, geometry lab, lighting and texture modules, shader playground, GPU inspector, performance analytics, and built-in documentation.
+- **Source-first exploration.** Every demo maps to code in `lib/webgpu/triangle-demo.ts` and the sample files under `lib/webgpu/samples/`, so you can correlate the UI with the code that drives the GPU.
+- **Hands-on learning.** Lessons unlock as you progress, or toggle "Unlock all lessons" in Settings to explore freely.
 
 ## 🔗 Links
 
@@ -36,10 +37,12 @@ This demo is shared publicly for transparency, reproducibility, and academic cur
 
 ## 🗂️ Key Files
 
-- `lib/webgpu/triangle-demo.ts` — negotiates the adapter/device handshake, prepares the canvas, and manages the render loop.
-- `lib/webgpu/samples/textured-cube/main.ts` — provides the vertex data, WGSL shaders, sampler, and uniform logic for the textured cube demo.
-- `lib/webgpu/samples/hello-triangle/main.ts` — minimal pipeline showcasing the bare essentials of WebGPU draw calls.
-- `components/sections/webgpu-showcase.tsx` — mounts the canvas and hooks it into the demo lifecycle.
+- `lib/webgpu/triangle-demo.ts` — negotiates the adapter/device handshake, prepares the canvas, and manages the render loop for every shape.
+- `lib/webgpu/samples/` — the canonical WebGPU samples (hello triangle, two cubes, textured cube) and the geometry-lab mesh renderer.
+- `lib/lessons/catalog.ts` & `lib/lessons/content.ts` — the 16-lesson course structure, progress state, and content for each tab.
+- `lib/lessons/shader-source.ts` — the WGSL source shown in the editor and sent to the live preview for each lesson.
+- `components/sections/webgpu-showcase.tsx` — mounts the landing-page canvas and hooks it into the demo lifecycle.
+- `app/lab/page.tsx` — the full lab workspace that wires lessons, panels, and the live viewport together.
 
 ## 🚀 Getting Started
 
@@ -52,9 +55,11 @@ Open the site in a WebGPU-enabled browser (Chrome 113+, Edge 113+, or Safari Tec
 
 ## 🛠️ Experimentation Workflow
 
-1. Switch between demos in the Showcase tab bar, then edit `samples/textured-cube/main.ts` or `samples/hello-triangle/main.ts` to tweak shaders, buffers, or rotation logic.
-2. Adjust `triangle-demo.ts` if you want to introduce uniforms, multiple pipelines, or depth buffers.
-3. Run `bun run build:pages` to produce a static export under `docs/` for hosting.
+1. On the landing page, switch between the canonical demo tabs to see the core samples in action.
+2. Open the Lab (`/lab`) to follow the 16-lesson course, edit WGSL in the Monaco-based editor, and watch the live preview update.
+3. Use the Geometry, Matrix, Lighting, and Texture panels to change the scene interactively.
+4. Toggle **Unlock all lessons** in Settings to jump around freely, or complete each lesson to unlock the next.
+5. Run `bun run build:pages` to produce a static export under `docs/` for hosting.
 
 ## 📦 Deployment
 

@@ -48,7 +48,7 @@ export function ExamplesLabPanel() {
         description: item.description ?? "Open this lesson.",
         action: () => {
           setActiveLesson(item.id!);
-          setActivePanel("lessons");
+          setActivePanel("learn");
         },
         meta: item.demo?.type === "webgpu" ? item.demo.shape : "lesson"
       })),
@@ -65,7 +65,7 @@ export function ExamplesLabPanel() {
       category: "geometry",
       title: "Triangle",
       description: "Start with the simplest polygon and inspect its topology.",
-      action: () => setActivePanel("geometry"),
+      action: () => setActivePanel("workbench"),
       meta: "3 vertices"
     },
     {
@@ -73,7 +73,7 @@ export function ExamplesLabPanel() {
       category: "geometry",
       title: "Cube",
       description: "A classic six-face mesh for testing transforms and normals.",
-      action: () => setActivePanel("geometry"),
+      action: () => setActivePanel("workbench"),
       meta: "24 vertices"
     },
     {
@@ -81,7 +81,7 @@ export function ExamplesLabPanel() {
       category: "lighting",
       title: "Directional light",
       description: "Classic sun-like light with direction and intensity controls.",
-      action: () => setActivePanel("lighting"),
+      action: () => setActivePanel("workbench"),
       meta: "directional"
     },
     {
@@ -89,7 +89,7 @@ export function ExamplesLabPanel() {
       category: "textures",
       title: "Repeat sampler",
       description: "See how UV wrapping and sampler address modes interact.",
-      action: () => setActivePanel("textures"),
+      action: () => setActivePanel("workbench"),
       meta: "addressMode"
     },
     {
@@ -97,7 +97,7 @@ export function ExamplesLabPanel() {
       category: "pipeline",
       title: "Vertex shader stage",
       description: "Open the pipeline visualizer focused on vertex processing.",
-      action: () => setActivePanel("pipeline"),
+      action: () => setActivePanel("inspect"),
       meta: "stage 6"
     },
     {
@@ -105,7 +105,7 @@ export function ExamplesLabPanel() {
       category: "docs",
       title: "WGSL Reference",
       description: "Built-in reference for WebGPU Shading Language syntax.",
-      action: () => setActivePanel("documentation"),
+      action: () => setActivePanel("docs"),
       meta: "reference"
     }
   ];

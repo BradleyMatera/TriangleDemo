@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type LessonTabId = "overview" | "concept" | "demo" | "code" | "exercise" | "challenge" | "check" | "summary";
+export type LessonStepId = "learn" | "code" | "practice";
 
 export type AppliedShaders = {
   vertexShader?: string;
@@ -17,7 +17,7 @@ export type ShaderVersion = {
 };
 
 interface WorkspaceState {
-  activeLessonTab: LessonTabId;
+  activeLessonStep: LessonStepId;
   activeCodeFile: "vertex" | "fragment";
   codeVertex: string;
   codeFragment: string;
@@ -25,7 +25,7 @@ interface WorkspaceState {
   compileError: string | null;
   isRunning: boolean;
   versionHistory: ShaderVersion[];
-  setActiveLessonTab: (tab: LessonTabId) => void;
+  setActiveLessonStep: (step: LessonStepId) => void;
   setActiveCodeFile: (file: "vertex" | "fragment") => void;
   setCodeVertex: (code: string) => void;
   setCodeFragment: (code: string) => void;
@@ -39,7 +39,7 @@ interface WorkspaceState {
 export const useWorkspaceStore = create<WorkspaceState>()(
   persist(
     (set) => ({
-      activeLessonTab: "demo",
+      activeLessonStep: "learn",
       activeCodeFile: "fragment",
       codeVertex: "",
       codeFragment: "",
@@ -47,7 +47,7 @@ export const useWorkspaceStore = create<WorkspaceState>()(
       compileError: null,
       isRunning: true,
       versionHistory: [],
-      setActiveLessonTab: (tab) => set({ activeLessonTab: tab }),
+      setActiveLessonStep: (step) => set({ activeLessonStep: step }),
       setActiveCodeFile: (file) => set({ activeCodeFile: file }),
       setCodeVertex: (code) => set({ codeVertex: code }),
       setCodeFragment: (code) => set({ codeFragment: code }),
@@ -77,7 +77,7 @@ export const useWorkspaceStore = create<WorkspaceState>()(
       name: "webgpu-lab-workspace-v1",
       version: 1,
       partialize: (state) => ({
-        activeLessonTab: state.activeLessonTab,
+        activeLessonStep: state.activeLessonStep,
         activeCodeFile: state.activeCodeFile,
         versionHistory: state.versionHistory
       })

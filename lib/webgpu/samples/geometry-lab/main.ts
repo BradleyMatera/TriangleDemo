@@ -1,6 +1,7 @@
 import { mat4 } from "gl-matrix";
 import type { DemoInstance } from "../../types";
 import { useGeometryStore, type GeometryShapeId } from "@/lib/stores/geometry-store";
+import { useCameraStore } from "@/lib/stores/camera-store";
 import type { ShaderOverrides } from "../../triangle-demo";
 
 type MeshData = {
@@ -145,18 +146,19 @@ export async function createGeometryMeshDemo(
     },
     update: (timestamp) => {
       const geometry = useGeometryStore.getState();
+      const camera = useCameraStore.getState();
       const timeRotation = timestamp / 1600;
 
       mat4.identity(modelMatrix);
       mat4.translate(modelMatrix, modelMatrix, [
-        geometry.translation.x,
-        geometry.translation.y,
+        geometry.translation.x + camera.panX * 0.05,
+        geometry.translation.y - camera.panY * 0.05,
         geometry.translation.z
       ]);
-      mat4.rotateX(modelMatrix, modelMatrix, degreesToRadians(geometry.rotation.x) + timeRotation * 0.08);
-      mat4.rotateY(modelMatrix, modelMatrix, degreesToRadians(geometry.rotation.y) + timeRotation * 0.18);
+      mat4.rotateX(modelMatrix, modelMatrix, degreesToRadians(geometry.rotation.x + camera.orbitX) + timeRotation * 0.08);
+      mat4.rotateY(modelMatrix, modelMatrix, degreesToRadians(geometry.rotation.y + camera.orbitY) + timeRotation * 0.18);
       mat4.rotateZ(modelMatrix, modelMatrix, degreesToRadians(geometry.rotation.z));
-      mat4.scale(modelMatrix, modelMatrix, [geometry.scale, geometry.scale, geometry.scale]);
+      mat4.scale(modelMatrix, modelMatrix, [geometry.scale * camera.zoom, geometry.scale * camera.zoom, geometry.scale * camera.zoom]);
       mat4.multiply(mvp, viewProjectionMatrix, modelMatrix);
 
       uniformData.set(mvp);

@@ -13,8 +13,6 @@ import {
   Sparkles,
   Zap
 } from "lucide-react";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-
 const features = [
   {
     icon: Code2,
@@ -68,7 +66,6 @@ export default function LandingPage() {
           </span>
           <span className="font-display text-lg font-semibold">WebGPU Lab</span>
         </div>
-        <ThemeToggle />
       </header>
 
       <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-20 px-6 py-12 md:py-20">
@@ -101,9 +98,10 @@ export default function LandingPage() {
               transition={{ delay: 0.1 }}
               className="max-w-xl text-lg text-slate-400"
             >
-              WebGPU Lab transforms the classic triangle demo into a complete
-              interactive learning platform: lessons, live code editing,
-              pipeline visualization, shader playground, and professional GPU
+              The landing page keeps the canonical WebGPU demos front and
+              center — hello triangle, two cubes, and textured cube. Open the
+              Lab for the full platform: 16 interactive lessons, a WGSL editor,
+              live pipeline visualization, geometry and lighting labs, and GPU
               diagnostics.
             </motion.p>
 

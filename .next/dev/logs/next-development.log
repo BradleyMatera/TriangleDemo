@@ -1,1 +1,962 @@
-[00:00:00.636] Server  LOG      ✓ Ready in 451ms
+[00:00:00.646] Server  LOG      ✓ Ready in 464ms
+[00:09:24.575] Server  LOG      ✓ Compiled in 185ms
+[00:10:46.531] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:32.783] Server  LOG      ✓ Compiled in 245ms
+[00:14:44.456] Server  LOG      ✓ Compiled in 196ms
+[00:14:46.402] Server  LOG      ✓ Compiled in 188ms
+[00:14:48.185] Server  LOG      ✓ Compiled in 195ms
+[00:14:52.386] Server  LOG      ✓ Compiled in 202ms
+[00:14:52.472] Browser ERROR   uncaughtError: ReferenceError: cameraTransform is not defined
+[00:14:54.122] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:14:54.182] Server  LOG      ✓ Compiled in 191ms
+[00:14:54.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:56.645] Server  LOG      ✓ Compiled in 217ms
+[00:14:58.820] Server  LOG      ✓ Compiled in 202ms
+[00:14:58.879] Browser ERROR   uncaughtError: ReferenceError: setCamera is not defined
+[00:15:02.380] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:02.420] Server  LOG      ✓ Compiled in 190ms
+[00:15:02.504] Browser ERROR   uncaughtError: ReferenceError: setCamera is not defined
+[00:15:02.698] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:02.846] Browser ERROR   uncaughtError: ReferenceError: setCamera is not defined
+[00:15:04.380] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:04.493] Server  LOG      ✓ Compiled in 185ms
+[00:15:04.671] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:04.812] Browser ERROR   uncaughtError: ReferenceError: camera is not defined
+[00:15:06.295] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:06.398] Server  LOG      ✓ Compiled in 189ms
+[00:15:06.587] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:06.730] Browser ERROR   uncaughtError: ReferenceError: cameraTransform is not defined
+[00:15:08.418] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:08.517] Server  LOG      ✓ Compiled in 180ms
+[00:15:08.712] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:26.397] Server  LOG      ✓ Compiled in 193ms
+[00:15:35.015] Server  LOG      ✓ Compiled in 205ms
+[00:15:36.498] Server  LOG      ✓ Compiled in 232ms
+[00:15:47.058] Server  LOG      ✓ Compiled in 199ms
+[00:15:50.316] Server  LOG      ✓ Compiled in 192ms
+[00:15:57.959] Server  LOG      ✓ Compiled in 191ms
+[00:15:59.766] Server  LOG      ✓ Compiled in 200ms
+[00:16:01.445] Server  LOG      ✓ Compiled in 194ms
+[00:16:03.297] Server  LOG      ✓ Compiled in 181ms
+[00:16:05.610] Server  LOG      ✓ Compiled in 189ms
+[00:16:14.789] Server  LOG      ✓ Compiled in 186ms
+[00:16:21.567] Server  LOG      ✓ Compiled in 208ms
+[00:16:26.955] Server  LOG      ✓ Compiled in 235ms
+[00:16:29.689] Server  LOG      ✓ Compiled in 186ms
+[00:16:33.872] Server  LOG      ✓ Compiled in 224ms
+[00:19:05.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:10.138] Server  LOG      ✓ Compiled in 227ms
+[00:21:12.278] Server  LOG      ✓ Compiled in 218ms
+[00:21:16.246] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:21.459] Server  LOG      ✓ Compiled in 237ms
+[00:21:23.291] Server  LOG      ✓ Compiled in 213ms
+[00:21:31.331] Server  LOG      ✓ Compiled in 236ms
+[00:21:31.434] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:35.446] Server  LOG      ✓ Compiled in 217ms
+[00:21:35.547] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:42.650] Server  ERROR    ⨯ ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+
+
+[00:21:42.776] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:43.053] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:43.053] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:43.339] Browser ERROR   uncaughtError: Error: ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+
+
+[00:21:43.501] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:43.501] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:43.694] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:54.208] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:56.327] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:21:58.606] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:01.386] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:05.058] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:19.975] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:22.168] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:30.685] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:30.685] Browser ERROR   ./lib/webgpu/triangle-demo.ts:48:24
+Parsing ecmascript source code failed
+  46 |   {
+  47 |     id: "two-cubes",
+> 48 |     label: "Two Cubes",,
+     |                        ^
+  49 |     description:
+  50 |       "Port of the WebGPU twoCubes sample. Demonstrates multiple draw calls and distinct uniform buffers per object.",
+  51 |     localPath: "samples/two-cubes/main.ts",
+
+Unexpected token `,`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+Import traces:
+  Client Component Browser:
+    ./lib/webgpu/triangle-demo.ts [Client Component Browser]
+    ./lib/webgpu/use-webgpu-demo.ts [Client Component Browser]
+    ./components/lab/panels/live-preview-panel.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/webgpu/triangle-demo.ts [Client Component SSR]
+    ./lib/webgpu/use-webgpu-demo.ts [Client Component SSR]
+    ./components/lab/panels/live-preview-panel.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:36.930] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:43.117] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:54.006] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:58.515] Server  ERROR    ⨯ ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+
+
+[00:22:58.711] Browser ERROR   uncaughtError: Error: ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+
+
+[00:22:58.849] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:22:58.849] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:09.491] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:19.345] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:20.222] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:20.367] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:20.367] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:22.709] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:36.229] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:43.516] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:43.516] Browser ERROR   ./components/lab/sidebar/lesson-sidebar.tsx:113:17
+Parsing ecmascript source code failed
+  111 |       </div>
+  112 |               if (item.type === "chapter") {
+> 113 |                 return (
+      |                 ^^^^^^
+  114 |                   <div
+  115 |                     key={`chapter-${index}`}
+  116 |                     className={cn(
+
+Expected '</', got 'return'
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/sidebar/lesson-sidebar.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/sidebar/lesson-sidebar.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:50.210] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:50.210] Browser ERROR   ./components/lab/sidebar/lesson-sidebar.tsx:172:15
+Parsing ecmascript source code failed
+  170 |                 </button>
+  171 |               );
+> 172 |             })}
+      |               ^
+  173 |           </div>
+  174 |         ) : sidebarMode === "bookmarks" ? (
+  175 |           <BookmarksPanel />
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/sidebar/lesson-sidebar.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/sidebar/lesson-sidebar.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:23:56.621] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:24:01.470] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:24:08.540] Browser ERROR   ./components/lab/navigation/top-nav.tsx:24:3
+Ecmascript file had an error
+  22 |   Gauge,
+  23 |   Gamepad2,
+> 24 |   GraduationCap,
+     |   ^^^^^^^^^^^^^
+  25 |   Wrench,
+  26 |   Palette,
+  27 |   SearchCheck,
+
+the name `GraduationCap` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./components/lab/navigation/top-nav.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Client Component Browser]
+    ./app/lab/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/lab/navigation/top-nav.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Client Component SSR]
+    ./app/lab/page.tsx [Server Component]
+[00:24:29.884] Server  LOG      ✓ Compiled in 218ms
+[00:25:50.392] Server  LOG      ✓ Compiled in 251ms
+[00:26:20.478] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:26.685] Server  LOG      ✓ Compiled in 231ms
+[00:26:51.529] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:34.319] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:37.923] Server  LOG      ✓ Compiled in 241ms
+[00:29:00.356] Server  LOG      ✓ Compiled in 224ms
+[00:29:06.253] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:35.778] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:39.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:40.152] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:26.535] Server  LOG      ✓ Compiled in 227ms
+[00:31:21.032] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:21.956] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:14.698] Server  LOG      ✓ Compiled in 273ms
+[00:35:17.025] Server  LOG      ✓ Compiled in 195ms
+[00:35:21.645] Server  LOG      ✓ Compiled in 232ms
+[00:35:33.425] Server  LOG      ✓ Compiled in 204ms
+[00:35:33.803] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:35.634] Server  LOG      ✓ Compiled in 199ms
+[00:37:01.823] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:26.522] Server  LOG      ✓ Compiled in 239ms
+[00:37:42.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:39:56.864] Server  LOG      ✓ Compiled in 237ms
+[00:40:02.497] Server  LOG      ✓ Compiled in 238ms
+[00:40:02.830] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:02.971] Browser ERROR   uncaughtError: ReferenceError: ThemeToggle is not defined
+[00:40:03.157] Browser ERROR   uncaughtError: ReferenceError: ThemeToggle is not defined
+[00:40:04.184] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:40:04.185] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:40:04.230] Server  LOG      ✓ Compiled in 199ms
+[00:40:04.558] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:05.041] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:30.707] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:04.005] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:08.932] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

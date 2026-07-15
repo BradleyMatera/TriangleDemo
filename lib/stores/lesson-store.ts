@@ -18,6 +18,7 @@ export interface Bookmark {
 interface LessonState {
   activeLessonId: LessonId;
   progress: LessonRecord;
+  unlocked: boolean;
   bookmarks: Bookmark[];
   recent: LessonId[];
   setActiveLesson: (id: LessonId) => void;
@@ -27,6 +28,8 @@ interface LessonState {
   addBookmark: (bookmark: Bookmark) => void;
   removeBookmark: (id: string) => void;
   recordRecent: (id: LessonId) => void;
+  unlockAll: () => void;
+  lockAll: () => void;
 }
 
 function buildInitialProgress(): LessonRecord {
@@ -51,6 +54,7 @@ export const useLessonStore = create<LessonState>()(
     (set, get) => ({
       activeLessonId: getInitialLessonId(),
       progress: buildInitialProgress(),
+      unlocked: false,
       bookmarks: [],
       recent: [getInitialLessonId()],
       setActiveLesson: (id) => {
@@ -74,11 +78,12 @@ export const useLessonStore = create<LessonState>()(
         });
       },
       isLessonAvailable: (id) => {
+        if (get().unlocked) return true;
         const status = get().progress[id]?.status;
         return status === "available" || status === "in-progress" || status === "completed";
       },
       getEffectiveCatalog: () => {
-        const { progress } = get();
+        const { progress, unlocked } = get();
         return lessonCatalog.map((item, index) => {
           if (item.type === "chapter") {
             const nextChapterIndex = lessonCatalog.findIndex(
@@ -89,11 +94,12 @@ export const useLessonStore = create<LessonState>()(
               nextChapterIndex === -1 ? lessonCatalog.length : nextChapterIndex
             );
             const chapterLessons = chapterSlice.filter((other) => other.type === "lesson");
-            const anyAvailable = chapterLessons.some((lesson) => progress[lesson.id!]?.status !== "locked");
+            const anyAvailable = unlocked || chapterLessons.some((lesson) => progress[lesson.id!]?.status !== "locked");
             return { ...item, status: anyAvailable ? "available" : "locked" };
           }
           const lessonProgress = progress[item.id!];
-          return { ...item, status: lessonProgress?.status ?? "locked" };
+          const status = unlocked ? "available" : (lessonProgress?.status ?? "locked");
+          return { ...item, status };
         });
       },
       addBookmark: (bookmark) =>
@@ -109,14 +115,32 @@ export const useLessonStore = create<LessonState>()(
         set((state) => {
           const next = [id, ...state.recent.filter((r) => r !== id)].slice(0, 8);
           return { recent: next };
-        })
+        }),
+      unlockAll: () =>
+        set((state) => {
+          const updated: LessonRecord = { ...state.progress };
+          for (const item of lessonCatalog) {
+            if (item.type === "lesson" && item.id && updated[item.id]?.status === "locked") {
+              updated[item.id] = { status: "available" };
+            }
+          }
+          return { unlocked: true, progress: updated };
+        }),
+      lockAll: () =>
+        set(() => ({
+          unlocked: false,
+          activeLessonId: getInitialLessonId(),
+          progress: buildInitialProgress(),
+          recent: [getInitialLessonId()]
+        }))
     }),
     {
       name: "webgpu-lab-lesson-progress",
-      version: 1,
+      version: 2,
       partialize: (state) => ({
         activeLessonId: state.activeLessonId,
         progress: state.progress,
+        unlocked: state.unlocked,
         bookmarks: state.bookmarks,
         recent: state.recent
       }),

@@ -1,30 +1,16 @@
 import { mat4 } from "gl-matrix";
 import type { DemoInstance } from "../../types";
+import { useCameraStore } from "@/lib/stores/camera-store";
 import { cubeVertexArray, cubeVertexCount } from "./cube";
-
-const vertexShaderUrl = new URL("./shaders/basic.vert.wgsl", import.meta.url);
-const fragmentShaderUrl = new URL("./shaders/vertexPositionColor.frag.wgsl", import.meta.url);
-
-let shaderCache: Promise<{ vertex: string; fragment: string }> | null = null;
-
-async function loadShaders() {
-  if (!shaderCache) {
-    shaderCache = Promise.all([
-      fetch(vertexShaderUrl).then((res) => res.text()),
-      fetch(fragmentShaderUrl).then((res) => res.text())
-    ]).then(([vertex, fragment]) => ({ vertex, fragment }));
-  }
-  return shaderCache;
-}
+import { twoCubesVertexWgsl, twoCubesFragmentWgsl } from "./shaders";
 
 export async function createTwoCubesDemo(
   device: GPUDevice,
   format: GPUTextureFormat,
   overrides?: { vertexShader?: string; fragmentShader?: string }
 ): Promise<DemoInstance> {
-  const cache = await loadShaders();
-  const vertex = overrides?.vertexShader || cache.vertex;
-  const fragment = overrides?.fragmentShader || cache.fragment;
+  const vertex = overrides?.vertexShader || twoCubesVertexWgsl;
+  const fragment = overrides?.fragmentShader || twoCubesFragmentWgsl;
 
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -36,7 +22,7 @@ export async function createTwoCubesDemo(
           arrayStride: 10 * 4,
           attributes: [
             { shaderLocation: 0, offset: 0, format: "float32x4" },
-            { shaderLocation: 1, offset: 8 * 4, format: "float32x2" }
+            { shaderLocation: 1, offset: 4 * 4, format: "float32x4" }
           ]
         }
       ]
@@ -137,17 +123,26 @@ export async function createTwoCubesDemo(
     },
     update: (timestamp) => {
       const rotation = timestamp / 1000;
+      const camera = useCameraStore.getState();
+      const camZoom = camera.zoom;
+      const panScale = 0.05;
 
       mat4.identity(modelMatrixLeft);
-      mat4.translate(modelMatrixLeft, modelMatrixLeft, [-1.8, 0, 0]);
+      mat4.translate(modelMatrixLeft, modelMatrixLeft, [-1.8 + camera.panX * panScale, -camera.panY * panScale, 0]);
       mat4.rotate(modelMatrixLeft, modelMatrixLeft, rotation * 0.7, [0, 1, 0]);
       mat4.rotate(modelMatrixLeft, modelMatrixLeft, rotation * 0.4, [1, 0, 0]);
+      mat4.rotate(modelMatrixLeft, modelMatrixLeft, degreesToRadians(camera.orbitX), [1, 0, 0]);
+      mat4.rotate(modelMatrixLeft, modelMatrixLeft, degreesToRadians(camera.orbitY), [0, 1, 0]);
+      mat4.scale(modelMatrixLeft, modelMatrixLeft, [camZoom, camZoom, camZoom]);
       mat4.multiply(mvpLeft, viewProjectionMatrix, modelMatrixLeft);
 
       mat4.identity(modelMatrixRight);
-      mat4.translate(modelMatrixRight, modelMatrixRight, [1.8, 0, 0]);
+      mat4.translate(modelMatrixRight, modelMatrixRight, [1.8 + camera.panX * panScale, -camera.panY * panScale, 0]);
       mat4.rotate(modelMatrixRight, modelMatrixRight, rotation, [0, 1, 0]);
       mat4.rotate(modelMatrixRight, modelMatrixRight, rotation * 0.6, [0, 0, 1]);
+      mat4.rotate(modelMatrixRight, modelMatrixRight, degreesToRadians(camera.orbitX), [1, 0, 0]);
+      mat4.rotate(modelMatrixRight, modelMatrixRight, degreesToRadians(camera.orbitY), [0, 1, 0]);
+      mat4.scale(modelMatrixRight, modelMatrixRight, [camZoom, camZoom, camZoom]);
       mat4.multiply(mvpRight, viewProjectionMatrix, modelMatrixRight);
 
       uniformDataLeft.set(mvpLeft);
@@ -170,4 +165,8 @@ export async function createTwoCubesDemo(
       uniformBuffer.destroy();
     }
   };
+}
+
+function degreesToRadians(value: number) {
+  return (value * Math.PI) / 180;
 }

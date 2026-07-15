@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, Zap, BookOpen, Layers, Palette, Box, Activity, FileText, Settings, GraduationCap, Sparkles, Sun, Image, Gamepad2, Lightbulb } from "lucide-react";
+import { Search, X, Zap, BookOpen, Layers, Palette, Wrench, Activity, FileText, Settings, GraduationCap, SearchCheck, Lightbulb } from "lucide-react";
 import { useUiStore, type PanelId } from "@/lib/stores/ui-store";
 import { useLessonStore } from "@/lib/stores/lesson-store";
 import { cn } from "@/lib/utils";
@@ -24,7 +24,7 @@ export function CommandPalette() {
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
-  const openSidebarMode = useCallback((mode: "bookmarks" | "shortcuts" | "profile" | "settings") => {
+  const openSidebarMode = useCallback((mode: "bookmarks" | "shortcuts" | "profile" | "settings" | "index") => {
     setSidebarMode(mode);
     if (!sidebarOpen) toggleSidebar();
   }, [setSidebarMode, sidebarOpen, toggleSidebar]);
@@ -32,17 +32,11 @@ export function CommandPalette() {
   const items = useMemo(() => {
     const catalog = getEffectiveCatalog();
     const navItems = [
-      { id: "open-lessons", label: "Open Lessons", icon: GraduationCap, action: () => setActivePanel("lessons") },
-      { id: "open-editor", label: "Open Editor", icon: Zap, action: () => setActivePanel("editor") },
-      { id: "open-pipeline", label: "Open Pipeline Visualizer", icon: Layers, action: () => setActivePanel("pipeline") },
-      { id: "open-shaders", label: "Open Shader Playground", icon: Sparkles, action: () => setActivePanel("shaders") },
-      { id: "open-geometry", label: "Open Geometry Lab", icon: Box, action: () => setActivePanel("geometry") },
-      { id: "open-lighting", label: "Open Lighting", icon: Sun, action: () => setActivePanel("lighting") },
-      { id: "open-textures", label: "Open Textures", icon: Image, action: () => setActivePanel("textures") },
-      { id: "open-performance", label: "Open Performance Panel", icon: Activity, action: () => setActivePanel("performance") },
-      { id: "open-playground", label: "Open Shader Playground", icon: Gamepad2, action: () => setActivePanel("playground") },
-      { id: "open-examples", label: "Open Examples", icon: Lightbulb, action: () => setActivePanel("examples") },
-      { id: "open-docs", label: "Open Documentation", icon: FileText, action: () => setActivePanel("documentation") },
+      { id: "open-learn", label: "Open Learn", icon: GraduationCap, action: () => setActivePanel("learn") },
+      { id: "open-workbench", label: "Open Workbench", icon: Wrench, action: () => setActivePanel("workbench") },
+      { id: "open-shaders", label: "Open Shader Studio", icon: Palette, action: () => setActivePanel("shaders") },
+      { id: "open-inspect", label: "Open Inspect", icon: SearchCheck, action: () => setActivePanel("inspect") },
+      { id: "open-docs", label: "Open Documentation", icon: FileText, action: () => setActivePanel("docs") },
       { id: "open-settings", label: "Open Settings", icon: Settings, action: () => openSidebarMode("settings") },
       { id: "open-shortcuts", label: "Open Keyboard Shortcuts", icon: Zap, action: () => openSidebarMode("shortcuts") },
       { id: "open-profile", label: "Open Profile and Progress", icon: GraduationCap, action: () => openSidebarMode("profile") },
@@ -57,7 +51,7 @@ export function CommandPalette() {
         icon: BookOpen,
         action: () => {
           setActiveLesson(item.id!);
-          setActivePanel("lessons");
+          setActivePanel("learn");
         }
       }));
 

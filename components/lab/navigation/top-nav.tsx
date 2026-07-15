@@ -6,46 +6,51 @@ import { motion } from "framer-motion";
 import {
   Layers,
   Search,
-  Command,
   BookOpen,
   Settings,
   User,
   Keyboard,
   Bookmark,
-  Zap,
   GraduationCap,
-  Cpu,
-  Sparkles,
-  Box,
-  Sun,
-  Image,
-  Gauge,
-  Gamepad2,
-  FileCode,
-  Menu
+  Wrench,
+  Palette,
+  SearchCheck,
+  Columns2,
+  Rows2,
+  Monitor
 } from "lucide-react";
-import { useUiStore, type PanelId } from "@/lib/stores/ui-store";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useUiStore, type PanelId, type SplitDirection } from "@/lib/stores/ui-store";
 import { MobileSidebarToggle } from "@/components/lab/sidebar/lesson-sidebar";
 import { cn } from "@/lib/utils";
 
 const primaryNav: { id: PanelId; label: string; icon: typeof BookOpen }[] = [
-  { id: "editor", label: "Editor", icon: FileCode },
-  { id: "lessons", label: "Lessons", icon: GraduationCap },
-  { id: "pipeline", label: "Pipeline", icon: Cpu },
-  { id: "shaders", label: "Shaders", icon: Sparkles },
-  { id: "geometry", label: "Geometry", icon: Box },
-  { id: "matrices", label: "Matrices", icon: Command },
-  { id: "lighting", label: "Lighting", icon: Sun },
-  { id: "textures", label: "Textures", icon: Image },
-  { id: "performance", label: "Performance", icon: Gauge },
-  { id: "playground", label: "Playground", icon: Gamepad2 },
-  { id: "examples", label: "Examples", icon: BookOpen },
-  { id: "documentation", label: "Docs", icon: BookOpen }
+  { id: "learn", label: "Learn", icon: GraduationCap },
+  { id: "workbench", label: "Workbench", icon: Wrench },
+  { id: "shaders", label: "Shaders", icon: Palette },
+  { id: "inspect", label: "Inspect", icon: SearchCheck },
+  { id: "docs", label: "Docs", icon: BookOpen }
 ];
+
+const splitLabels: Record<SplitDirection, { label: string; icon: typeof Columns2 }> = {
+  auto: { label: "Auto layout", icon: Monitor },
+  horizontal: { label: "Side-by-side", icon: Columns2 },
+  vertical: { label: "Stacked", icon: Rows2 }
+};
+
+function useCycleSplitDirection() {
+  const direction = useUiStore((s) => s.splitDirection);
+  const setSplitDirection = useUiStore((s) => s.setSplitDirection);
+  const cycle = () => {
+    const order: SplitDirection[] = ["auto", "horizontal", "vertical"];
+    const next = order[(order.indexOf(direction) + 1) % order.length];
+    setSplitDirection(next);
+  };
+  return { direction, cycle, config: splitLabels[direction] };
+}
 
 export function LabTopNav() {
   const pathname = usePathname();
+  const { direction, cycle: cycleSplitDirection, config: splitConfig } = useCycleSplitDirection();
   const {
     activePanel,
     setActivePanel,
@@ -55,14 +60,21 @@ export function LabTopNav() {
     setSidebarMode
   } = useUiStore();
 
-  const openSidebarMode = (mode: "lessons" | "bookmarks" | "shortcuts" | "profile" | "settings") => {
+  const openPanel = (panel: PanelId) => {
+    setActivePanel(panel);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `${pathname}#${panel}`);
+    }
+  };
+
+  const openSidebarMode = (mode: "index" | "bookmarks" | "shortcuts" | "profile" | "settings") => {
     setSidebarMode(mode);
     if (!sidebarOpen) toggleSidebar();
   };
 
   return (
-    <header className="h-14 border-b border-white/10 bg-[#0B0C15]/80 px-4 backdrop-blur-xl">
-      <div className="flex h-full items-center justify-between gap-4">
+    <header className="min-h-14 h-auto border-b border-white/10 bg-[#0B0C15]/80 px-4 py-1 backdrop-blur-xl">
+      <div className="flex min-h-12 flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Link
             href="/"
@@ -85,7 +97,7 @@ export function LabTopNav() {
               return (
                 <button
                   key={item.id}
-                  onClick={() => setActivePanel(item.id)}
+                  onClick={() => openPanel(item.id)}
                   title={`Open ${item.label}`}
                   className={cn(
                     "relative flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium transition-colors md:px-3",
@@ -112,6 +124,18 @@ export function LabTopNav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5">
+          <button
+            onClick={cycleSplitDirection}
+            title={splitConfig.label}
+            aria-label={splitConfig.label}
+            className={cn(
+              "hidden rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-white/5 hover:text-slate-200 md:flex",
+              direction !== "auto" && "text-brand"
+            )}
+          >
+            <splitConfig.icon className="size-4" />
+          </button>
+
           <button
             onClick={openCommandPalette}
             title="Open command palette"
@@ -168,8 +192,6 @@ export function LabTopNav() {
             <User className="size-4" />
           </button>
 
-          <div className="ml-1 h-4 w-px bg-white/10" />
-          <ThemeToggle />
         </div>
       </div>
     </header>

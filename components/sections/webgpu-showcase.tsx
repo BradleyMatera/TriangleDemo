@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Card, CardBody, Chip, Spinner } from "@nextui-org/react";
 import {
   initTriangleDemo,
-  availableShapes,
+  sampleShapes,
   type ShapeId
 } from "@/lib/webgpu/triangle-demo";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -21,10 +21,10 @@ export function WebGpuShowcase() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const [state, setState] = useState<DemoState>({ status: "initial" });
-  const [shape, setShape] = useState<ShapeId>(availableShapes[0]!.id);
+  const [shape, setShape] = useState<ShapeId>(sampleShapes[0]!.id);
   const setShapeRef = useRef<((shapeId: ShapeId) => Promise<void>) | null>(null);
-  const shapeRef = useRef<ShapeId>(availableShapes[0]!.id);
-  const activeShape = availableShapes.find((item) => item.id === shape);
+  const shapeRef = useRef<ShapeId>(sampleShapes[0]!.id);
+  const activeShape = sampleShapes.find((item) => item.id === shape);
 
   useEffect(() => {
     let cleanup: (() => void) | undefined;
@@ -80,10 +80,11 @@ export function WebGpuShowcase() {
               title="See the WebGPU code and render together"
               description={
                 <>
-                  Triangle Shader Lab shows the WebGPU hello triangle and textured 
-                  cube demos in a clean layout. You can see the live render and the 
-                  code that makes it work at the same time. Everything you see on 
-                  this page maps directly to code in{" "}
+                  Triangle Shader Lab shows the core WebGPU demos — hello triangle,
+                  two cubes, and textured cube — right on the landing page. Open
+                  the Lab to explore the full platform: lessons, editor, pipeline
+                  visualizer, geometry lab, lighting, and more. Everything you see
+                  here maps directly to code in{" "}
                   <code>lib/webgpu/triangle-demo.ts</code>.
                 </>
               }
@@ -99,7 +100,7 @@ export function WebGpuShowcase() {
                   radius="full"
                   className="w-full"
                 >
-                  {availableShapes.map((item) => (
+                  {sampleShapes.map((item) => (
                     <Tab key={item.id} title={item.label}>
                       <div className="mt-3 space-y-1 rounded-2xl border border-white/60 bg-white/70 p-4 text-left dark:border-white/10 dark:bg-white/10">
                         <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">

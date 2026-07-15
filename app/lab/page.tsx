@@ -3,58 +3,86 @@
 import { useEffect, useMemo, useState } from "react";
 import { LabTopNav } from "@/components/lab/navigation/top-nav";
 import { LessonSidebar } from "@/components/lab/sidebar/lesson-sidebar";
-import { LessonContentPanel } from "@/components/lab/panels/lesson-content-panel";
+import { LearnPanel } from "@/components/lab/panels/learn-panel";
 import { LivePreviewPanel } from "@/components/lab/panels/live-preview-panel";
-import { CodeEditorPanel } from "@/components/lab/panels/code-editor-panel";
-import { PipelineVisualizerPanel } from "@/components/lab/panels/pipeline-visualizer-panel";
-import { GpuInspectorPanel } from "@/components/lab/panels/gpu-inspector-panel";
-import { ShaderPlaygroundPanel } from "@/components/lab/panels/shader-playground-panel";
-import { GeometryLabPanel } from "@/components/lab/panels/geometry-lab-panel";
-import { MatrixLabPanel } from "@/components/lab/panels/matrix-lab-panel";
-import { LightingLabPanel } from "@/components/lab/panels/lighting-lab-panel";
-import { TexturesLabPanel } from "@/components/lab/panels/textures-lab-panel";
-import { ExamplesLabPanel } from "@/components/lab/panels/examples-lab-panel";
-import { PerformancePanel } from "@/components/lab/panels/performance-panel";
+import { WorkbenchPanel } from "@/components/lab/panels/workbench-panel";
+import { ShaderStudioPanel } from "@/components/lab/panels/shader-studio-panel";
+import { InspectPanel } from "@/components/lab/panels/inspect-panel";
 import { DocumentationPanel } from "@/components/lab/panels/documentation-panel";
 import { StatusBar } from "@/components/lab/status-bar";
 import { CommandPalette } from "@/components/lab/command-palette";
 import { ResizableSplitPane } from "@/components/lab/ui/resizable-split-pane";
 import { useLessonStore } from "@/lib/stores/lesson-store";
 import { useWorkspaceStore } from "@/lib/stores/workspace-store";
-import { useUiStore } from "@/lib/stores/ui-store";
+import { useUiStore, type PanelId } from "@/lib/stores/ui-store";
 import { useGeometryStore } from "@/lib/stores/geometry-store";
 import { getLessonById } from "@/lib/lessons/catalog";
-import { getLessonShaderSource } from "@/lib/lessons/shader-source";
 import { cn } from "@/lib/utils";
+import { useEffectiveSplitDirection } from "@/lib/hooks/use-split-direction";
 import type { ShaderOverrides, ShapeId } from "@/lib/webgpu/triangle-demo";
+
+const panelIds = new Set<PanelId>(["learn", "workbench", "shaders", "inspect", "docs"]);
+
+function getPanelFromHash(): PanelId | null {
+  if (typeof window === "undefined") return null;
+  const hashPanel = window.location.hash.replace(/^#/, "");
+  return panelIds.has(hashPanel as PanelId) ? (hashPanel as PanelId) : null;
+}
 
 export default function LabPage() {
   const [mounted, setMounted] = useState(false);
   const activePanel = useUiStore((s) => s.activePanel);
+  const setActivePanel = useUiStore((s) => s.setActivePanel);
+  const activeWorkbenchTool = useUiStore((s) => s.activeWorkbenchTool);
+  const closeSidebar = useUiStore((s) => s.closeSidebar);
   const reduceMotion = useUiStore((s) => s.reduceMotion);
   const highDensity = useUiStore((s) => s.highDensity);
   const activeLessonId = useLessonStore((s) => s.activeLessonId);
   const selectedGeometryShape = useGeometryStore((s) => s.selectedShape);
   const geometryRevision = useGeometryStore((s) => s.revision);
   const lesson = getLessonById(activeLessonId);
-  const lessonShapeId =
-    lesson?.demo?.type === "webgpu"
-      ? lesson.demo.shape
-      : "hello-triangle";
-  const shapeId: ShapeId = activePanel === "geometry" ? selectedGeometryShape : lessonShapeId;
-  const { codeVertex, codeFragment, appliedShaders } = useWorkspaceStore();
+  const lessonShapeId = lesson?.demo?.type === "webgpu" ? lesson.demo.shape : "hello-triangle";
+
+  let shapeId: ShapeId = lessonShapeId;
+  if (activePanel === "workbench") shapeId = selectedGeometryShape;
+  if (activePanel === "shaders") shapeId = "textured-cube";
+
+  const { codeVertex, codeFragment, appliedShaders, applyShaders } = useWorkspaceStore();
+  const splitDirection = useUiStore((s) => s.splitDirection);
+  const effectiveSplitDirection = useEffectiveSplitDirection(splitDirection);
+
+  // Workbench tabs that should override the viewport shader
+  const workbenchUsesOverride = activePanel === "workbench" && (activeWorkbenchTool === "lighting" || activeWorkbenchTool === "material");
 
   const shaderOverrides: ShaderOverrides = useMemo(
     () => ({
-      vertexShader: appliedShaders.vertexShader || codeVertex || undefined,
-      fragmentShader: appliedShaders.fragmentShader || codeFragment || undefined
+      vertexShader: (workbenchUsesOverride || activePanel === "shaders" ? appliedShaders.vertexShader : undefined) || codeVertex || undefined,
+      fragmentShader: (workbenchUsesOverride || activePanel === "shaders" ? appliedShaders.fragmentShader : undefined) || codeFragment || undefined
     }),
-    [appliedShaders, codeVertex, codeFragment]
+    [workbenchUsesOverride, activePanel, appliedShaders, codeVertex, codeFragment]
   );
 
+  // Clear stale shader overrides when leaving shader-override panels so Learn/Inspect/Docs render normally
   useEffect(() => {
+    if (!workbenchUsesOverride && activePanel !== "shaders") {
+      applyShaders({});
+    }
+  }, [activePanel, workbenchUsesOverride, applyShaders]);
+
+  useEffect(() => {
+    const syncPanelFromHash = () => {
+      const hashPanel = getPanelFromHash();
+      if (!hashPanel) return;
+      setActivePanel(hashPanel);
+      if (hashPanel !== "learn") closeSidebar();
+    };
+
+    syncPanelFromHash();
     setMounted(true);
-  }, []);
+    window.addEventListener("hashchange", syncPanelFromHash);
+
+    return () => window.removeEventListener("hashchange", syncPanelFromHash);
+  }, [closeSidebar, setActivePanel]);
 
   if (!mounted) {
     return (
@@ -82,8 +110,9 @@ export default function LabPage() {
             <ActiveWorkspace
               activePanel={activePanel}
               shapeId={shapeId}
-              shaderOverrides={activePanel === "geometry" ? {} : shaderOverrides}
-              demoRevision={activePanel === "geometry" ? geometryRevision : 0}
+              direction={effectiveSplitDirection}
+              shaderOverrides={shaderOverrides}
+              demoRevision={activePanel === "workbench" ? geometryRevision : 0}
             />
           </div>
           <div className="hidden lg:block">
@@ -100,63 +129,67 @@ export default function LabPage() {
 function ActiveWorkspace({
   activePanel,
   shapeId,
+  direction,
   shaderOverrides,
   demoRevision
 }: {
   activePanel: ReturnType<typeof useUiStore.getState>["activePanel"];
   shapeId: ShapeId;
+  direction: "horizontal" | "vertical";
   shaderOverrides: ShaderOverrides;
   demoRevision: number;
 }) {
+  const rightPane = (
+    <LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />
+  );
+
   switch (activePanel) {
-    case "editor":
+    case "learn":
       return (
-        <ResizableSplitPane leftPane={<CodeEditorPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
+        <ResizableSplitPane
+          leftPane={<LearnPanel />}
+          rightPane={rightPane}
+          direction={direction}
+          defaultLeftWidth={42}
+        />
       );
-    case "pipeline":
+    case "workbench":
       return (
-        <ResizableSplitPane leftPane={<PipelineVisualizerPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
+        <ResizableSplitPane
+          leftPane={<WorkbenchPanel />}
+          rightPane={rightPane}
+          direction={direction}
+          defaultLeftWidth={40}
+        />
       );
     case "shaders":
       return (
-        <ResizableSplitPane leftPane={<ShaderPlaygroundPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={55} />
+        <ResizableSplitPane
+          leftPane={<ShaderStudioPanel />}
+          rightPane={rightPane}
+          direction={direction}
+          defaultLeftWidth={55}
+        />
       );
-    case "geometry":
+    case "inspect":
       return (
-        <ResizableSplitPane leftPane={<GeometryLabPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
+        <ResizableSplitPane
+          leftPane={<InspectPanel />}
+          rightPane={rightPane}
+          direction={direction}
+          defaultLeftWidth={45}
+        />
       );
-    case "matrices":
+    case "docs":
       return (
-        <ResizableSplitPane leftPane={<MatrixLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
+        <ResizableSplitPane
+          leftPane={<DocumentationPanel />}
+          rightPane={rightPane}
+          direction={direction}
+          defaultLeftWidth={45}
+        />
       );
-    case "lighting":
-      return (
-        <ResizableSplitPane leftPane={<LightingLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
-      );
-    case "textures":
-      return (
-        <ResizableSplitPane leftPane={<TexturesLabPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
-      );
-    case "examples":
-      return (
-        <ResizableSplitPane leftPane={<ExamplesLabPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
-      );
-    case "performance":
-      return (
-        <ResizableSplitPane leftPane={<PerformancePanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
-      );
-    case "playground":
-      return (
-        <ResizableSplitPane leftPane={<ShaderPlaygroundPanel />} rightPane={<LivePreviewPanel shapeId="cube" shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={55} />
-      );
-    case "documentation":
-      return (
-        <ResizableSplitPane leftPane={<DocumentationPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} />
-      );
-    case "lessons":
     default:
-      return (
-        <ResizableSplitPane leftPane={<LessonContentPanel />} rightPane={<LivePreviewPanel shapeId={shapeId} shaderOverrides={shaderOverrides} demoRevision={demoRevision} />} defaultLeftWidth={40} />
-      );
+      return rightPane;
   }
 }

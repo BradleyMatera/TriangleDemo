@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Copy, Download, ImageIcon, Layers, AlertCircle, CheckCircle2, FileImage, Grid3X3, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NumericInput } from "@/components/lab/controls/numeric-input";
+import { useWorkspaceStore } from "@/lib/stores/workspace-store";
 
 interface TextureCard {
   id: string;
@@ -69,12 +70,44 @@ const samplerPresets = [
   { id: "mirrored", label: "Mirrored", magFilter: "linear", minFilter: "linear", addressModeU: "mirror-repeat", addressModeV: "mirror-repeat" }
 ];
 
+const textureVertexShader = `struct Uniforms {
+  modelViewProjectionMatrix : mat4x4f,
+}
+@binding(0) @group(0) var<uniform> uniforms : Uniforms;
+
+struct VertexOutput {
+  @builtin(position) Position : vec4f,
+  @location(0) fragUV : vec2f,
+  @location(1) fragPosition: vec4f,
+}
+
+@vertex
+fn main(
+  @location(0) position : vec4f,
+  @location(1) uv : vec2f
+) -> VertexOutput {
+  var output : VertexOutput;
+  output.Position = uniforms.modelViewProjectionMatrix * position;
+  output.fragUV = uv;
+  output.fragPosition = 0.5 * (position + vec4f(1.0, 1.0, 1.0, 1.0));
+  return output;
+}
+`;
+
 export function TexturesLabPanel() {
   const [active, setActive] = useState<string>("color");
   const [sampler, setSampler] = useState(samplerPresets[1]);
   const [uvScale, setUvScale] = useState(1);
   const [uvOffset, setUvOffset] = useState({ u: 0, v: 0 });
   const [showGrid, setShowGrid] = useState(false);
+  const applyShaders = useWorkspaceStore((s) => s.applyShaders);
+
+  useEffect(() => {
+    applyShaders({
+      vertexShader: textureVertexShader,
+      fragmentShader: buildTextureFragmentShader(sampler, uvScale, uvOffset, showGrid)
+    });
+  }, [sampler, uvScale, uvOffset, showGrid, applyShaders]);
 
   const activeCard = sampleCards.find((c) => c.id === active) ?? sampleCards[0]!;
 
@@ -305,6 +338,53 @@ export function TexturesLabPanel() {
       </motion.div>
     </div>
   );
+}
+
+function wrapUV(modeU: string, modeV: string): string {
+  const wrap = (coord: string, mode: string) => {
+    switch (mode) {
+      case "repeat":
+        return `fract(${coord})`;
+      case "mirror-repeat":
+        return `1.0 - abs(fract(${coord} / 2.0) * 2.0 - 1.0)`;
+      case "clamp-to-edge":
+      default:
+        return `clamp(${coord}, 0.0, 1.0)`;
+    }
+  };
+  return `vec2f(${wrap("uv.x", modeU)}, ${wrap("uv.y", modeV)})`;
+}
+
+function buildTextureFragmentShader(
+  sampler: (typeof samplerPresets)[number],
+  uvScale: number,
+  uvOffset: { u: number; v: number },
+  showGrid: boolean
+): string {
+  const wrapped = wrapUV(sampler.addressModeU, sampler.addressModeV);
+  const gridCheck = showGrid
+    ? `
+  let grid = step(0.95, fract(uv.x * 8.0)) + step(0.95, fract(uv.y * 8.0));
+  color = mix(color, vec3f(0.2, 0.9, 1.0), grid * 0.35);`
+    : "";
+
+  return `struct FragmentInput {
+  @location(0) fragUV: vec2f,
+  @location(1) fragPosition: vec4f,
+}
+
+@fragment
+fn main(input: FragmentInput) -> @location(0) vec4f {
+  var uv = input.fragUV * ${uvScale.toFixed(1)} + vec2f(${uvOffset.u.toFixed(2)}, ${uvOffset.v.toFixed(2)});
+  uv = ${wrapped};
+
+  let checker = step(0.5, fract(uv.x * 8.0)) + step(0.5, fract(uv.y * 8.0));
+  var color = mix(vec3f(0.15, 0.18, 0.25), vec3f(0.85, 0.88, 0.95), checker % 2.0);
+  ${gridCheck}
+
+  return vec4f(color, 1.0);
+}
+`;
 }
 
 function generateSamplerWGSL(

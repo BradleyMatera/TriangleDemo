@@ -28,7 +28,7 @@ import { useUiStore, type SidebarMode } from "@/lib/stores/ui-store";
 import { cn } from "@/lib/utils";
 
 const modes: { id: SidebarMode; label: string; icon: typeof BookOpen }[] = [
-  { id: "lessons", label: "Lessons", icon: GraduationCap },
+  { id: "index", label: "Index", icon: BookOpen },
   { id: "bookmarks", label: "Bookmarks", icon: Bookmark },
   { id: "shortcuts", label: "Keys", icon: Keyboard },
   { id: "profile", label: "Profile", icon: Trophy },
@@ -36,7 +36,7 @@ const modes: { id: SidebarMode; label: string; icon: typeof BookOpen }[] = [
 ];
 
 export function LessonSidebar() {
-  const { sidebarMode, setSidebarMode, sidebarOpen, toggleSidebar } = useUiStore();
+  const { sidebarMode, setSidebarMode, sidebarOpen, toggleSidebar, activePanel } = useUiStore();
   const getEffectiveCatalog = useLessonStore((s) => s.getEffectiveCatalog);
   const activeLessonId = useLessonStore((s) => s.activeLessonId);
   const progress = useLessonStore((s) => s.progress);
@@ -53,7 +53,7 @@ export function LessonSidebar() {
 
   return (
     <aside className={cn(
-      "fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-white/10 bg-[#0B0C15]/80 backdrop-blur-xl transition-transform duration-300 ease-out lg:static lg:translate-x-0",
+      "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-white/10 bg-[#0B0C15]/80 backdrop-blur-xl transition-transform duration-300 ease-out xl:w-72 lg:static lg:translate-x-0",
       sidebarOpen ? "translate-x-0" : "-translate-x-full"
     )}>
       <div className="flex items-center justify-between border-b border-white/10 p-2 lg:hidden">
@@ -97,71 +97,8 @@ export function LessonSidebar() {
       </div>
 
       <div className="flex-1 overflow-y-auto p-3">
-        {sidebarMode === "lessons" ? (
-          <div className="space-y-1">
-            {catalog.map((item, index) => {
-              if (item.type === "chapter") {
-                return (
-                  <div
-                    key={`chapter-${index}`}
-                    className={cn(
-                      "pt-3 text-[10px] font-bold uppercase tracking-wider",
-                      item.status === "locked" ? "text-slate-600" : "text-brand-subtle"
-                    )}
-                  >
-                    {item.title}
-                  </div>
-                );
-              }
-
-              const isActive = item.id === activeLessonId;
-              const isLocked = item.status === "locked";
-              const completed = item.status === "completed";
-
-              return (
-                <button
-                  key={item.id}
-                  disabled={isLocked}
-                  onClick={() => item.id && setActiveLesson(item.id)}
-                  title={isLocked ? "Complete the previous available lesson to unlock this one." : `Open ${item.title}`}
-                  className={cn(
-                    "group flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs transition-all",
-                    isActive
-                      ? "bg-brand/15 text-white shadow-[inset_0_0_0_1px_rgba(108,140,255,0.25)]"
-                      : isLocked
-                        ? "text-slate-600"
-                        : "text-slate-300 hover:bg-white/5 hover:text-white"
-                  )}
-                >
-                  <span className="flex size-5 shrink-0 items-center justify-center">
-                    {completed ? (
-                      <span aria-label="Completed" className="text-emerald-400">
-                        <CheckCircle2 className="size-4" />
-                      </span>
-                    ) : isLocked ? (
-                      <span aria-label="Locked" className="text-slate-500">
-                        <Lock className="size-3.5" />
-                      </span>
-                    ) : isActive ? (
-                      <span aria-label="Active" className="text-brand">
-                        <Play className="size-3.5" />
-                      </span>
-                    ) : (
-                      <span aria-label="Available" className="text-slate-500">
-                        <Circle className="size-3.5" />
-                      </span>
-                    )}
-                  </span>
-
-                  <span className="flex-1 truncate font-medium">{item.title}</span>
-
-                  {!isLocked ? (
-                    <ChevronRight className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
+        {sidebarMode === "index" ? (
+          <ModeIndex activePanel={activePanel} />
         ) : sidebarMode === "bookmarks" ? (
           <BookmarksPanel />
         ) : sidebarMode === "shortcuts" ? (
@@ -198,6 +135,172 @@ export function LessonSidebar() {
         ) : null}
       </div>
     </aside>
+  );
+}
+
+function ModeIndex({ activePanel }: { activePanel: import("@/lib/stores/ui-store").PanelId }) {
+  switch (activePanel) {
+    case "workbench":
+      return <WorkbenchIndex />;
+    case "shaders":
+      return <ShaderIndex />;
+    case "inspect":
+      return <InspectIndex />;
+    case "docs":
+      return <DocsIndex />;
+    case "learn":
+    default:
+      return <LessonIndex />;
+  }
+}
+
+function LessonIndex() {
+  const getEffectiveCatalog = useLessonStore((s) => s.getEffectiveCatalog);
+  const activeLessonId = useLessonStore((s) => s.activeLessonId);
+  const setActiveLesson = useLessonStore((s) => s.setActiveLesson);
+  const catalog = useMemo(() => getEffectiveCatalog(), [getEffectiveCatalog]);
+
+  return (
+    <div className="space-y-1">
+      {catalog.map((item, index) => {
+        if (item.type === "chapter") {
+          return (
+            <div
+              key={`chapter-${index}`}
+              className={cn(
+                "pt-3 text-[10px] font-bold uppercase tracking-wider",
+                item.status === "locked" ? "text-slate-600" : "text-brand-subtle"
+              )}
+            >
+              {item.title}
+            </div>
+          );
+        }
+
+        const isActive = item.id === activeLessonId;
+        const isLocked = item.status === "locked";
+        const completed = item.status === "completed";
+
+        return (
+          <button
+            key={item.id}
+            disabled={isLocked}
+            onClick={() => item.id && setActiveLesson(item.id)}
+            title={isLocked ? "Complete the previous available lesson to unlock this one." : `Open ${item.title}`}
+            className={cn(
+              "group flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-xs transition-all",
+              isActive
+                ? "bg-brand/15 text-white shadow-[inset_0_0_0_1px_rgba(108,140,255,0.25)]"
+                : isLocked
+                  ? "text-slate-600"
+                  : "text-slate-300 hover:bg-white/5 hover:text-white"
+            )}
+          >
+            <span className="flex size-5 shrink-0 items-center justify-center">
+              {completed ? (
+                <span aria-label="Completed" className="text-emerald-400">
+                  <CheckCircle2 className="size-4" />
+                </span>
+              ) : isLocked ? (
+                <span aria-label="Locked" className="text-slate-500">
+                  <Lock className="size-3.5" />
+                </span>
+              ) : isActive ? (
+                <span aria-label="Active" className="text-brand">
+                  <Play className="size-3.5" />
+                </span>
+              ) : (
+                <span aria-label="Available" className="text-slate-500">
+                  <Circle className="size-3.5" />
+                </span>
+              )}
+            </span>
+            <span className="flex-1 truncate font-medium">{item.title}</span>
+            {!isLocked ? (
+              <ChevronRight className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+            ) : null}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function WorkbenchIndex() {
+  const { activeWorkbenchTool, setActiveWorkbenchTool } = useUiStore();
+  const items = [
+    { id: "shape" as const, label: "Shape" },
+    { id: "transform" as const, label: "Transform" },
+    { id: "lighting" as const, label: "Lighting" },
+    { id: "material" as const, label: "Material" }
+  ];
+  return (
+    <div className="space-y-1">
+      <p className="px-2 py-1 text-[11px] text-slate-400">Pick a tool. Changes update the shared WebGPU viewport on the right.</p>
+      {items.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => setActiveWorkbenchTool(item.id)}
+          className={cn(
+            "flex w-full rounded-xl px-3 py-2 text-left text-xs transition-colors",
+            activeWorkbenchTool === item.id ? "bg-white/10 text-white" : "text-slate-300 hover:bg-white/5 hover:text-white"
+          )}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function ShaderIndex() {
+  const { setActiveShaderStudioTab } = useUiStore();
+  return (
+    <div className="space-y-1 text-xs text-slate-300">
+      <p className="px-2 py-1 text-[11px] text-slate-400">Pick a shader example to load it into the editor, then hit Run.</p>
+      <button onClick={() => setActiveShaderStudioTab("gallery")} className="w-full rounded-xl px-3 py-2 text-left hover:bg-white/5">
+        Browse gallery
+      </button>
+      <button onClick={() => setActiveShaderStudioTab("editor")} className="w-full rounded-xl px-3 py-2 text-left hover:bg-white/5">
+        Open editor
+      </button>
+    </div>
+  );
+}
+
+function InspectIndex() {
+  const { activeInspectTab, setActiveInspectTab } = useUiStore();
+  const items = [
+    { id: "pipeline" as const, label: "Pipeline" },
+    { id: "gpu" as const, label: "GPU state" },
+    { id: "performance" as const, label: "Performance" }
+  ];
+  return (
+    <div className="space-y-1">
+      {items.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => setActiveInspectTab(item.id)}
+          className={cn(
+            "flex w-full rounded-xl px-3 py-2 text-left text-xs transition-colors",
+            activeInspectTab === item.id ? "bg-white/10 text-white" : "text-slate-300 hover:bg-white/5 hover:text-white"
+          )}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function DocsIndex() {
+  return (
+    <div className="space-y-1 text-xs text-slate-300">
+      <p className="px-2 py-1 text-[11px] text-slate-400">Built-in WGSL and WebGPU reference.</p>
+      <button onClick={() => window.location.hash = "#docs"} className="w-full rounded-xl px-3 py-2 text-left hover:bg-white/5">
+        Documentation home
+      </button>
+    </div>
   );
 }
 
@@ -368,6 +471,9 @@ function SettingsPanel() {
     autosave,
     toggleAutosave
   } = useUiStore();
+  const unlocked = useLessonStore((s) => s.unlocked);
+  const unlockAll = useLessonStore((s) => s.unlockAll);
+  const lockAll = useLessonStore((s) => s.lockAll);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window === "undefined") return false;
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -382,6 +488,23 @@ function SettingsPanel() {
 
   return (
     <div className="space-y-4">
+      <div className="rounded-xl border border-white/10 bg-white/5 p-3">
+        <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
+          <GraduationCap className="size-3.5 text-brand-subtle" />
+          Course
+        </h3>
+        <ToggleRow
+          label="Unlock all lessons"
+          active={unlocked}
+          onClick={() => (unlocked ? lockAll() : unlockAll())}
+        />
+        <p className="mt-2 text-[10px] text-slate-500">
+          {unlocked
+            ? "All lessons are unlocked for free exploration."
+            : "Complete each lesson to unlock the next, or toggle this to explore freely."}
+        </p>
+      </div>
+
       <div className="rounded-xl border border-white/10 bg-white/5 p-3">
         <h3 className="mb-2 flex items-center gap-2 text-xs font-semibold text-white">
           <Accessibility className="size-3.5 text-brand-subtle" />

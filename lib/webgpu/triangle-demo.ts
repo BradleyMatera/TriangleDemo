@@ -2,11 +2,12 @@ import { createTwoCubesDemo } from "./samples/two-cubes/main";
 import { createHelloTriangleDemo } from "./samples/hello-triangle/main";
 import { createTexturedCubeDemo } from "./samples/textured-cube/main";
 import { createGeometryMeshDemo } from "./samples/geometry-lab/main";
+import { createFullscreenDemo } from "./samples/fullscreen/main";
 import type { DemoInstance, RenderStats } from "./types";
 import { useMetricsStore } from "@/lib/stores/metrics-store";
 import type { GeometryShapeId } from "@/lib/stores/geometry-store";
 
-export type WebGpuSampleId = "textured-cube" | "hello-triangle" | "two-cubes";
+export type WebGpuSampleId = "textured-cube" | "hello-triangle" | "two-cubes" | "fullscreen";
 export type ShapeId = WebGpuSampleId | GeometryShapeId;
 
 type ShapeMeta = {
@@ -20,7 +21,7 @@ type ShapeMeta = {
   };
 };
 
-export const availableShapes: ShapeMeta[] = [
+export const sampleShapes: ShapeMeta[] = [
   {
     id: "hello-triangle",
     label: "Hello Triangle",
@@ -30,6 +31,16 @@ export const availableShapes: ShapeMeta[] = [
     source: {
       title: "WebGPU Samples — Hello Triangle",
       url: "https://webgpu.github.io/webgpu-samples/?sample=helloTriangle"
+    }
+  },
+  {
+    id: "fullscreen",
+    label: "Fullscreen Shader",
+    description: "A single full-screen triangle used for 2D fragment shader experiments.",
+    localPath: "samples/fullscreen/main.ts",
+    source: {
+      title: "WebGPU Lab — Fullscreen Shader Canvas",
+      url: "#shaders"
     }
   },
   {
@@ -53,7 +64,10 @@ export const availableShapes: ShapeMeta[] = [
       title: "WebGPU Samples — Textured Cube",
       url: "https://webgpu.github.io/webgpu-samples/?sample=texturedCube"
     }
-  },
+  }
+];
+
+const geometryShapes: ShapeMeta[] = [
   {
     id: "triangle",
     label: "Geometry Triangle",
@@ -155,6 +169,8 @@ export const availableShapes: ShapeMeta[] = [
     }
   }
 ];
+
+export const availableShapes: ShapeMeta[] = [...sampleShapes, ...geometryShapes];
 
 type DemoResult =
   | {
@@ -428,6 +444,8 @@ async function createDemoInstance(
       return createTexturedCubeDemo(device, format, shaders);
     case "hello-triangle":
       return createHelloTriangleDemo(device, format, shaders);
+    case "fullscreen":
+      return createFullscreenDemo(device, format, shaders);
     default:
       return createGeometryMeshDemo(device, format, id, shaders);
   }
